@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend\Produk;
 
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
-class KategoriprodukController extends Controller
+class ProdukController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class KategoriprodukController extends Controller
      */
     public function index()
     {
-      return view('admin.produk.KategoriProduk');
+      return view('admin.produk.produk');
     }
 
     /**
@@ -25,7 +25,7 @@ class KategoriprodukController extends Controller
      */
     public function create()
     {
-      return view('admin.produk.KategoriProdukCreate',  ['fungsi'=>'create']);
+      return view('admin.produk.produkCreate',  ['fungsi'=>'create']);
     }
 
     /**

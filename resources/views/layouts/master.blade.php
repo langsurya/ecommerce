@@ -184,9 +184,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="{{ url('/admin/realtimestock') }}"><i class="fa  fa-file"></i> Real Time Stock</a></li>
-              <li><a href="{{ url('/admin/entrystock') }}"><i class="fa fa-file"></i> Entry Stock</a></li>
-              <li><a href="{{ url('/admin/hostorystok') }}"><i class="fa fa-file"></i> History Stock</a></li>
+              <li><a href="{{ url('/admin/realtime') }}"><i class="fa  fa-file"></i> Real Time Stock</a></li>
+              <li><a href="{{ url('/admin/entry') }}"><i class="fa fa-file"></i> Entry Stock</a></li>
+              <li><a href="{{ url('/admin/history') }}"><i class="fa fa-file"></i> History Stock</a></li>
             </ul>
           </li>
           {{-- Finance --}}

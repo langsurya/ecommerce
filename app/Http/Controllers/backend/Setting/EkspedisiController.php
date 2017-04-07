@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend\Setting;
 
 use Illuminate\Http\Request;
-// use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 // use DB;
 use App\Payment;
 
-class PaymentController extends Controller
+class EkspedisiController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -28,27 +28,26 @@ class PaymentController extends Controller
      */
     public function index(Request $request)
     {
-      $payments = Payment::orderBy('id','DESC')->paginate(5);
-      return view('admin.setting.payment',compact('payments'))
-        ->with('i', ($request->input('page', 1) -1) * 5);
+
+      return view('admin.setting.ekspedisi');
     }
 
     public function create()
     {
       // return view('admin.index');
-      return view('admin.setting.paymenttambah', ['fungsi'=>'create']);
+      return view('admin.setting.ekspedisicreate', ['fungsi'=>'create']);
     }
 
     public function store(Request $request)
     {
-      $this->validate($request, [
-        'nama_bank' => 'required',
-        'no_rekening' => 'required',
-        'pemilik' => 'required',
-        'cabang' => 'required',
-      ]);
-      Payment::create($request->all());
-      return redirect()->route('payment.index')
+      // $this->validate($request, [
+      //   'nama_bank' => 'required',
+      //   'no_rekening' => 'required',
+      //   'pemilik' => 'required',
+      //   'cabang' => 'required',
+      // ]);
+      // Payment::create($request->all());
+      return redirect()->route('ekspedisi.index')
         ->with('success','Pelanggan created successfully');
     }
 
