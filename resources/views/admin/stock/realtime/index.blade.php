@@ -66,9 +66,9 @@
                   <!-- box-body --><br>
                   <div class="nav-tabs-custom">
                       <ul class="nav nav-tabs">
-                        <li class="active"><a href="#semua" data-toggle="tab" aria-expanded="false">Semua <span class="badge">50</span></a></li>
+                        <li class="active"><a href="#semua" data-toggle="tab" aria-expanded="false">Semua <span class="badge">3</span></a></li>
                         <li class=""><a href="#ready" data-toggle="tab" aria-expanded="false">Stock Ready <span class="badge">15</span></a></li>
-                        <li class=""><a href="#kurang" data-toggle="tab" aria-expanded="true">Stock Kurang <span class="badge">3</span></a></li>
+                        <li class=""><a href="#kurang" data-toggle="tab" aria-expanded="true">Stock Kurang <span class="badge">14</span></a></li>
                         <li><a href="#kosong" data-toggle="tab" aria-expanded="true">Stock Kosong <span class="badge">7</span></a></li>
                       </ul>
                       <div class="tab-content">

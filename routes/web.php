@@ -41,51 +41,54 @@ Route::group(['prefix' => 'admin'], function() {
       // Route::resource('/namalink1', 'nama class Container')
       Route::resource('pelanggan', 'PelangganController');
     });
-    // Penjualan -> pesanan Menu
+    
+    // baca class Controller Pesanan di folder backend/Penjualan
     Route::group(['namespace' => 'Penjualan'], function() {
       // menampilkan link web:8000/admin/pesanan
-      Route::get('/pesanan', [
+      Route::get('pesanan', [
         'as' => 'pesanan.index', 'uses' => 'PesananController@index'
       ]);
-      Route::post('/pesanan', [
+      Route::post('pesanan', [
         'as' => 'pesanan.store', 'uses' => 'PesananController@store'
       ]);
-      Route::get('/pesanan/create', [
+      Route::get('pesanan/create', [
         'as' => 'pesanan.create', 'uses' => 'PesananController@create'
       ]);
     });
-    // Produk Menu
+
+    // baca class Controller Kategori, Produk di folder backend/Produk
     Route::group(['namespace' => 'Produk'], function() {
       // produk Kategori
-      Route::get('/KategoriProduk', [
+      Route::get('KategoriProduk', [
         'as' => 'kategoriproduk.index', 'uses' => 'KategoriprodukController@index'
       ]);
-      Route::post('/KategoriProduk', [
+      Route::post('KategoriProduk', [
         'as' => 'KategoriProduk.store', 'uses' => 'KategoriprodukController@store'
       ]);
-      Route::get('/KategoriProduk/create', [
+      Route::get('KategoriProduk/create', [
         'as' => 'kategoriproduk.create', 'uses' => 'KategoriprodukController@create'
       ]);
       // produk
-      Route::get('/produk', [
+      Route::get('produk', [
         'as' => 'produk.index', 'uses' => 'ProdukController@index'
       ]);
-      Route::post('/produk', [
+      Route::post('produk', [
         'as' => 'produk.store', 'uses' => 'ProdukController@store'
       ]);
-      Route::get('/produk/create', [
+      Route::get('produk/create', [
         'as' => 'produk.create', 'uses' => 'ProdukController@create'
       ]);
     });
 
-    // stock
+    // baca class Controller Realtime di folder backend/stock
     Route::group(['namespace' => 'Stock'], function() {
       // realtime
       Route::get('realtime', [
         'as' => 'realtime.index', 'uses' => 'RealtimeController@index'
       ]);
     });
-    // Setting Menu
+
+    // Baca class Controller Payment,kategoriPelanggan,ekspedisi di folder backend/Setting
     Route::group(['namespace' => 'Setting'], function() {
       Route::resource('payment', 'PaymentController');
       // eksepedisi
