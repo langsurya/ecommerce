@@ -12,6 +12,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Date Picter -->
+  <!-- daterange picker -->
+  {{-- <link rel="stylesheet" href="assets/plugins/daterangepicker/daterangepicker.css"> --}}
+  <link rel="stylesheet" href="{{ asset('assets/plugins/daterangepicker/daterangepicker.css') }}">
+  <!-- bootstrap datepicker -->
+  {{-- <link rel="stylesheet" href="assets/plugins/datepicker/datepicker3.css"> --}}
+  <link rel="stylesheet" href="{{ asset('assets/plugins/datepicker/datepicker3.css') }}">
+  <!-- iCheck for checkboxes and radio inputs -->
+  {{-- <link rel="stylesheet" href="assets/plugins/iCheck/all.css"> --}}
+  <link rel="stylesheet" href="{{ asset('assets/plugins/iCheck/all.css') }}">
+  <!-- Bootstrap Color Picker -->
+  {{-- <link rel="stylesheet" href="assets/plugins/colorpicker/bootstrap-colorpicker.min.css"> --}}
+  <link rel="stylesheet" href="{{ asset('assets/plugins/colorpicker/bootstrap-colorpicker.min.css') }}">
+  <!-- Bootstrap time Picker -->
+  {{-- <link rel="stylesheet" href="assets/plugins/timepicker/bootstrap-timepicker.min.css"> --}}
+  <link rel="stylesheet" href="{{ asset('assets/plugins/timepicker/bootstrap-timepicker.min.css') }}">
+  <!-- Select2 -->
+  {{-- <link rel="stylesheet" href="assets/plugins/select2/select2.min.css"> --}}
+  <link rel="stylesheet" href="{{ asset('assets/plugins/select2/select2.min.css') }}">
 
   <!-- DataTables -->
   <link rel="stylesheet" href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.css') }}">
@@ -178,7 +197,7 @@
           {{-- Stock --}}
           <li class="treeview">
             <a href="#">
-              <i class="fa  fa-align-justify"></i> <span>Stock null</span>
+              <i class="fa  fa-align-justify"></i> <span>Stock</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -192,7 +211,7 @@
           {{-- Finance --}}
           <li class="treeview">
             <a href="#">
-              <i class="fa  fa-credit-card"></i> <span>Finance null</span>
+              <i class="fa  fa-credit-card"></i> <span>Finance</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
