@@ -41,7 +41,7 @@ Route::group(['prefix' => 'admin'], function() {
       // Route::resource('/namalink1', 'nama class Container')
       Route::resource('pelanggan', 'PelangganController');
     });
-    
+
     // baca class Controller Pesanan di folder backend/Penjualan
     Route::group(['namespace' => 'Penjualan'], function() {
       // menampilkan link web:8000/admin/pesanan
@@ -85,6 +85,17 @@ Route::group(['prefix' => 'admin'], function() {
       // realtime
       Route::get('realtime', [
         'as' => 'realtime.index', 'uses' => 'RealtimeController@index'
+      ]);
+      Route::get('entry', [
+        'as' => 'entry.index', 'uses' => 'EntryController@index'
+      ]);
+      Route::get('history', [
+        'as' => 'history.index', 'uses' => 'HistoryController@index'
+      ]);
+    });
+    Route::group(['namespace' => 'Finance'], function() {
+      Route::get('finance', [
+        'as' => 'finance.index', 'uses' => 'FinanceController@index'
       ]);
     });
 
