@@ -251,7 +251,7 @@
           {{-- menu Otorisasi --}}
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-gear"></i> <span>Otorisasi null</span>
+              <i class="fa fa-gear"></i> <span>Otorisasi empty</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
