@@ -223,15 +223,15 @@
           {{-- Laporan --}}
           <li class="treeview">
             <a href="#">
-              <i class="fa  fa-mail-reply-all"></i> <span>Laporan null</span>
+              <i class="fa  fa-mail-reply-all"></i> <span>Laporan</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="{{ url('/admin/laporan') }}"><i class="fa  fa-file"></i> Penjualan</a></li>
-              <li><a href="{{ url('/admin/laporan') }}"><i class="fa  fa-file"></i> Penjualan Per barang</a></li>
-              <li><a href="{{ url('/admin/laporan') }}"><i class="fa  fa-file"></i> Penjualan Per Pelanggan</a></li>
+              <li><a href="{{ url('/admin/penjualan') }}"><i class="fa  fa-file"></i> Penjualan</a></li>
+              <li><a href="{{ url('/admin/perbarang') }}"><i class="fa  fa-file"></i> Penjualan Per barang</a></li>
+              <li><a href="{{ url('/admin/perpelanggan') }}"><i class="fa  fa-file"></i> Penjualan Per Pelanggan</a></li>
             </ul>
           </li>
           {{-- menu setting --}}

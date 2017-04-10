@@ -112,7 +112,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
+  
   @include('layouts.footer')
 
   <!-- jQuery 2.2.3 -->
