@@ -8,6 +8,8 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+  {{-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"> --}}
+  <link rel="stylesheet" href="{{ asset('css/bootstrap-toggle.min.css') }}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
@@ -251,15 +253,15 @@
           {{-- menu Otorisasi --}}
           <li class="treeview">
             <a href="#">
-              <i class="fa fa-gear"></i> <span>Otorisasi empty</span>
+              <i class="fa fa-gear"></i> <span>Otorisasi </span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu">
               <li><a href="{{ url('/admin/pengguna') }}"><i class="fa fa-group"></i> Pengguna</a></li>
-              <li><a href="{{ url('/admin/Role') }}"><i class="fa fa-truck"></i> Role</a></li>
-              <li><a href="{{ url('/admin/Route') }}"><i class="fa fa-chain"></i> Route</a></li>
+              <li><a href="{{ url('/admin/Role') }}"><i class="fa fa-truck"></i> Role (empty)</a></li>
+              <li><a href="{{ url('/admin/Route') }}"><i class="fa fa-chain"></i> Route (empty)</a></li>
             </ul>
           </li>
 
