@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 // use DB;
-use App\Payment;
+use App\Models\Ekspedisi;
 
 class EkspedisiController extends Controller
 {
@@ -26,55 +26,56 @@ class EkspedisiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-
-      return view('admin.setting.ekspedisi');
+      $ekspedisi = DB::table('ekspedisis')
+                ->orderBy('id', 'desc')
+                ->get();
+                // dd($ekspedisi);
+      return view('admin.setting.ekspedisi.index',['ekspedisi' => $ekspedisi])
+            ->with('i');
     }
 
     public function create()
     {
       // return view('admin.index');
-      return view('admin.setting.ekspedisicreate', ['fungsi'=>'create']);
+      return view('admin.setting.ekspedisi.create', ['fungsi'=>'create', 'title'=>'Tambah Ekspedisi']);
     }
 
     public function store(Request $request)
     {
-      // $this->validate($request, [
-      //   'nama_bank' => 'required',
-      //   'no_rekening' => 'required',
-      //   'pemilik' => 'required',
-      //   'cabang' => 'required',
-      // ]);
-      // Payment::create($request->all());
+      $this->validate($request, [
+        'name' => 'required',
+        'keterangan' => 'required',
+      ]);
+      Ekspedisi::create($request->all());
       return redirect()->route('ekspedisi.index')
         ->with('success','Pelanggan created successfully');
     }
 
     public function edit($id)
     {
-      $payment = Payment::findOrFail($id);
-      return view('admin.setting.paymentedit', ['payment' => $payment, 'fungsi'=>'edit']);
+      $ekspedisi = Ekspedisi::findOrFail($id);
+      return view('admin.setting.ekspedisi.edit', ['ekspedisi' => $ekspedisi, 'fungsi'=>'edit', 'title'=>'Edit Ekspedisi']);
     }
 
     public function update(Request $request, $id)
     {
       $this->validate($request, [
-        'nama_bank' => 'required',
-        'no_rekening' => 'required',
-        'pemilik' => 'required',
-        'cabang' => 'required',
+        'name' => 'required',
+        'keterangan' => 'required',
       ]);
-		  Payment::find($id)->update($request->all());
 
-      return redirect()->route('payment.index')
+		  Ekspedisi::find($id)->update($request->all());
+
+      return redirect()->route('ekspedisi.index')
         ->with('success','Pelanggan created successfully');
     }
 
     public function destroy($id)
     {
-      Payment::find($id)->delete();
-      return redirect()->route('payment.index')
-        ->with('success','Pelanggan deleted successfully');
+      Ekspedisi::find($id)->delete();
+      return redirect()->route('ekspedisi.index')
+        ->with('success','Ekspedisi deleted successfully');
     }
 }
