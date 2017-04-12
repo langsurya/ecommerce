@@ -85,38 +85,9 @@
   <!-- /.content-wrapper -->
 
   @include('layouts.footer')
+</div>
+<!-- /.wrapper -->
 
-  <!-- jQuery 2.2.3 -->
-  <script src="{{ asset('assets/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
-  <!-- Bootstrap 3.3.6 -->
-  {{-- <script src="../../bootstrap/js/bootstrap.min.js"></script> --}}
-  <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-
-  <!-- DataTables -->
-  {{-- <script src="../../plugins/datatables/jquery.dataTables.min.js"></script> --}}
-  <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-  {{-- <script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script> --}}
-  <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
-
-  <!-- date-range-picker -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-  <script src="{{ asset('assets/plugins/daterangepicker/daterangepicker.js') }}"></script>
-  <!-- bootstrap datepicker -->
-  <script src="{{ asset('assets/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
-  <!-- bootstrap color picker -->
-  <script src="{{ asset('assets/plugins/colorpicker/bootstrap-colorpicker.min.js') }}"></script>
-  <!-- bootstrap time picker -->
-  {{-- <script src="{{ asset('assetsplugins/timepicker/bootstrap-timepicker.min.js') }}"></script> --}}
-
-  <!-- SlimScroll -->
-  <script src="{{ asset('assets/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-  <!-- FastClick -->
-  <script src="{{ asset('assets/plugins/fastclick/fastclick.js') }}"></script>
-
-  <!-- AdminLTE App -->
-  <script src="{{ asset('assets/dist/js/app.min.js') }}"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
   <!-- page script -->
   <script>
     $(function () {
@@ -152,7 +123,5 @@
       });
     });
   </script>
-  </body>
-  </html>
 
 @endsection
