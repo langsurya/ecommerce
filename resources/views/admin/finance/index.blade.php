@@ -221,29 +221,9 @@
   <!-- /.content-wrapper -->
 
   @include('layouts.footer')
+</div>
+<!-- /.wrapper -->
 
-  <!-- jQuery 2.2.3 -->
-  <script src="{{ asset('assets/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
-  <!-- Bootstrap 3.3.6 -->
-  {{-- <script src="../../bootstrap/js/bootstrap.min.js"></script> --}}
-  <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-  <!-- DataTables -->
-  {{-- <script src="../../plugins/datatables/jquery.dataTables.min.js"></script> --}}
-  <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-  {{-- <script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script> --}}
-  <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
-  <!-- SlimScroll -->
-  {{-- <script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script> --}}
-  <script src="{{ asset('assets/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-  <!-- FastClick -->
-  {{-- <script src="../../plugins/fastclick/fastclick.js"></script> --}}
-  <script src="{{ asset('assets/plugins/fastclick/fastclick.js') }}"></script>
-  <!-- AdminLTE App -->
-  {{-- <script src="../../dist/js/app.min.js"></script> --}}
-  <script src="{{ asset('assets/dist/js/app.min.js') }}"></script>
-  <!-- AdminLTE for demo purposes -->
-  {{-- <script src="../../dist/js/demo.js"></script> --}}
-  <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
   <!-- page script -->
   <script>
     $(function () {
@@ -263,7 +243,5 @@
       });
     });
   </script>
-  </body>
-  </html>
 
 @endsection
