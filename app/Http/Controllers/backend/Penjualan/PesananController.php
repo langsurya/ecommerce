@@ -15,7 +15,7 @@ class PesananController extends Controller
      */
     public function index()
     {
-      return view('admin.penjualan.pesanan');
+      return view('admin.penjualan.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class PesananController extends Controller
      */
     public function create()
     {
-      return view('admin.penjualan.pesanancreate',  ['fungsi'=>'create']);
+      return view('admin.penjualan.create',  ['fungsi'=>'create']);
     }
 
     /**
