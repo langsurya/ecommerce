@@ -29,14 +29,14 @@ class PaymentController extends Controller
     public function index(Request $request)
     {
       $payments = Payment::orderBy('id','DESC')->paginate(5);
-      return view('admin.setting.payment',compact('payments'))
+      return view('admin.setting.payment.index',compact('payments'))
         ->with('i', ($request->input('page', 1) -1) * 5);
     }
 
     public function create()
     {
       // return view('admin.index');
-      return view('admin.setting.paymenttambah', ['fungsi'=>'create']);
+      return view('admin.setting.payment.tambah', ['fungsi'=>'create', 'title'=>'Tambah Payment']);
     }
 
     public function store(Request $request)
@@ -55,7 +55,7 @@ class PaymentController extends Controller
     public function edit($id)
     {
       $payment = Payment::findOrFail($id);
-      return view('admin.setting.paymentedit', ['payment' => $payment, 'fungsi'=>'edit']);
+      return view('admin.setting.payment.edit', ['payment' => $payment, 'fungsi'=>'edit']);
     }
 
     public function update(Request $request, $id)
