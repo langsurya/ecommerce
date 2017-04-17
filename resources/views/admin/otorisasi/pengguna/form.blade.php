@@ -26,7 +26,7 @@
         </div>
         <!-- /.form-group -->
         <div class="form-group">
-          <label>Status</label>
+          <label>Status</label><br>
           {{ Form::checkbox('status', 0, null, ['data-toggle' => 'toggle', 'data-on'=>'Active', 'data-off'=>'Banned']) }}
           {{-- <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled"> --}}
         </div>
