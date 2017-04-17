@@ -27,7 +27,7 @@
         {{-- row 1 col 3 --}}
         <div class="form-group">
           <label>Nama</label>
-          {!! Form::text('name', null, array('placeholder' => 'Nama','class' => 'form-control')) !!}
+          {!! Form::text('nama_barang', null, array('placeholder' => 'Nama','class' => 'form-control')) !!}
         </div>
         {{-- /.form-group --}}
         <div class="form-group">
@@ -45,7 +45,7 @@
           {{-- <textarea id="editor1" name="editor1" rows="10" cols="80">
             This is my textarea to be replaced with CKEditor.
           </textarea> --}}
-          {!! Form::textarea('editor1', null, array('id' => 'editor1')) !!}
+          {!! Form::textarea('keterangan', null, array('id' => 'editor1')) !!}
         </div>
         <!-- /.form-group -->
         <div class="form-group">

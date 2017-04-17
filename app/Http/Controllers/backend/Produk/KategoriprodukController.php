@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
+use App\Models\KategoriProduk;
 class KategoriprodukController extends Controller
 {
     /**
@@ -36,7 +37,16 @@ class KategoriprodukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, [
+        'nama_barang' => 'required',
+        'parent' => 'required',
+        'keterangan' => 'required',
+        'status' => 'required',
+      ]);
+      // dd($p);
+      KategoriProduk::create($request->all());
+      return redirect()->route('KategoriProduk.index')
+        ->with('success','Kategri Produk Created Successfully');
     }
 
     /**
