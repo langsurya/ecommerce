@@ -57,39 +57,21 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr role="row" class="odd">
-                          <td class="sorting_1">1</td>
-                          <td>Clothing</td>
-                          <td>Utama</td>
-                          <td>Pakaian Bayi</td>
-                          <td>
-                            <button class="btn btn-primary" type="button" title="view"><span class="fa fa-eye"></span></button>
-                            <button class="btn btn-primary" type="button" title="edit"><span class="fa fa-edit"></span></button>
-                            <button class="btn btn-danger" type="button" title="Hapus"><span class="fa fa-trash"></span></button>
-                          </td>
-                        </tr>
-                        <tr role="row" class="odd">
-                          <td class="sorting_1">2</td>
-                          <td>Fashion</td>
-                          <td>Fashion</td>
-                          <td>Pakaian Bayi wanita</td>
-                          <td>
-                            <button class="btn btn-primary" type="button" title="view"><span class="fa fa-eye"></span></button>
-                            <button class="btn btn-primary" type="button" title="edit"><span class="fa fa-edit"></span></button>
-                            <button class="btn btn-danger" type="button" title="Hapus"><span class="fa fa-trash"></span></button>
-                          </td>
-                        </tr>
-                        <tr role="row" class="odd">
-                          <td class="sorting_1">3</td>
-                          <td>Utama</td>
-                          <td>(not set)</td>
-                          <td>Pakaian Bayi</td>
-                          <td>
-                            <button class="btn btn-primary" type="button" title="view"><span class="fa fa-eye"></span></button>
-                            <button class="btn btn-primary" type="button" title="edit"><span class="fa fa-edit"></span></button>
-                            <button class="btn btn-danger" type="button" title="Hapus"><span class="fa fa-trash"></span></button>
-                          </td>
-                        </tr>
+                        @foreach ($produks as $barang)
+                          <tr role="row" class="odd">
+                            <td class="sorting_1">{{ ++$i }}</td>
+                            <td>{{ $barang->nama_barang}}</td>
+                            <td>{{ $barang->parent }}</td>
+                            <td>{!! $barang->keterangan !!}</td>
+                            <td>
+                              <a class="btn btn-primary" href="{{ route('KategoriProduk.show',$barang->barang_id) }}"><span class="fa fa-eye"></span></a>
+                              <a class="btn btn-primary" href="{{ route('KategoriProduk.edit',$barang->barang_id) }}"><span class="fa fa-edit"></span></a>
+                              {!! Form::open(['method' => 'DELETE','route' => ['KategoriProduk.destroy', $barang->barang_id], 'style' => 'display:inline']) !!}
+                              <button class="btn btn-danger" type="submit" title="Hapus"><span class="fa fa-trash"></span></button>
+                              {!! Form::close() !!}
+                            </td>
+                          </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>

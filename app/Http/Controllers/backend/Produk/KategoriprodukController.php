@@ -16,7 +16,10 @@ class KategoriprodukController extends Controller
      */
     public function index()
     {
-      return view('admin.produk.kategori.index');
+      $KategoriProduk = KategoriProduk::orderBy('barang_id','DESC')->get();
+      // dd($KategoriProduk);
+      return view('admin.produk.kategori.index', [ 'produks' => $KategoriProduk])
+       ->with('i');
     }
 
     /**
@@ -26,7 +29,7 @@ class KategoriprodukController extends Controller
      */
     public function create()
     {
-      return view('admin.produk.kategori/create',  ['fungsi'=>'create']);
+      return view('admin.produk.kategori/create',  ['fungsi'=>'create', 'title' => 'Tambah Produk']);
     }
 
     /**
@@ -68,7 +71,9 @@ class KategoriprodukController extends Controller
      */
     public function edit($id)
     {
-        //
+      $barangs = KategoriProduk::findOrFail($id);
+      // dd($barangs);
+      return view('admin.produk.kategori.edit', ['barang' => $barangs, 'title' => 'Edit Barang']);
     }
 
     /**
@@ -80,7 +85,16 @@ class KategoriprodukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request, [
+        'nama_barang' => 'required',
+        'parent' => 'required',
+        'keterangan' => 'required',
+        'status' => 'required',
+      ]);
+      KategoriProduk::find($id)->update($request->all());
+
+      return redirect()->route('KategoriProduk.index')
+        ->with('success','Kategori Produk Successfully');
     }
 
     /**
@@ -91,6 +105,8 @@ class KategoriprodukController extends Controller
      */
     public function destroy($id)
     {
-        //
+      KategoriProduk::find($id)->delete();
+      return redirect()->route('KategoriProduk.index')
+        ->with('success', 'Produk deleted Successfully');
     }
 }

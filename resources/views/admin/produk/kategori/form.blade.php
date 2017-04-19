@@ -1,17 +1,7 @@
-@php
-  if ($fungsi=='edit'){
-    // $pel_id = $pelanggans->id;
-    $title = 'Edit Ekspedisi';
-  }elseif($fungsi=='create'){
-    // $pel_id = $pelanggans->id+1;
-    $title = 'Tambah Kategori Produk';
-  }
-@endphp
 <div class="box box-default">
   <div class="box-header with-border">
     <h3 class="box-title">
-      @php echo $title
-      @endphp
+      {{ $title }}
     </h3>
 
     <div class="box-tools pull-right">
