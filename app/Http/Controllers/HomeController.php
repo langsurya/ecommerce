@@ -28,7 +28,7 @@ class HomeController extends Controller
 
     public function admin()
     {
-      return view('admin.index');
+      return view('backend.index');
     }
 
     public function table()
