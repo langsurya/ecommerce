@@ -19,7 +19,7 @@ class KatpelController extends Controller
     {
       $katpel = Katpel::orderBy('id','DESC')->paginate(5);
 
-      return view('admin.setting.katpel.index',compact('katpel'))
+      return view('backend.setting.katpel.index',compact('katpel'))
         ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -31,7 +31,7 @@ class KatpelController extends Controller
     public function create()
     {
       $pelanggans = '';
-        return view('admin.setting.katpel.create', ['pelanggans' => $pelanggans, 'fungsi'=>'create']);
+        return view('backend.setting.katpel.create', ['pelanggans' => $pelanggans, 'fungsi'=>'create']);
     }
 
     /**
@@ -48,7 +48,7 @@ class KatpelController extends Controller
         'status' => 'required',
       ]);
       Katpel::create($request->all());
-      // route katpel/index = admin/katpel/index
+      // route katpel/index = backend/katpel/index
       return redirect()->route('katpel.index')
         ->with('success','Pelanggan created successfully');
     }
@@ -73,7 +73,7 @@ class KatpelController extends Controller
     public function edit($id)
     {
       $katpel = Katpel::findOrFail($id);
-      return view('admin.setting.katpel.edit', ['katpel' => $katpel, 'fungsi'=>'edit']);
+      return view('backend.setting.katpel.edit', ['katpel' => $katpel, 'fungsi'=>'edit']);
     }
 
     /**

@@ -15,7 +15,7 @@ class PerpelangganController extends Controller
      */
     public function index()
     {
-      return view('admin.laporan.perpelanggan.index');
+      return view('backend.laporan.perpelanggan.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class PerpelangganController extends Controller
      */
     public function create()
     {
-      return view('admin.produk.produkCreate',  ['fungsi'=>'create']);
+      return view('backend.produk.produkCreate',  ['fungsi'=>'create']);
     }
 
     /**
@@ -47,7 +47,7 @@ class PerpelangganController extends Controller
      */
     public function show()
     {
-       return view('admin.laporan.perpelanggan.show');
+       return view('backend.laporan.perpelanggan.show');
     }
 
     /**

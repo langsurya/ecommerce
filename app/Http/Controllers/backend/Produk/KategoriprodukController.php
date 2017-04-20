@@ -18,7 +18,7 @@ class KategoriprodukController extends Controller
     {
       $KategoriProduk = KategoriProduk::orderBy('barang_id','DESC')->get();
       // dd($KategoriProduk);
-      return view('admin.produk.kategori.index', [ 'produks' => $KategoriProduk])
+      return view('backend.produk.kategori.index', [ 'produks' => $KategoriProduk])
        ->with('i');
     }
 
@@ -29,7 +29,7 @@ class KategoriprodukController extends Controller
      */
     public function create()
     {
-      return view('admin.produk.kategori/create',  ['fungsi'=>'create', 'title' => 'Tambah Produk']);
+      return view('backend.produk.kategori/create',  ['fungsi'=>'create', 'title' => 'Tambah Produk']);
     }
 
     /**
@@ -73,7 +73,7 @@ class KategoriprodukController extends Controller
     {
       $barangs = KategoriProduk::findOrFail($id);
       // dd($barangs);
-      return view('admin.produk.kategori.edit', ['barang' => $barangs, 'title' => 'Edit Barang']);
+      return view('backend.produk.kategori.edit', ['barang' => $barangs, 'title' => 'Edit Barang']);
     }
 
     /**

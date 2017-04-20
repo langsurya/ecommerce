@@ -15,7 +15,7 @@ class EntryController extends Controller
      */
     public function index()
     {
-      return view('admin.stock.entry.index');
+      return view('backend.stock.entry.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class EntryController extends Controller
      */
     public function create()
     {
-      return view('admin.produk.produkCreate',  ['fungsi'=>'create']);
+      return view('backend.stock.entry.create',  ['fungsi'=>'create']);
     }
 
     /**

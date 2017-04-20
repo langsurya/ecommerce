@@ -15,7 +15,7 @@ class FinanceController extends Controller
      */
     public function index()
     {
-      return view('admin.finance.index');
+      return view('backend.finance.index');
     }
 
     /**

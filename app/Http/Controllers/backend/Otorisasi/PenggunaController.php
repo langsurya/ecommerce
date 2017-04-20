@@ -15,7 +15,7 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-      return view('admin.otorisasi.pengguna.index');
+      return view('backend.otorisasi.pengguna.index');
     }
 
     /**
@@ -31,7 +31,7 @@ class PenggunaController extends Controller
         <li class="active">Tambah Pengguna</li>
       </ol>';
       $title = 'Tambah Pengguna';
-      return view('admin.otorisasi.pengguna.create',  ['fungsi'=>'create', 'breadcrumb' => $breadcrumb, 'title' => $title]);
+      return view('backend.otorisasi.pengguna.create',  ['fungsi'=>'create', 'breadcrumb' => $breadcrumb, 'title' => $title]);
     }
 
     /**

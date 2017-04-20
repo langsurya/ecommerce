@@ -32,14 +32,14 @@ class EkspedisiController extends Controller
                 ->orderBy('id', 'desc')
                 ->get();
                 // dd($ekspedisi);
-      return view('admin.setting.ekspedisi.index',['ekspedisi' => $ekspedisi])
+      return view('backend.setting.ekspedisi.index',['ekspedisi' => $ekspedisi])
             ->with('i');
     }
 
     public function create()
     {
-      // return view('admin.index');
-      return view('admin.setting.ekspedisi.create', ['fungsi'=>'create', 'title'=>'Tambah Ekspedisi']);
+      // return view('backend.index');
+      return view('backend.setting.ekspedisi.create', ['fungsi'=>'create', 'title'=>'Tambah Ekspedisi']);
     }
 
     public function store(Request $request)
@@ -56,7 +56,7 @@ class EkspedisiController extends Controller
     public function edit($id)
     {
       $ekspedisi = Ekspedisi::findOrFail($id);
-      return view('admin.setting.ekspedisi.edit', ['ekspedisi' => $ekspedisi, 'fungsi'=>'edit', 'title'=>'Edit Ekspedisi']);
+      return view('backend.setting.ekspedisi.edit', ['ekspedisi' => $ekspedisi, 'fungsi'=>'edit', 'title'=>'Edit Ekspedisi']);
     }
 
     public function update(Request $request, $id)

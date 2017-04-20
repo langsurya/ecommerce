@@ -15,7 +15,7 @@ class PelangganController extends Controller
     public function index(Request $request)
     {
       $pelanggans = Pelanggan::orderBy('id','DESC')->paginate(5);
-      return view('admin.pelanggan.index',compact('pelanggans'))
+      return view('backend.pelanggan.index',compact('pelanggans'))
         ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -26,7 +26,7 @@ class PelangganController extends Controller
                 ->latest('id')
                 ->first();
                 // dd ($pelanggans);
-      return view('admin/pelanggan/create', ['pelanggans' => $pelanggans, 'fungsi'=>'create']);
+      return view('backend/pelanggan/create', ['pelanggans' => $pelanggans, 'fungsi'=>'create']);
     }
 
     public function store(Request $request)
@@ -57,7 +57,7 @@ class PelangganController extends Controller
       // dd($pelanggans);
       // view berfungsi untuk melihat/membuka file edit.blade.php di dalam folder pelanggan
       //
-      return view('admin.pelanggan.edit', ['pelanggans' => $pelanggans, 'fungsi'=>'edit']);
+      return view('backend.pelanggan.edit', ['pelanggans' => $pelanggans, 'fungsi'=>'edit']);
     }
 
     public function update(Request $request, $id)

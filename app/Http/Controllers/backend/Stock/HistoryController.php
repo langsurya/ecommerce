@@ -15,7 +15,7 @@ class HistoryController extends Controller
      */
     public function index()
     {
-      return view('admin.stock.history.index');
+      return view('backend.stock.history.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class HistoryController extends Controller
      */
     public function create()
     {
-      return view('admin.produk.produkCreate',  ['fungsi'=>'create']);
+      return view('backend.produk.produkCreate',  ['fungsi'=>'create']);
     }
 
     /**
