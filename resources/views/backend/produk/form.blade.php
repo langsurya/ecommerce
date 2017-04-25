@@ -1,12 +1,3 @@
-@php
-  if ($fungsi=='edit'){
-    // $pel_id = $pelanggans->id;
-    $title = 'Edit Ekspedisi';
-  }elseif($fungsi=='create'){
-    // $pel_id = $pelanggans->id+1;
-    $title = 'Tambah Produk';
-  }
-@endphp
 <div class="row">
   <div class="col-xs-12">
     <div class="box box-primary">
@@ -32,13 +23,9 @@
                       <label>Nama</label>
                       <input class="form-control" type="text" name="name" value="" >
                     </div>
-                    <div class="form-group  col-md-6">
+                    <div class="form-group  col-md-6" id="reportType">
                       <label>Jenis</label>
-                      {{ Form::select('pelanggan', [
-                        '' => '-Pilih Jenis-',
-                        'Pelanggan 1' => 'Pelanggan 1',
-                        'Pelanggan 1' => 'Pelanggan 1'
-                      ], null, ['class' => 'form-control']
+                      {{ Form::select('category', [''=>'Pilih Cate'] + $category->toArray(), null, ['class' => 'form-control']
                       ) }}
                     </div>
                     <div class="form-group col-md-12">
@@ -109,7 +96,16 @@
             <!-- /.tab-pane -->
             <div class="tab-pane" id="gambar">
               <!-- The timeline -->
-              blm dikemas
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="form-group col-md-12">
+                      <label for="exampleInputFile">Images</label>
+                      <input id="input-2" type="file" name='image[]' multiple=true class="file-loading" data-show-upload="false">
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <!-- /.tab-pane -->
           </div>

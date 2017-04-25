@@ -21,6 +21,8 @@
   <link rel="stylesheet" href="{{ asset('assets/plugins/datepicker/datepicker3.css') }}">
   <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="{{ asset('assets/plugins/iCheck/all.css') }}">
+  <!-- fileinput css-->
+  <link rel="stylesheet" href="{{ asset('assets/plugins/fileinput/fileinput.min.css') }}">
   <!-- Bootstrap Color Picker -->
   <link rel="stylesheet" href="{{ asset('assets/plugins/colorpicker/bootstrap-colorpicker.min.css') }}">
   <!-- Bootstrap time Picker -->
