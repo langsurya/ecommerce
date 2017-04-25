@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
-use App\Models\Products\KategoriProduk;
-class KategoriprodukController extends Controller
+class ProdukController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +15,7 @@ class KategoriprodukController extends Controller
      */
     public function index()
     {
-      $KategoriProduk = KategoriProduk::orderBy('barang_id','DESC')->get();
-      // dd($KategoriProduk);
-      return view('backend.produk.kategori.index', [ 'produks' => $KategoriProduk])
-       ->with('i');
+      return view('backend.produk.index');
     }
 
     /**
@@ -29,7 +25,7 @@ class KategoriprodukController extends Controller
      */
     public function create()
     {
-      return view('backend.produk.kategori/create',  ['fungsi'=>'create', 'title' => 'Tambah Produk']);
+      return view('backend.produk.create',  ['fungsi'=>'create']);
     }
 
     /**
@@ -40,16 +36,7 @@ class KategoriprodukController extends Controller
      */
     public function store(Request $request)
     {
-      $this->validate($request, [
-        'nama_barang' => 'required',
-        'parent' => 'required',
-        'keterangan' => 'required',
-        'status' => 'required',
-      ]);
-      // dd($p);
-      KategoriProduk::create($request->all());
-      return redirect()->route('KategoriProduk.index')
-        ->with('success','Kategri Produk Created Successfully');
+        //
     }
 
     /**
@@ -71,9 +58,7 @@ class KategoriprodukController extends Controller
      */
     public function edit($id)
     {
-      $barangs = KategoriProduk::findOrFail($id);
-      // dd($barangs);
-      return view('backend.produk.kategori.edit', ['barang' => $barangs, 'title' => 'Edit Barang']);
+        //
     }
 
     /**
@@ -85,16 +70,7 @@ class KategoriprodukController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->validate($request, [
-        'nama_barang' => 'required',
-        'parent' => 'required',
-        'keterangan' => 'required',
-        'status' => 'required',
-      ]);
-      KategoriProduk::find($id)->update($request->all());
-
-      return redirect()->route('KategoriProduk.index')
-        ->with('success','Kategori Produk Successfully');
+        //
     }
 
     /**
@@ -105,8 +81,6 @@ class KategoriprodukController extends Controller
      */
     public function destroy($id)
     {
-      KategoriProduk::find($id)->delete();
-      return redirect()->route('KategoriProduk.index')
-        ->with('success', 'Produk deleted Successfully');
+        //
     }
 }

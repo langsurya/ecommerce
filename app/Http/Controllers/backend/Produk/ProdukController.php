@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
+use App\Models\Products\KategoriProduk;
+use DB;
+
 class ProdukController extends Controller
 {
     /**
@@ -25,7 +28,10 @@ class ProdukController extends Controller
      */
     public function create()
     {
-      return view('backend.produk.create',  ['fungsi'=>'create']);
+      $this->data['title'] = 'Create Product';
+      $this->data['category'] = [''=>'Pilih Category'] +  KategoriProduk::where('status', 1)->pluck('nama_barang', 'barang_id')->toArray();
+      // dd($this->data['category']);x
+      return view('backend.produk.create',  $this->data);
     }
 
     /**

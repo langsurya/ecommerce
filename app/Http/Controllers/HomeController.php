@@ -33,11 +33,11 @@ class HomeController extends Controller
 
     public function table()
     {
-      return view('admin.table');
+      return view('backend.table');
     }
 
     public function forms()
     {
-      return view('admin.forms');
+      return view('backend.forms');
     }
 }
