@@ -66,7 +66,6 @@
                         <th>Name</th>
                         <th>Harga Retail</th>
                         <th>Harga Reseller</th>
-                        <th>Grosir</th>
                         <th>Stok</th>
                         <th  width="120px">Aksi</th>
                       </tr>
@@ -78,7 +77,6 @@
                         <td>Botol Susu</td>
                         <td>Rp. 50.000</td>
                         <td>Rp. 45.000</td>
-                        <td><span class="fa fa-check" style="font-size:18px; color:Green"></span></td>
                         <td>0</td>
                         <td>
                           <button class="btn btn-primary" type="button" title="view"><span class="fa fa-eye"></span></button>
@@ -92,7 +90,6 @@
                         <td>Botol Susu Anak</td>
                         <td>Rp. 40.000</td>
                         <td>Rp. 35.000</td>
-                        <td><span class="fa fa-check" style="font-size:18px; color:Green"></span></td>
                         <td>0</td>
                         <td>
                           <button class="btn btn-primary" type="button" title="view"><span class="fa fa-eye"></span></button>
@@ -106,7 +103,6 @@
                         <td>Tes 123 Hitam</td>
                         <td>Rp. 50.000</td>
                         <td>Rp. 45.000</td>
-                        <td><span class="fa fa-close" style="font-size:18px; color:Red"></span></td>
                         <td>0</td>
                         <td>
                           <button class="btn btn-primary" type="button" title="view"><span class="fa fa-eye"></span></button>
