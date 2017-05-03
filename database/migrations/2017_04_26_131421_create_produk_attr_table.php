@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEkspedisisTable extends Migration
+class CreateProdukAttrTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateEkspedisisTable extends Migration
      */
     public function up()
     {
-        Schema::create('ekspedisis', function (Blueprint $table) {
+        Schema::create('produk_attr', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('keterangan');
+            $table->integer('id_produk');
+            $table->string('name',100);
+            $table->string('values',100);
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateEkspedisisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ekspedisis');
+        Schema::dropIfExists('produk_attr');
     }
 }
