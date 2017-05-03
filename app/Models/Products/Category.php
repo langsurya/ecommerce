@@ -13,8 +13,7 @@ class Category extends Model
 
   public $fillable = ['nama_barang', 'parent', 'keterangan', 'status'];
 
-  function __construct(argument)
-  {
-    # code...
+  public function category() {
+    return $this->belongsTo('App\Models\Products\Category', 'id_category', 'id');
   }
 }

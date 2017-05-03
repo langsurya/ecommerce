@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
-class ProdukController extends Controller
+class ImageController extends Controller
 {
     /**
      * Display a listing of the resource.
