@@ -12,7 +12,7 @@ class Produk extends Model
   protected $table = 'product';
 
   // menentukan field barang_id yang di panggil dari tabel kategoribarangs
-  protected $primaryKey = 'barang_id';
+  // protected $primaryKey = 'barang_id';
 
   public $fillable = ['id_category', 'product_sku', 'product_stok', 'product_name', 'product_description', 'product_price', 'product_berat', 'product_status', 'product_discount', 'slug'];
 
@@ -20,7 +20,7 @@ class Produk extends Model
     return $this->belongsTo('App\Models\Products\Category', 'id_category', 'id');
   }
 
-  public function category() {
+  public function attribute() {
     return $this->belongsTo('App\Models\Products\Attribute', 'id_product');
   }
 

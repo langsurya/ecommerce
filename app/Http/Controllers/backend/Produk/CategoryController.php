@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
-use App\Models\Products\KategoriProduk;
-class KategoriprodukController extends Controller
+use App\Models\Products\Category;
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class KategoriprodukController extends Controller
      */
     public function index()
     {
-      $KategoriProduk = KategoriProduk::orderBy('barang_id','DESC')->get();
+      $KategoriProduk = Category::orderBy('barang_id','DESC')->get();
       // dd($KategoriProduk);
       return view('backend.produk.kategori.index', [ 'produks' => $KategoriProduk])
        ->with('i');
@@ -47,8 +47,8 @@ class KategoriprodukController extends Controller
         'status' => 'required',
       ]);
       // dd($p);
-      KategoriProduk::create($request->all());
-      return redirect()->route('KategoriProduk.index')
+      Category::create($request->all());
+      return redirect()->route('Category.index')
         ->with('success','Kategri Produk Created Successfully');
     }
 
@@ -71,7 +71,7 @@ class KategoriprodukController extends Controller
      */
     public function edit($id)
     {
-      $barangs = KategoriProduk::findOrFail($id);
+      $barangs = Category::findOrFail($id);
       // dd($barangs);
       return view('backend.produk.kategori.edit', ['barang' => $barangs, 'title' => 'Edit Barang']);
     }
@@ -91,9 +91,9 @@ class KategoriprodukController extends Controller
         'keterangan' => 'required',
         'status' => 'required',
       ]);
-      KategoriProduk::find($id)->update($request->all());
+      Category::find($id)->update($request->all());
 
-      return redirect()->route('KategoriProduk.index')
+      return redirect()->route('Category.index')
         ->with('success','Kategori Produk Successfully');
     }
 
@@ -105,8 +105,8 @@ class KategoriprodukController extends Controller
      */
     public function destroy($id)
     {
-      KategoriProduk::find($id)->delete();
-      return redirect()->route('KategoriProduk.index')
+      Category::find($id)->delete();
+      return redirect()->route('Category.index')
         ->with('success', 'Produk deleted Successfully');
     }
 }

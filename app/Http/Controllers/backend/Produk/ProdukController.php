@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\backend\Produk;
 
 // use Illuminate\Http\Request;
-use App\Http\Request\backend\Products\ProductRequest;
+use App\Http\Requests\backend\Products\ProductRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
@@ -57,7 +57,7 @@ class ProdukController extends Controller
           $input['slug'] = $cat_slug . '/' . str_slug($input['product_name']);
           $input['status'] = $request->get('status') == 'on' ? 1 : 0;
           $attr = array_filter($input['name']);
-          $product = new Product($input);
+          $product = new Produk($input);
           $product->save();
           $pro_id = $product->id;
           if (!empty($attr)) {

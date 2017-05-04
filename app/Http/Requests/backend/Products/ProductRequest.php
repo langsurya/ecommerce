@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Request\backend\Products;
+namespace App\Http\Requests\backend\Products;
 
 use App\Http\Requests\Request,Entrust;
 
-class ClassName extends AnotherClass
+class ProductRequest extends Request
 {
 
   function authorize()
   {
-    # code...
+    return Entrust::can(['product-create', 'product-update'], true);
   }
 
-  public function roles(){
+  public function rules(){
     return [
       'id_category' => 'required',
       'product_name' => 'required|unique:product,product_name,' . Request::get('id'),
