@@ -27,7 +27,7 @@
 
   <!-- Main Content -->
   <section class="content">
-    {!! Form::open(array('route' => 'KategoriProduk.store','method'=>'POST')) !!}
+    {!! Form::open(array('route' => 'Category.store','method'=>'POST')) !!}
   		@include('backend.produk.kategori.form')
   	{!! Form::close() !!}
   </section>

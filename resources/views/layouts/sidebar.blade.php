@@ -51,7 +51,7 @@
         </ul>
       </li>
       {{-- Produk --}}
-      <li class="treeview {{ Request::is('backend/KategoriProduk') || Request::is('backend/produk') ? 'active' : null}}">
+      <li class="treeview {{ Request::is('backend/Category') || Request::is('backend/produk') ? 'active' : null}}">
         <a href="#">
           <i class="fa fa-tag"></i> <span>Produk</span>
           <span class="pull-right-container">
@@ -59,7 +59,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ Request::is('backend/KategoriProduk') ? 'active' : null }}"><a href="{{ url('/backend/KategoriProduk') }}"><i class="fa fa-tags"></i> Kategori Produk</a></li>
+          <li class="{{ Request::is('backend/Category') ? 'active' : null }}"><a href="{{ url('/backend/Category') }}"><i class="fa fa-tags"></i> Kategori Produk</a></li>
           <li class="{{ Request::is('backend/produk') ? 'active' : null }}"><a href="{{ url('/backend/produk') }}"><i class="fa fa-tags"></i> Produk </a></li>
         </ul>
       </li>

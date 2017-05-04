@@ -28,7 +28,7 @@
 
   <!-- Main Content -->
   <section class="content">
-    {!! Form::model($barang, ['method' => 'PATCH','route' => ['KategoriProduk.update', $barang->barang_id]]) !!}
+    {!! Form::model($barang, ['method' => 'PATCH','route' => ['Category.update', $barang->barang_id]]) !!}
   		@include('backend.produk.kategori.form')
   	{!! Form::close() !!}
   </section>

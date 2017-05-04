@@ -38,7 +38,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">
-                <a href="{{ url('/backend/KategoriProduk/create') }}" class="btn btn-block btn-primary">
+                <a href="{{ url('/backend/Category/create') }}" class="btn btn-block btn-primary">
                   <span class="fa fa-plus"></span> Tambah Kategori Barang
                 </a>
               </h3>
@@ -78,9 +78,9 @@
                             <td>{{ $barang->parent }}</td>
                             <td>{!! $barang->keterangan !!}</td>
                             <td>
-                              <a class="btn btn-primary" href="{{ route('KategoriProduk.show',$barang->barang_id) }}"><span class="fa fa-eye"></span></a>
-                              <a class="btn btn-primary" href="{{ route('KategoriProduk.edit',$barang->barang_id) }}"><span class="fa fa-edit"></span></a>
-                              {!! Form::open(['method' => 'DELETE','route' => ['KategoriProduk.destroy', $barang->barang_id], 'style' => 'display:inline']) !!}
+                              <a class="btn btn-primary" href="{{ route('Category.show',$barang->barang_id) }}"><span class="fa fa-eye"></span></a>
+                              <a class="btn btn-primary" href="{{ route('Category.edit',$barang->barang_id) }}"><span class="fa fa-edit"></span></a>
+                              {!! Form::open(['method' => 'DELETE','route' => ['Category.destroy', $barang->barang_id], 'style' => 'display:inline']) !!}
                               <button class="btn btn-danger" type="submit" title="Hapus"><span class="fa fa-trash"></span></button>
                               {!! Form::close() !!}
                             </td>
