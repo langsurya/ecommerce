@@ -2,14 +2,17 @@
 
 namespace App\Http\Requests\backend\Products;
 
-use App\Http\Requests\Request,Entrust;
+use App\Http\Requests\Request;
 
 class ProductRequest extends Request
 {
 
   function authorize()
   {
-    return Entrust::can(['product-create', 'product-update'], true);
+    return \Auth::check();
+    Auth::user()->can('roduct-create');
+    // return Entrust::can(['product-create', 'product-update'], true);
+    // return Auth::user()->can(['product-create', 'product-update', true]);
   }
 
   public function rules(){

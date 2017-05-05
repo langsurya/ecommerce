@@ -132,7 +132,7 @@
                             </div>
                             <div class="form-group  col-md-6">
                               <label>Status</label>
-                              {{ Form::select('status', [
+                              {{ Form::select('product_status', [
                                 '1' => 'Aktif',
                                 '0' => 'Tidak Aktif'
                               ], null, ['class' => 'form-control']
@@ -161,7 +161,7 @@
                           <div class="row">
                             <div class="form-group col-md-12">
                               <label>Keterangan Lengkap</label>
-                              {!! Form::textarea('editor1', null, array('id' => 'editor1')) !!}
+                              {!! Form::textarea('product_description', null, array('id' => 'editor1')) !!}
                             </div>
                           </div> <!-- /.row -->
                           <div class="row">
