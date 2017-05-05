@@ -11,27 +11,19 @@
 |
 */
 
-// Route::get('/', [
-//   'as' => 'index', 'uses' => 'HomeController@index'
-// ]);
-// Route::get('register', [
-//   'as' => 'register', 'uses' => 'SimpleauthController@register'
-// ]);
-//
-
-// Route::resource('crud', 'CrudController');
-
 Auth::routes();
 
 Route::get('/', 'HomeController@index');
+Route::get('/home', [
+  'as' => 'home.index', 'uses'=>  'HomeController@index']);
 
-Route::get('/admin', 'HomeController@admin');
+Route::get('/backend', 'HomeController@admin');
 // Route::get('/admin/table', 'HomeController@table');
 // Route::get('/admin/forms', 'HomeController@forms');
 
 
 // masuk ke link localhost:8000/admin/ dengan prefix
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'backend'], function() {
 
   // Controller Setting
   Route::group(['namespace' => 'backend'], function() {
@@ -59,15 +51,8 @@ Route::group(['prefix' => 'admin'], function() {
     // baca class Controller Kategori, Produk di folder backend/Produk
     Route::group(['namespace' => 'Produk'], function() {
       // produk Kategori
-      Route::get('KategoriProduk', [
-        'as' => 'kategoriproduk.index', 'uses' => 'KategoriprodukController@index'
-      ]);
-      Route::post('KategoriProduk', [
-        'as' => 'KategoriProduk.store', 'uses' => 'KategoriprodukController@store'
-      ]);
-      Route::get('KategoriProduk/create', [
-        'as' => 'kategoriproduk.create', 'uses' => 'KategoriprodukController@create'
-      ]);
+      Route::resource('Category', 'CategoryController');
+
       // produk
       Route::get('produk', [
         'as' => 'produk.index', 'uses' => 'ProdukController@index'
@@ -78,6 +63,8 @@ Route::group(['prefix' => 'admin'], function() {
       Route::get('produk/create', [
         'as' => 'produk.create', 'uses' => 'ProdukController@create'
       ]);
+
+      Route::resource('image', 'ImageController');
     });
 
     // baca class Controller Realtime di folder backend/stock
@@ -89,6 +76,9 @@ Route::group(['prefix' => 'admin'], function() {
       Route::get('entry', [
         'as' => 'entry.index', 'uses' => 'EntryController@index'
       ]);
+      Route::get('entry/create', [
+        'as' => 'entry.create', 'uses' => 'EntryController@create'
+      ]);
       Route::get('history', [
         'as' => 'history.index', 'uses' => 'HistoryController@index'
       ]);
@@ -99,20 +89,44 @@ Route::group(['prefix' => 'admin'], function() {
       ]);
     });
 
+    Route::group(['namespace' => 'Laporan'], function() {
+      // Laporan Penjualan
+      Route::get('penjualan', [
+        'as' => 'penjualan.index', 'uses' => 'PenjualanController@index'
+      ]);
+      // Per barang
+      Route::get('perbarang', [
+        'as' => 'perbarang.index', 'uses' => 'PerbarangController@index'
+      ]);
+      // Per barang
+      Route::get('perbarang/show', [
+        'as' => 'show.index', 'uses' => 'PerbarangController@show'
+      ]);
+      // Per Pelanggan
+      Route::get('perpelanggan', [
+        'as' => 'perpelanggan.index', 'uses' => 'PerpelangganController@index'
+      ]);
+      Route::get('perpelanggan/show', [
+        'as' => 'show.index', 'uses' => 'PerpelangganController@show'
+      ]);
+    });
+
     // Baca class Controller Payment,kategoriPelanggan,ekspedisi di folder backend/Setting
     Route::group(['namespace' => 'Setting'], function() {
       Route::resource('payment', 'PaymentController');
       // eksepedisi
-      Route::get('ekspedisi', [
-        'as' => 'ekspedisi.index', 'uses' => 'EkspedisiController@index'
-      ]);
-      Route::post('ekspedisi', [
-        'as' => 'ekspedisi.store', 'uses' => 'EkspedisiController@store'
-      ]);
-      Route::get('ekspedisi/create', [
-        'as' => 'ekspedisi.create', 'uses' => 'EkspedisiController@create'
-      ]);
+      Route::resource('ekspedisi', 'EkspedisiController');
+      // katpel
       Route::resource('katpel', 'KatpelController');
+    });
+
+    Route::group(['namespace' => 'Otorisasi'], function() {
+      Route::get('pengguna', [
+        'as' => 'pengguna.index', 'uses' => 'PenggunaController@index'
+      ]);
+      Route::get('pengguna/create', [
+        'as' => 'pengguna.create', 'uses' => 'PenggunaController@create'
+      ]);
     });
   });
 });
