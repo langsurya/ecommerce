@@ -55,9 +55,9 @@ class ProdukController extends Controller
           $input['product_price'] = str_replace('.', '', $input['product_price']);
           $cat_slug = Category::find($input['id_category'])->slug;
           $input['slug'] = $cat_slug . '/' . str_slug($input['product_name']);
-          $input['status'] = $request->get('status') == 'on' ? 1 : 0;
+          $input['product_status'] = $request->get('product_status');
           $attr = array_filter($input['name']);
-          $product = new Produk($input);
+          $product = new Product($input);
           $product->save();
           $pro_id = $product->id;
           if (!empty($attr)) {
@@ -77,13 +77,13 @@ class ProdukController extends Controller
               Image::make($image)->resize('100', '100')->save($thumb . '/' . $name);
             }
           }
-        } catch (Exception $exc) {
+        } catch (Exception $e) {
           $message = $e->getMessage();
         }
         if (isset($message)) {
-          return redirect()->route('backend.produk.index');
+          return redirect()->back()->withInput()->withErrors(['message' => $message]);
         }
-
+        return redirect()->route('produk.index');
     }
 
     /**

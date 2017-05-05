@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 use Request;
 
-class Produk extends Model
+class Product extends Model
 {
   // menentukan nama tabel Kategoribarang karna berbeda dengan nama class kategoriproduk
   protected $table = 'product';
