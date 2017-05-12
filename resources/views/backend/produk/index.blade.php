@@ -64,14 +64,27 @@
                         <th class="sorting_asc" width="10px" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">#</th>
                         <th>Sku</th>
                         <th>Name</th>
-                        <th>Harga Retail</th>
-                        <th>Harga Reseller</th>
+                        <th>Harga</th>
                         <th>Stok</th>
                         <th  width="120px">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
+                    @foreach ($product as $k)
                       <tr role="row" class="odd">
+                        <td class="sorting_1">{{++$i}}</td>
+                        <td>{{$k->product_sku}}</td>
+                        <td>{{$k->product_name}}</td>
+                        <td>{{$k->product_price}}</td>
+                        <td>{{$k->product_stok}}</td>
+                        <td>
+                          <a class="btn btn-primary" href="{{ route('product.edit',$k->id) }}"><span class="fa fa-edit"></span> </a>
+                          <button class="btn btn-primary" type="button" title="view"><span class="fa fa-eye"></span></button>
+                          <button class="btn btn-danger" type="button" title="Hapus"><span class="fa fa-trash"></span></button>
+                        </td>
+                      </tr>
+                    @endforeach
+                      {{-- <tr role="row" class="odd">
                         <td class="sorting_1">1</td>
                         <td>PRD00213124</td>
                         <td>Botol Susu</td>
@@ -83,33 +96,7 @@
                           <button class="btn btn-primary" type="button" title="edit"><span class="fa fa-edit"></span></button>
                           <button class="btn btn-danger" type="button" title="Hapus"><span class="fa fa-trash"></span></button>
                         </td>
-                      </tr>
-                      <tr role="row" class="odd">
-                        <td class="sorting_1">2</td>
-                        <td>PRD00213124</td>
-                        <td>Botol Susu Anak</td>
-                        <td>Rp. 40.000</td>
-                        <td>Rp. 35.000</td>
-                        <td>0</td>
-                        <td>
-                          <button class="btn btn-primary" type="button" title="view"><span class="fa fa-eye"></span></button>
-                          <button class="btn btn-primary" type="button" title="edit"><span class="fa fa-edit"></span></button>
-                          <button class="btn btn-danger" type="button" title="Hapus"><span class="fa fa-trash"></span></button>
-                        </td>
-                      </tr>
-                      <tr role="row" class="odd">
-                        <td class="sorting_1">3</td>
-                        <td>PRD00213124</td>
-                        <td>Tes 123 Hitam</td>
-                        <td>Rp. 50.000</td>
-                        <td>Rp. 45.000</td>
-                        <td>0</td>
-                        <td>
-                          <button class="btn btn-primary" type="button" title="view"><span class="fa fa-eye"></span></button>
-                          <button class="btn btn-primary" type="button" title="edit"><span class="fa fa-edit"></span></button>
-                          <button class="btn btn-danger" type="button" title="Hapus"><span class="fa fa-trash"></span></button>
-                        </td>
-                      </tr>
+                      </tr>   --}}                    
 
                     </tbody>
                   </table>

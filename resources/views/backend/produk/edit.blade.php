@@ -97,43 +97,49 @@
                           <div class="row">
                             <div class="form-group col-md-6">
                               <label>Nama</label>
-                              <input class="form-control" type="text" name="name" value="" >
+                              <input class="form-control" type="text" name="name" value="{{$product->product_name}}" >
                             </div>
                             <div class="form-group  col-md-6" id="reportType">
-                              <label>Jenis</label>
-                              {{ Form::select('category',$category, null, ['class' => 'form-control']
-                              ) }}
+                              <label>Category</label>
+                              <select name="id_category" class="form-control" id="">
+                                <option value="">Pilih Category</option>
+                                @foreach ($category as $key=>$val)
+                                  <option value="{{ $key }}" {{$key == $product->id_category ? 'selected="selected"' : ''}}>{{$val}}</option>
+                                @endforeach
+                              </select>
+                              {{-- {{ Form::select('category',$category, null, ['class' => 'form-control']
+                              ) }} --}}
                             </div>
                           </div>
                           <div class="row">
                             <div class="form-group col-md-6">
                               <label for="sku">SKU</label>
-                              <input type="text" class="form-control" placeholder="SKU" name="sku" value="">
+                              <input type="text" class="form-control" placeholder="SKU" name="sku" value="{{$product->product_sku}}">
                             </div>
                             <div class="form-group col-md-6">
                               <label for="stok">Stok</label>
-                              <input type="text" class="form-control" placeholder="stok" name="stok" value="">
+                              <input type="text" class="form-control" placeholder="stok" name="stok" value="{{$product->product_stok}}">
                             </div>
                           </div>
                           <div class="row">
                             <div class="form-group col-md-12">
                               <label for="harga">Harga Produk</label>
-                              <input id="harga" data-inputmask="'alias': 'decimal', 'groupSeparator': '.', 'autoGroup': true" type="text" name="product_price" class="form-control" value="{{old('product_price')}}">
+                              <input id="harga" data-inputmask="'alias': 'decimal', 'groupSeparator': '.', 'autoGroup': true" type="text" name="product_price" class="form-control" value="{{$product->product_price}}">
                               {{-- <input type="text" name="harga" class="form-control" placeholder="Harga Produk" value=""> --}}
                             </div> <!-- form-group -->
                           </div>
                           <div class="row">
                             <div class="form-group col-md-6">
                               <label>Berat (Gram)</label>
-                              <input class="form-control" type="text" name="name" value="" >
+                              <input class="form-control" type="text" name="name" value="{{$product->product_berat}}" >
                             </div>
                             <div class="form-group  col-md-6">
                               <label>Status</label>
-                              {{ Form::select('status', [
-                                '1' => 'Aktif',
-                                '0' => 'Tidak Aktif'
-                              ], null, ['class' => 'form-control']
-                              ) }}
+                              <select class="form-control" name="status" id="">
+                                <option value="">Pilih Status</option>
+                                  <option value="1" {{$product->product_status == 1 ? 'selected' : ''}}>Aktif</option>
+                                  <option value="0" {{$product->product_status == 0 ? 'selected' : ''}}>Tidak Aktif</option>
+                              </select>
                             </div>
                             <!-- /.form-group -->
                           </div>
@@ -150,7 +156,7 @@
                             </div>
                             <div class="form-group  col-md-6">
                               <label>Discount Nominal</label>
-                              <input class="form-control" type="text" name="name" value="0" >
+                              <input class="form-control" type="text" name="name" value="{{$product->product_discount}}" >
                             </div>
                             <!-- /.form-group -->
                           </div>
@@ -158,7 +164,8 @@
                           <div class="row">
                             <div class="form-group col-md-12">
                               <label>Keterangan Lengkap</label>
-                              {!! Form::textarea('editor1', null, array('id' => 'editor1')) !!}
+                              <textarea name="product_description" id="editor1" cols="30" rows="10">{{ $product->product_description }}</textarea>
+                              {{-- {!! Form::textarea('editor1', null, array('id' => 'editor1')) !!} --}}
                             </div>
                           </div>
                         </div>
@@ -172,18 +179,42 @@
                       <div class="row">
                         <div class="col-md-12">
                           <div class="input_fields_wrap">
-                            <div class="form-group">
-                                <label>Attributes</label>
-                                <p>Add variants if this product comes in multiple versions, like different sizes or colors.</p>
+                            @if (count($product->attribute) > 0)
+                            @foreach ($product->attribute as $key => $attr)
+                              <div class="form-group">
+                                @if ($key == 0)
+                                  <label>Attribute</label>
+                                @endif
                                 <div class="row">
-                                    <div class="col-xs-2">
-                                        <input type="text" class="form-control" placeholder="Name" name="name[]">
+                                  <div class="col-xs-2">
+                                    <input type="text" class="form-control" name="name[]" value="{{$attr->name}}">
+                                  </div>
+                                  <div class="col-xs-2">
+                                    <input type="text" class="form-control" placeholder="Value" name="value[]" value="{{$attr->values}}">
+                                  </div>
+                                  @if ($key != 0)
+                                    <div class="col-xs-3">
+                                      <button type="button" class="btn btn-default remove_field">Remove field</button>
                                     </div>
-                                    <div class="col-xs-2">
-                                        <input type="text" class="form-control" placeholder="Value" name="value[]">
-                                    </div>
+                                  @endif
                                 </div>
-                            </div>
+                              </div>
+                            @endforeach   
+                            @else
+                            <div class="form-group">
+                              <label>Attributes</label>
+                              <p>Add variants if this product comes in multiple versions, like different sizes or colors.</p>
+                              <div class="row">
+                                  <div class="col-xs-2">
+                                      <input type="text" class="form-control" placeholder="Name" name="name[]">
+                                  </div>
+                                  <div class="col-xs-2">
+                                      <input type="text" class="form-control" placeholder="Value" name="value[]">
+                                  </div>
+                              </div>
+                            </div>                       
+                            @endif                                
+                            
                           </div>
                           <div class="form-group">
                               <div class="row">

@@ -20,9 +20,19 @@ class ProdukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      return view('backend.produk.index');
+      // $product = DB::table('product')
+      //           ->get();
+      $product = Product::all();
+      // dd($product);
+      return view('backend.produk.index', compact('product'))
+      ->with('i');
+    }
+
+    public function getProduct() {
+      $data = Product::DtProduct();
+      return response()->json($data);
     }
 
     /**
@@ -105,7 +115,12 @@ class ProdukController extends Controller
      */
     public function edit($id)
     {
-        //
+      $this->data['title'] = "Edit Product";
+      $this->data['product'] = Product::find($id);
+      // $this->data['attribute'] = Attribute::find();
+      $this->data['category'] = Category::where('status', 1)->pluck('nama_barang', 'barang_id');
+      // dd($this->data['product']);
+      return view('backend.produk.edit', $this->data);
     }
 
     /**
