@@ -63,6 +63,9 @@ Route::group(['prefix' => 'backend'], function() {
       Route::get('produk/create', [
         'as' => 'produk.create', 'uses' => 'ProdukController@create'
       ]);
+      Route::get('product/{product}/edit/', [
+        'as' => 'product.edit', 'uses' => 'ProdukController@edit'
+      ]);
 
       Route::resource('image', 'ImageController');
     });

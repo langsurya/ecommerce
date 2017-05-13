@@ -4,13 +4,13 @@
   <section class="sidebar">
     <!-- Sidebar user panel -->
     <div class="user-panel">
-      <div class="pull-left image">
+{{--       <div class="pull-left image">
         <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
         <p><span class="hidden-xs">{{ Auth::user()->name }}</span></p>
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-      </div>
+      </div> --}}
     </div>
     <!-- search form -->
     {{-- <form action="#" method="get" class="sidebar-form">
