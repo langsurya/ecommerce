@@ -117,9 +117,10 @@ class ProdukController extends Controller
     {
       $this->data['title'] = "Edit Product";
       $this->data['product'] = Product::find($id);
-      // $this->data['attribute'] = Attribute::find();
+      $this->data['attribute'] = Attribute::where('id_product', $id)->get();
       $this->data['category'] = Category::where('status', 1)->pluck('nama_barang', 'barang_id');
-      // dd($this->data['product']);
+      $this->data['gambar'] = Gambar::where('id_product', $id)->get();
+      // dd($this->data['attribute']);
       return view('backend.produk.edit', $this->data);
     }
 

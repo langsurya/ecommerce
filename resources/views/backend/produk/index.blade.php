@@ -78,7 +78,7 @@
                         <td>{{$k->product_price}}</td>
                         <td>{{$k->product_stok}}</td>
                         <td>
-                          <a class="btn btn-primary" href="{{ route('product.edit',$k->id) }}"><span class="fa fa-edit"></span> </a>
+                          <a class="btn btn-primary" href="{{ route('produk.edit',$k->id) }}"><span class="fa fa-edit"></span> </a>
                           <button class="btn btn-primary" type="button" title="view"><span class="fa fa-eye"></span></button>
                           <button class="btn btn-danger" type="button" title="Hapus"><span class="fa fa-trash"></span></button>
                         </td>

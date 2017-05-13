@@ -54,19 +54,7 @@ Route::group(['prefix' => 'backend'], function() {
       Route::resource('Category', 'CategoryController');
 
       // produk
-      Route::get('produk', [
-        'as' => 'produk.index', 'uses' => 'ProdukController@index'
-      ]);
-      Route::post('produk', [
-        'as' => 'produk.store', 'uses' => 'ProdukController@store'
-      ]);
-      Route::get('produk/create', [
-        'as' => 'produk.create', 'uses' => 'ProdukController@create'
-      ]);
-      Route::get('product/{product}/edit/', [
-        'as' => 'product.edit', 'uses' => 'ProdukController@edit'
-      ]);
-
+      Route::resource('produk', 'ProdukController');
       Route::resource('image', 'ImageController');
     });
 

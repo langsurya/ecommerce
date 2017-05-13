@@ -49,6 +49,7 @@
       $(this).closest('.form-group').remove();
       x--;
     })
+
   </script>
   <script>
   $(document).ready(function () {
@@ -179,8 +180,8 @@
                       <div class="row">
                         <div class="col-md-12">
                           <div class="input_fields_wrap">
-                            @if (count($product->attribute) > 0)
-                            @foreach ($product->attribute as $key => $attr)
+                            @if (count($attribute) > 0)
+                            @foreach ($attribute as $key => $attr)
                               <div class="form-group">
                                 @if ($key == 0)
                                   <label>Attribute</label>
@@ -224,6 +225,10 @@
                               </div>
                           </div>
                         </div>
+                      </div> 
+                      <div class="box-footer">
+                        <a href="{{ url('/backend/produk') }}" class="btn btn-danger"><span class="fa fa-arrow-left"></span> Kembali</a>
+                        <button type="submit" class="btn btn-primary pull-right"><span class="fa fa-save"></span> Simpan</button>
                       </div>
                     </div>
                     <!-- /.tab-pane -->
@@ -240,14 +245,14 @@
                           </div>
                         </div>
                       </div>
+                      <div class="box-footer">
+                        <a href="{{ url('/backend/produk') }}" class="btn btn-danger"><span class="fa fa-arrow-left"></span> Kembali</a>
+                        <button type="submit" class="btn btn-primary pull-right"><span class="fa fa-save"></span> Simpan</button>
+                      </div>
                     </div>
                     <!-- /.tab-pane -->
                   </div>
                   <!-- /.tab-content -->
-                </div>
-                <div class="box-footer">
-                  <a href="{{ url('/backend/produk') }}" class="btn btn-danger"><span class="fa fa-arrow-left"></span> Kembali</a>
-                  <button type="submit" class="btn btn-primary pull-right"><span class="fa fa-save"></span> Simpan</button>
                 </div>
 
               </div>
