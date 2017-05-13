@@ -121,7 +121,7 @@ class ProdukController extends Controller
       $this->data['category'] = Category::where('status', 1)->pluck('nama_barang', 'barang_id');
       $this->data['gambar'] = Gambar::where('id_product', $id)->get();
       // dd($this->data['attribute']);
-      return view('backend.produk.edit', $this->data);
+      return view('backend.produk.edit', $this->data)->with('i');
     }
 
     /**

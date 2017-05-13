@@ -249,8 +249,34 @@
                         <a href="{{ url('/backend/produk') }}" class="btn btn-danger"><span class="fa fa-arrow-left"></span> Kembali</a>
                         <button type="submit" class="btn btn-primary pull-right"><span class="fa fa-save"></span> Simpan</button>
                       </div>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                            <thead>
+                              <tr role="row">
+                                <th>#</th>
+                                <th>Gambar</th>
+                                <th>Path Full</th>
+                                <th>Path Thumb</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              @foreach ($gambar as $g)
+                                <tr role="row" class="odd">
+                                  <td>{{++$i}}</td>
+                                  <td><img src="{{ asset($g->path_thumb) }}" alt=""></td>
+                                  <td>{{$g->path_full}}</td>
+                                  <td>{{$g->path_thumb}}</td>
+                                  <td></td>
+                                </tr>
+                              @endforeach
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                     </div>
-                    <!-- /.tab-pane -->
+                    <!-- /.tab-pane -->                    
                   </div>
                   <!-- /.tab-content -->
                 </div>
