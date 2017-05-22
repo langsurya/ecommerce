@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| This file is where you may define all of the routes that are handled
-| by your application. Just tell Laravel the URIs it should respond
-| to using a Closure or controller method. Build something great!
-|
-*/
-
 Auth::routes();
 
 Route::get('/', 'HomeController@index');
@@ -124,4 +113,9 @@ Route::group(['prefix' => 'backend'], function() {
 
 Route::group(['namespace' => 'Front'], function() {
   Route::get('front', 'PageController@index');
+  Route::get('shop', 'PageController@shop');
+  Route::get('product_details/{id}', 'PageController@product_details');
+  Route::get('cart', 'CartController@index');
+  Route::get('cart/addItem/{id}', 'CartController@addItem');
+
 });
