@@ -12,6 +12,6 @@ class Gambar extends Model {
 	protected $fillable = ['id_product', 'img_name', 'path_thumb', 'path_full', 'primary'];
 
 	public function product() {
-		return $this->belongsTo('App\Mdels\Products\Product', 'id_product');
+		return $this->belongsTo('App\Models\Products\Product', 'id_product');
 	}
 }

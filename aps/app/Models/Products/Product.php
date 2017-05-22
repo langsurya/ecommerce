@@ -13,6 +13,10 @@ class Product extends Model
 
   public $fillable = ['id_category', 'product_sku', 'product_stok', 'product_name', 'product_description', 'product_price', 'product_berat', 'product_status', 'product_discount', 'slug'];
 
+  public function getImage() {
+    return Gambar::where('id', $this->id)->first()->img_name;
+  }
+
   public function category() {
     return $this->belongsTo('App\Models\Products\Category', 'id_category', 'id');
   }
