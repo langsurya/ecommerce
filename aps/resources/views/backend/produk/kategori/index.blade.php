@@ -38,7 +38,7 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">
-                <a href="{{ url('/backend/category/create') }}" class="btn btn-block btn-primary">
+                <a href="{{ url('/admin/category/create') }}" class="btn btn-block btn-primary">
                   <span class="fa fa-plus"></span> Tambah Kategori Barang
                 </a>
               </h3>

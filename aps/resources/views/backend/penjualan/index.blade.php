@@ -38,7 +38,7 @@
           <div class="box-header with-border">
             <h3 class="box-title">Pesanan</h3>
             <h3 class="box-title pull-right">
-              <a href="{{ url('/backend/pesanan/create') }}" class="btn btn-block btn-primary">
+              <a href="{{ url('/admin/pesanan/create') }}" class="btn btn-block btn-primary">
                 <span class="fa fa-plus"></span> Tambah Pesanan
               </a>
             </h3>

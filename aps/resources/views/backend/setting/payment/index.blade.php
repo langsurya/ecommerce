@@ -36,7 +36,7 @@
         <div class="box">
           <div class="box-header">
             <h3 class="box-title">
-              <a href="{{ url('/backend/payment/create') }}" class="btn btn-block btn-primary">
+              <a href="{{ url('/admin/payment/create') }}" class="btn btn-block btn-primary">
                 <span class="fa fa-plus"></span> Tambah Payment
               </a>
             </h3>

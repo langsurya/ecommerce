@@ -36,7 +36,7 @@
         <div class="box">
           <div class="box-header">
             <h3 class="box-title">
-            <a href="{{ url('/backend/katpel/create') }}" class="btn btn-block btn-primary"><span class="fa fa-plus"></span> Pelanggan</a>
+            <a href="{{ url('/admin/katpel/create') }}" class="btn btn-block btn-primary"><span class="fa fa-plus"></span> Pelanggan</a>
           </h3>
           </div>
           <!-- /.box-header -->

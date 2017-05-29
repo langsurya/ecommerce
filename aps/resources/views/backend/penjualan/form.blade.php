@@ -241,7 +241,7 @@
   </div>
 
   <div class="box-footer">
-    <a href="{{ url('/backend/pesanan') }}" class="btn btn-danger"><span class="fa fa-arrow-left"></span> Kembali</a>
+    <a href="{{ url('/admin/pesanan') }}" class="btn btn-danger"><span class="fa fa-arrow-left"></span> Kembali</a>
     <button type="submit" class="btn btn-primary pull-right"><span class="fa fa-save"></span> Simpan</button>
   </div>
 

@@ -27,18 +27,18 @@
     <ul class="sidebar-menu">
       <li class="header">MAIN NAVIGATION</li>
       <li>
-        <a href="{{ url('/backend') }}">
+        <a href="{{ url('/admin') }}">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
 
-      <li class="{{ Request::is('backend/pelanggan') ? 'active' : null }}">
-        <a href="{{ url('/backend/pelanggan') }}">
+      <li class="{{ Request::is('admin/pelanggan') ? 'active' : null }}">
+        <a href="{{ url('/admin/pelanggan') }}">
           <i class="fa fa-group"></i> <span>Pelanggan</span>
         </a>
       </li>
       {{-- Penjualan --}}
-      <li class="treeview {{ Request::is('backend/pesanan') ? 'active' : null }}">
+      <li class="treeview {{ Request::is('admin/pesanan') ? 'active' : null }}">
         {{-- <li class="treeview"> --}}
         <a href="#">
           <i class="fa fa-shopping-cart"></i> <span>Penjualan</span>
@@ -47,11 +47,11 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ Request::is('backend/pesanan') ? 'active' : null }}"><a href="{{ url('backend/pesanan') }}">Pesanan</a></li>
+          <li class="{{ Request::is('admin/pesanan') ? 'active' : null }}"><a href="{{ url('admin/pesanan') }}">Pesanan</a></li>
         </ul>
       </li>
       {{-- Produk --}}
-      <li class="treeview {{ Request::is('backend/category') || Request::is('backend/produk') ? 'active' : null}}">
+      <li class="treeview {{ Request::is('admin/category') || Request::is('admin/produk') ? 'active' : null}}">
         <a href="#">
           <i class="fa fa-tag"></i> <span>Produk</span>
           <span class="pull-right-container">
@@ -59,12 +59,12 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ Request::is('backend/category') ? 'active' : null }}"><a href="{{ url('/backend/category') }}"><i class="fa fa-tags"></i> Kategori Produk</a></li>
-          <li class="{{ Request::is('backend/produk') ? 'active' : null }}"><a href="{{ url('/backend/produk') }}"><i class="fa fa-tags"></i> Produk </a></li>
+          <li class="{{ Request::is('admin/category') ? 'active' : null }}"><a href="{{ url('/admin/category') }}"><i class="fa fa-tags"></i> Kategori Produk</a></li>
+          <li class="{{ Request::is('admin/produk') ? 'active' : null }}"><a href="{{ url('/admin/produk') }}"><i class="fa fa-tags"></i> Produk </a></li>
         </ul>
       </li>
       {{-- Stock --}}
-      <li class="treeview {{ Request::is('backend/realtime') || Request::is('backend/entry') || Request::is('backend/history') ? 'active' : null }}">
+      <li class="treeview {{ Request::is('admin/realtime') || Request::is('admin/entry') || Request::is('admin/history') ? 'active' : null }}">
         <a href="#">
           <i class="fa  fa-align-justify"></i> <span>Stock</span>
           <span class="pull-right-container">
@@ -72,13 +72,13 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ Request::is('backend/realtime') ? 'active' : null }}"><a href="{{ url('/backend/realtime') }}"><i class="fa  fa-file"></i> Real Time Stock</a></li>
-          <li class="{{ Request::is('backend/entry') ? 'active' : null }}"><a href="{{ url('/backend/entry') }}"><i class="fa fa-file"></i> Entry Stock</a></li>
-          <li class="{{ Request::is('backend/history') ? 'active' : null }}"><a href="{{ url('/backend/history') }}"><i class="fa fa-file"></i> History Stock</a></li>
+          <li class="{{ Request::is('admin/realtime') ? 'active' : null }}"><a href="{{ url('/admin/realtime') }}"><i class="fa  fa-file"></i> Real Time Stock</a></li>
+          <li class="{{ Request::is('admin/entry') ? 'active' : null }}"><a href="{{ url('/admin/entry') }}"><i class="fa fa-file"></i> Entry Stock</a></li>
+          <li class="{{ Request::is('admin/history') ? 'active' : null }}"><a href="{{ url('/admin/history') }}"><i class="fa fa-file"></i> History Stock</a></li>
         </ul>
       </li>
       {{-- Finance --}}
-      <li class="treeview {{ Request::is('backend/finance') ? 'active' : null }}">
+      <li class="treeview {{ Request::is('admin/finance') ? 'active' : null }}">
         <a href="#">
           <i class="fa  fa-credit-card"></i> <span>Finance</span>
           <span class="pull-right-container">
@@ -86,11 +86,11 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ Request::is('backend/finance') ? 'active' : null }}"><a href="{{ url('/backend/finance') }}"><i class="fa  fa-file"></i> Check Transfer</a></li>
+          <li class="{{ Request::is('admin/finance') ? 'active' : null }}"><a href="{{ url('/admin/finance') }}"><i class="fa  fa-file"></i> Check Transfer</a></li>
         </ul>
       </li>
       {{-- Laporan --}}
-      <li class="treeview {{ Request::is('backend/penjualan') || Request::is('backend/perbarang') || Request::is('backend/perpelanggan') ? 'active' : null }}">
+      <li class="treeview {{ Request::is('admin/penjualan') || Request::is('admin/perbarang') || Request::is('admin/perpelanggan') ? 'active' : null }}">
         <a href="#">
           <i class="fa  fa-mail-reply-all"></i> <span>Laporan</span>
           <span class="pull-right-container">
@@ -98,13 +98,13 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ Request::is('backend/penjualan') ? 'active' : null }}"><a href="{{ url('/backend/penjualan') }}"><i class="fa  fa-file"></i> Penjualan</a></li>
-          <li class="{{ Request::is('backend/perbarang') ? 'active' : null }}"><a href="{{ url('/backend/perbarang') }}"><i class="fa  fa-file"></i> Penjualan Per barang</a></li>
-          <li class="{{ Request::is('backend/perpelanggan') ? 'active' : null }}"><a href="{{ url('/backend/perpelanggan') }}"><i class="fa  fa-file"></i> Penjualan Per Pelanggan</a></li>
+          <li class="{{ Request::is('admin/penjualan') ? 'active' : null }}"><a href="{{ url('/admin/penjualan') }}"><i class="fa  fa-file"></i> Penjualan</a></li>
+          <li class="{{ Request::is('admin/perbarang') ? 'active' : null }}"><a href="{{ url('/admin/perbarang') }}"><i class="fa  fa-file"></i> Penjualan Per barang</a></li>
+          <li class="{{ Request::is('admin/perpelanggan') ? 'active' : null }}"><a href="{{ url('/admin/perpelanggan') }}"><i class="fa  fa-file"></i> Penjualan Per Pelanggan</a></li>
         </ul>
       </li>
       {{-- menu setting --}}
-      <li class="treeview {{ Request::is('backend/katpel') || Request::is('backend/ekspedisi') || Request::is('backend/payment') ? 'active' : null }}">
+      <li class="treeview {{ Request::is('admin/katpel') || Request::is('admin/ekspedisi') || Request::is('admin/payment') ? 'active' : null }}">
         <a href="#">
           <i class="fa  fa-database"></i> <span>Setting</span>
           <span class="pull-right-container">
@@ -112,13 +112,13 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ Request::is('backend/katpel') ? 'active' : null }}"><a href="{{ url('/backend/katpel') }}"><i class="fa fa-group"></i> Kategori Pelanggan</a></li>
-          <li class="{{ Request::is('backend/ekspedisi') ? 'active' : null }}"><a href="{{ url('/backend/ekspedisi') }}"><i class="fa fa-truck"></i> Ekspedisi</a></li>
-          <li class="{{ Request::is('backend/payment') ? 'active' : null }}"><a href="{{ url('/backend/payment') }}"><i class="fa fa-cc-mastercard"></i> Payment</a></li>
+          <li class="{{ Request::is('admin/katpel') ? 'active' : null }}"><a href="{{ url('/admin/katpel') }}"><i class="fa fa-group"></i> Kategori Pelanggan</a></li>
+          <li class="{{ Request::is('admin/ekspedisi') ? 'active' : null }}"><a href="{{ url('/admin/ekspedisi') }}"><i class="fa fa-truck"></i> Ekspedisi</a></li>
+          <li class="{{ Request::is('admin/payment') ? 'active' : null }}"><a href="{{ url('/admin/payment') }}"><i class="fa fa-cc-mastercard"></i> Payment</a></li>
         </ul>
       </li>
       {{-- menu Otorisasi --}}
-      <li class="treeview {{ Request::is('backend/pengguna') || Request::is('backend/role') || Request::is('backend/route') ? 'active' : null }}">
+      <li class="treeview {{ Request::is('admin/pengguna') || Request::is('admin/role') || Request::is('admin/route') ? 'active' : null }}">
         <a href="#">
           <i class="fa fa-gear"></i> <span>Otorisasi </span>
           <span class="pull-right-container">
@@ -126,15 +126,15 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{ url('/backend/pengguna') }}"><i class="fa fa-group"></i> Pengguna</a></li>
-          <li><a href="{{ url('/backend/role') }}"><i class="fa fa-truck"></i> Role (empty)</a></li>
-          <li><a href="{{ url('/backend/route') }}"><i class="fa fa-chain"></i> Route (empty)</a></li>
+          <li><a href="{{ url('/admin/pengguna') }}"><i class="fa fa-group"></i> Pengguna</a></li>
+          <li><a href="{{ url('/admin/role') }}"><i class="fa fa-truck"></i> Role (empty)</a></li>
+          <li><a href="{{ url('/admin/route') }}"><i class="fa fa-chain"></i> Route (empty)</a></li>
         </ul>
       </li>
 
       <li class="header">LABELS</li>
       {{-- <li>
-      <a href="{{ url('/backend/table') }}">
+      <a href="{{ url('/admin/table') }}">
       <i class="fa fa-th"></i> <span>Table</span>
       <span class="pull-right-container">
       <small class="label pull-right bg-green">Hot</small>
@@ -142,7 +142,7 @@
   </a>
 </li>
 <li>
-<a href="{{ url('/backend/forms') }}">
+<a href="{{ url('/admin/forms') }}">
 <i class="fa fa-edit"></i> <span>Forms</span>
 </a>
 </li>         --}}
