@@ -19,21 +19,19 @@ class PagesController extends Controller {
 	 */
 	public function index() {
 		// ambil data Product
-		$products = \App\Models\Products\Product::orderBy('id', 'DESC')->limit(3)->offset(0)->get(); // get() or pageinate() or all()
-		$productsk = \App\Models\Products\Product::orderBy('id', 'DESC')->limit(3)->offset(3)->get();
+		$this->data['products'] = \App\Models\Products\Product::orderBy('id', 'DESC')->limit(3)->offset(0)->get(); // get() or pageinate() or all()
+		$this->data['productsk'] = \App\Models\Products\Product::orderBy('id', 'DESC')->limit(3)->offset(3)->get();
 
-		$cartItems = Cart::content();
-		$image = Product::with([
+		// $this->data['featured_products'] = \App\Models\Products\Product::paginate(12);
+
+		$this->data['cartItems'] = Cart::content();
+		$this->data['image'] = Product::with([
                   // 'image' 
                 ])
                   ->take(12)->orderBy('created_at', 'asc')
                   ->get();
 		return view('aqsha.home')
-						->with(
-							['products' => $products, 
-							'productsk' => $productsk, 
-							'cartItems' => $cartItems,
-							'image' => $image]);
+						->with($this->data);
 	}
 
 	public function shop(){

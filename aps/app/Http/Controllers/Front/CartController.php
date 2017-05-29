@@ -23,7 +23,7 @@ class CartController extends Controller
                     ->get();
         
 	   	// dd($image);
-   	return view('front.shop.cart', compact('cartItems', 'image'));
+   	return view('aqsha.cart', compact('cartItems', 'image'));
   }
 
   public function addItem($id) {
