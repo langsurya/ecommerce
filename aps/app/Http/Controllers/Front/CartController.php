@@ -13,11 +13,17 @@ class CartController extends Controller
 {
    public function index() {
    	$cartItems = Cart::content();
-   	foreach ($cartItems as $image) {
-   		$image = Gambar::all()->where('id_product', $image->id)->first();
-   	}
-   	return view('front.shop.cart', compact('cartItems', 'image'));
+		// $image = \App\Models\Products\Gambar::orderBy('id_product', 'asc');
 
+		$image =
+                Product::with([
+                    // 'image' 
+                ])
+                    ->take(12)->orderBy('created_at', 'asc')
+                    ->get();
+        
+	   	// dd($image);
+   	return view('front.shop.cart', compact('cartItems', 'image'));
   }
 
   public function addItem($id) {
@@ -26,5 +32,17 @@ class CartController extends Controller
   	Cart::add($id, $products->product_name, 1, $products->product_price);
 
   	return back();
+  }
+
+  public function destroy($id) {
+  	Cart::remove($id);
+
+  	return back();
+  }
+
+  public function update(Request $request, $id) {
+
+    Cart::update($id, $request->qty);
+    return back();
   }
 }

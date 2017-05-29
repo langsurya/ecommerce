@@ -1,0 +1,91 @@
+<!-- mainmenu-area-start -->
+  <div class="mainmenu-area mainmenu-area-2 white-bg hidden-xs hidden-sm">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-3 col-md-3">
+                  <div class="mainmenu-left visible-lg  visible-md">
+                      <div class="product-menu-title">
+                          <h2>All categories <i class="fa fa-arrow-circle-down"></i></h2>
+                      </div>
+                      <div class="product_vmegamenu">
+                          <ul>
+                              <li>
+                                  <a href="index.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/1.png" alt="" />Home</a></li>
+                              <li>
+                                  <a href="shop.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/2.png" alt="" />Hiasan Dinding</a></li>
+                              <li>
+                                  <a href="shop.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/3.png" alt="" />Aksesoris</a>
+                              </li>
+                              <li>
+                                  <a href="shop.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/4.png" alt="" />Replika</a>
+                              </li>
+                              <li>
+                                  <a href="shop.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/5.png" alt="" />Kerajinan Tangan</a>
+                              </li>
+                              <li>
+                                  <a href="shop.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/8.png" alt="" />About Us</a>
+                              </li>
+                              <li>
+                                  <a href="shop.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/9.png" alt="" />FAQ!</a>
+                              </li>
+                              <li>
+                                  <a href="shop.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/10.png" alt="" />Contact Us</a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>  
+              </div>
+              <div class="col-lg-9 col-md-9">
+                  <div class="mainmenu">
+                      <nav>
+                          <ul>
+                              <li class="active"><a href="index.html">home</a></li>
+                              <li><a href="shop.html">bestseller</a></li>
+                              <li><a href="shop.html">new product</a></li>
+                              <li><a href="about.html">About Us</a></li>
+                          </ul>
+                      </nav>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- mobile-menu-start -->
+  <!-- mobile-menu-start -->
+  <div class="mobile-menu-area hidden-md hidden-lg">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="mobile-menu">
+                      <nav id="mobile-menu">
+                          <ul>
+                              <li>
+                                  <a href="shop.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/1.png" alt="" />Home</a></li>
+                              <li>
+                                  <a href="shop.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/2.png" alt="" />Hiasan Dinding</a></li>
+                              <li>
+                                  <a href="shop.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/3.png" alt="" />Aksesoris</a>
+                              </li>
+                              <li>
+                                  <a href="shop.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/4.png" alt="" />Replika</a>
+                              </li>
+                              <li>
+                                  <a href="shop.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/5.png" alt="" />Kerajinan Tangan</a>
+                              </li>
+                              <li>
+                              <a href="shop.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/8.png" alt="" />About Us</a>
+                              </li>
+                              <li>
+                                  <a href="shop.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/9.png" alt="" />FAQ!</a>
+                              </li>
+                              <li>
+                                  <a href="shop.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/10.png" alt="" />Contact Us</a>
+                              </li>
+                          </ul>   
+                      </nav>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- mobile-menu-end --> 

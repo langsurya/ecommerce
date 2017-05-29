@@ -141,22 +141,13 @@
                             <!-- /.form-group -->
                           </div>
                           <!-- /.row -->
-                          <div class="row">
-                            <div class="form-group col-md-6">
-                              <label>Discount Type</label>
-                              {{ Form::select('typr', [
-                                'Rp' => 'Rp',
-                                'R' => 'R'
-                              ], null, ['class' => 'form-control']
-                              ) }}
-
-                            </div>
+                          {{-- <div class="row">
                             <div class="form-group  col-md-6">
                               <label>Discount Nominal</label>
                               <input class="form-control" type="text" name="product_discount" value="0" >
-                            </div>
+                            </div> --}}
                             <!-- /.form-group -->
-                          </div>
+                          {{-- </div> --}}
                           <!-- /.row -->
                           <div class="row">
                             <div class="form-group col-md-12">

@@ -2,13 +2,24 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');
 Route::get('/home', [
   'as' => 'home.index', 'uses'=>  'HomeController@index']);
 
 Route::get('/backend', 'HomeController@admin');
-// Route::get('/admin/table', 'HomeController@table');
-// Route::get('/admin/forms', 'HomeController@forms');
+
+Route::group(['namespace' => 'Front'], function() {
+  Route::get('/', 'PagesController@index');
+  
+  // Route::get('front', 'PageController@index');
+  // Route::get('shop', 'PageController@shop');
+  // Route::get('product_details/{id}', 'PageController@product_details');
+  Route::get('cart', 'CartController@index');
+  Route::get('cart/addItem/{id}', 'CartController@addItem');
+
+  Route::get('/cart/remove/{id}', 'CartController@destroy');
+  Route::put('/cart/update/{id}', 'CartController@update');
+
+});
 
 
 // masuk ke link localhost:8000/admin/ dengan prefix
@@ -117,5 +128,8 @@ Route::group(['namespace' => 'Front'], function() {
   Route::get('product_details/{id}', 'PageController@product_details');
   Route::get('cart', 'CartController@index');
   Route::get('cart/addItem/{id}', 'CartController@addItem');
+
+  Route::get('/cart/remove/{id}', 'CartController@destroy');
+  Route::put('/cart/update/{id}', 'CartController@update');
 
 });

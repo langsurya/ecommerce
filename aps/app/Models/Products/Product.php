@@ -29,6 +29,11 @@ class Product extends Model
     return $this->hasMany('App\Models\Products\Gambar', 'id_product');
   }
 
+  // get image first if id_product in Gambar > 1
+  public function imagefirst() {
+    return $this->hasOne('App\Models\Products\Gambar', 'id_product');
+  }
+
   // public function metaproduct() {
   //   return $this->hasOne('App\Models\Products\metaProduct','id_product');
   // }

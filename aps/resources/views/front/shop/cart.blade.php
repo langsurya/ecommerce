@@ -1,6 +1,6 @@
 @extends('front.layouts.master')
 @section('content')
-	{{ $cartItems }}
+
 	<section id="cart_items">
 		<div class="container">
 			<div class="breadcrumbs">
@@ -11,7 +11,7 @@
 			</div>
 			<?php 
 			if ($cartItems->isEmpty()) {
-				echo "<h1 align='center'>Cart is Empty</h1>";
+				echo "<h1 align='center' style='color:green'>Cart is Empty</h1>";
 			}else{
 			?>
 			
@@ -31,23 +31,28 @@
 						<tbody>
 							<tr>
 								<td class="cart_product">
-									<a href=""><img src="{{ url($image->path_thumb) }}" alt=""></a>
+								@foreach ($image as $img)
+									@if ($img->imagefirst->id_product == $cartItem->id)
+										<a href=""><img src="{{ url($img->imagefirst->path_thumb) }}" alt=""></a>
+									@endif
+								@endforeach
 								</td>
 								<td class="cart_description">
-									<h4><a href=""> &nbsp; {{ $cartItem->name }}</a></h4>
-									<p>&nbsp;Web ID: 1089772</p>
+									<h4><a href=""> &nbsp;&nbsp; {{ $cartItem->name }}</a></h4>
+									<p  style="border-left: 35px">&nbsp;&nbsp;Web ID: 1089772</p>
 								</td>
 								<td class="cart_price">
 									<p>Rp. {{ number_format($cartItem->price, 0, ',', '.') }}</p>
 								</td>
 								<td class="cart_quantity">
 									<div class="cart_quantity_button">
-										<form action="{{ url('/cart/update') }}/{{ $cartItem->id }}" method="get">
+										{!! Form::open(['url' => ['cart/update', $cartItem->rowId], 'method'=>'put']) !!}
 											<input type="button" value="-" onclick="minus{{$cartItem->id}}()">
-											<input type="text" value="{{$cartItem->qty}}" id="count{{$cartItem->id}}" onclick="count{{$cartItem->id}}" size="4">
+											<input type="text" value="{{ $cartItem->qty}}" name="qty" id="count{{$cartItem->id}}" size="4">
 											<input type="button" value="+" onclick="plus{{$cartItem->id}}()">
-											<input type="submit" class="btn btn-primary" value="Update" style="margin:5px">											
-										</form>
+											<br>
+											<input type="submit" class="btn btn-primary" value="Update" style="margin:5px">
+										{!! Form::close() !!}
 									</div>
 								</td>
 								<td class="cart_total">
@@ -142,7 +147,7 @@
 
 	<script>
 		@foreach ($cartItems as $cartItem)
-			var count{{$cartItem->id}} = 1;
+			var count{{$cartItem->id}} = {{$cartItem->qty}};
 			var countEl{{$cartItem->id}} = document.getElementById("count{{$cartItem->id}}");
 			function plus{{$cartItem->id}}() {
 				count{{$cartItem->id}}++;
