@@ -2,17 +2,20 @@
 
 Auth::routes();
 
-Route::get('/home', [
-  'as' => 'home.index', 'uses'=>  'HomeController@index']);
+// Route::get('/home', [
+//   'as' => 'home.index', 'uses'=>  'HomeController@index']);
 
-Route::get('/backend', 'HomeController@admin');
+// Route::group(['prefix'=>'admin', 'middleware'=>['auth', 'admin']], function() {
+//   Route::get('/', function() {
+//     return view('backend.index');
+//   });
+// });
+// Route::get('/backend', 'HomeController@index');
 
-Route::group(['namespace' => 'Front'], function() {
+// Panggil Controller di dalam folder Front dgn 'namespace'
+Route::group(['namespace' => 'Front'], function() { 
   Route::get('/', 'PagesController@index');
   
-  // Route::get('front', 'PageController@index');
-  // Route::get('shop', 'PageController@shop');
-  // Route::get('product_details/{id}', 'PageController@product_details');
   Route::get('cart', 'CartController@index');
   Route::get('cart/addItem/{id}', 'CartController@addItem');
 
@@ -23,8 +26,8 @@ Route::group(['namespace' => 'Front'], function() {
 
 
 // masuk ke link localhost:8000/admin/ dengan prefix
-Route::group(['prefix' => 'backend'], function() {
-
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function() {
+  Route::get('/', 'HomeController@index');
   // Controller Setting
   Route::group(['namespace' => 'backend'], function() {
 
@@ -123,13 +126,13 @@ Route::group(['prefix' => 'backend'], function() {
 });
 
 Route::group(['namespace' => 'Front'], function() {
-  Route::get('front', 'PageController@index');
-  Route::get('shop', 'PageController@shop');
-  Route::get('product_details/{id}', 'PageController@product_details');
-  Route::get('cart', 'CartController@index');
-  Route::get('cart/addItem/{id}', 'CartController@addItem');
+  // Route::get('front', 'PageController@index');
+  // Route::get('shop', 'PageController@shop');
+  // Route::get('product_details/{id}', 'PageController@product_details');
+  // Route::get('cart', 'CartController@index');
+  // Route::get('cart/addItem/{id}', 'CartController@addItem');
 
-  Route::get('/cart/remove/{id}', 'CartController@destroy');
-  Route::put('/cart/update/{id}', 'CartController@update');
+  // Route::get('/cart/remove/{id}', 'CartController@destroy');
+  // Route::put('/cart/update/{id}', 'CartController@update');
 
 });
