@@ -3,14 +3,15 @@
       <div class="container">
           <div class="row">
               <div class="col-lg-3 col-md-3">
-                  <div class="mainmenu-left visible-lg  visible-md">
+              {{-- fungsi class "checkout-page" untuk hidden menu agar tidak tampil sebelum di klik --}}
+                  <div class="mainmenu-left visible-lg checkout-page visible-md">
                       <div class="product-menu-title">
                           <h2>All categories <i class="fa fa-arrow-circle-down"></i></h2>
                       </div>
                       <div class="product_vmegamenu">
                           <ul>
                               <li>
-                                  <a href="index.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/1.png" alt="" />Home</a></li>
+                                  <a href="/"><img src="{{ url('public/aqsha/') }}/img/menu-l/1.png" alt="" />Home</a></li>
                               <li>
                                   <a href="shop.html"><img src="{{ url('public/aqsha/') }}/img/menu-l/2.png" alt="" />Hiasan Dinding</a></li>
                               <li>
@@ -39,7 +40,7 @@
                   <div class="mainmenu">
                       <nav>
                           <ul>
-                              <li class="active"><a href="index.html">home</a></li>
+                              <li class="active"><a href="{{ url('/') }}">home</a></li>
                               <li><a href="shop.html">bestseller</a></li>
                               <li><a href="shop.html">new product</a></li>
                               <li><a href="about.html">About Us</a></li>

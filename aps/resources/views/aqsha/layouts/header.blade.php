@@ -11,16 +11,27 @@
                 <div class="col-lg-9 col-md-9 col-sm-8">
                     <div class="header-top-right">
                         <ul>
-                            <li class="slide-toggle"><a href="account.html"><i class="fa fa-user"></i> My Account</a>
+                            <li class="slide-toggle"><a href="#">
+                                <i class="fa fa-user"></i> <?php if(Auth::check()) { echo Auth::user()->name; } else { echo " My Account"; }  ?></a>
                                 <ul class="show-toggle">
                                     <li><a href="account.html">register</a></li>
-                                    <li><a href="login.html">login</a></li> 
+                                    <li><a href="{{ url('/login') }}">login</a></li> 
                                 </ul>
                             </li>
                         </ul>
-                        <ul><li><a href="{{ url('/login') }}"><i class="fa fa-login"></i> login</a></li></ul>
                         <ul>
-                            <li><a href="checkout.html"><i class="fa fa-check"></i> Checkout</a></li>
+                            @if (Auth::guest())
+                                <li><a href="{{ url('/login') }}"><i class="fa fa-check"></i> Login</a></li>
+                                @else
+                                <li>
+                                <a href="{{ url('/logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();"><i class="fa fa-out"></i> Logout</a>
+                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                    </form>
+                               </li>
+                            @endif
                         </ul>
                         
                     </div>
@@ -68,10 +79,10 @@
                             <div class="top-cart-wrapper">
                                 <div class="block-cart">
                                     <div class="top-cart-title top-cart-title-2">
-                                        <a href="cart.html">
+                                        <a href="{{ url('cart') }}">
                                             <span class="title-cart">my cart</span>
                                             <span class="count-item">{{ Cart::count() }} items</span>
-                                            <span class="price">Rp {{ Cart::subtotal() }}</span>
+                                            {{-- <span class="price">Rp {{ Cart::subtotal() }}</span> --}}
                                         </a>
                                     </div>
                                     <div class="top-cart-content">

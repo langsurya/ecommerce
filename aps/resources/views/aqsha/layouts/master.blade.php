@@ -2,31 +2,33 @@
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
-      <meta charset="utf-8">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      <title>@yield('title')</title>
-      <meta name="description" content="">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@yield('title')</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <link rel="icon" href="{{ url('public/aqsha/') }}/img/favicon.png" />
-      <!-- Place favicon.ico in the root directory -->
+        <link rel="icon" href="{{ url('public/aqsha/') }}/img/favicon.png" />
+        <!-- Place favicon.ico in the root directory -->
             <!-- all css here -->
             <!-- bootstrap.min.css -->
-      <link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
             <!-- font-awesome.min.css -->
-      <link rel="stylesheet" href="{{ asset('public/aqsha/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/aqsha/css/font-awesome.min.css') }}">
             <!-- owl.carousel.css -->
-      <link rel="stylesheet" href="{{ asset('public/aqsha/css/owl.carousel.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/aqsha/css/owl.carousel.css') }}">
             <!-- owl.carousel.css -->
-      <link rel="stylesheet" href="{{ asset('public/aqsha/css/meanmenu.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/aqsha/css/meanmenu.min.css') }}">
             <!-- shortcode/shortcodes.css -->
-      <link rel="stylesheet" href="{{ asset('public/aqsha/css/shortcode/shortcodes.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/aqsha/css/shortcode/shortcodes.css') }}">
             <!-- nivo-slider.css -->
-      <link rel="stylesheet" href="{{ asset('public/aqsha/css/nivo-slider.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/aqsha/css/nivo-slider.css') }}">
             <!-- style.css -->
-      <link rel="stylesheet" href="{{ asset('public/aqsha/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/aqsha/style.css') }}">
             <!-- responsive.css -->
-      <link rel="stylesheet" href="{{ asset('public/aqsha/css/responsive.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/aqsha/css/responsive.css') }}">
+        @section('css')
+        @show
       <script src="{{ asset('public/aqsha/') }}/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
@@ -37,9 +39,7 @@
         <!-- mainmenu-area-start -->
         @include('aqsha.layouts.menu')               
         <!-- mainmenu-area-end -->
-        <!-- slider-area-start -->
-        @include('aqsha.widget.slider')
-        <!-- slider-area-end -->
+        
         @yield('content')
         <!-- newletter-area-start -->
         <div class="newletter-area ptb-30">
@@ -201,8 +201,9 @@
         </div>
         <!-- social_block-end -->
         
-        
         <!-- all js here -->
+        @section('js')
+        @show
         <!-- jquery-1.12.0 -->
         <script src="{{ asset('public/aqsha/js/vendor/jquery-1.12.0.min.js') }}"></script>
         <!-- bootstrap.min.js -->
