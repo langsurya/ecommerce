@@ -4,7 +4,7 @@
           <div class="row">
               <div class="col-lg-3 col-md-3">
               {{-- fungsi class "checkout-page" untuk hidden menu agar tidak tampil sebelum di klik --}}
-                  <div class="mainmenu-left visible-lg checkout-page visible-md">
+                  <div class="mainmenu-left visible-lg visible-md">
                       <div class="product-menu-title">
                           <h2>All categories <i class="fa fa-arrow-circle-down"></i></h2>
                       </div>
