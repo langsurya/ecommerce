@@ -14,24 +14,21 @@
                             <li class="slide-toggle"><a href="#">
                                 <i class="fa fa-user"></i> <?php if(Auth::check()) { echo Auth::user()->name; } else { echo " My Account"; }  ?></a>
                                 <ul class="show-toggle">
-                                    <li><a href="account.html">register</a></li>
-                                    <li><a href="{{ url('/login') }}">login</a></li> 
+                                    @if (Auth::guest())
+                                        <li><a href="{{ url('/register') }}">register</a></li>
+                                        <li><a href="{{ url('/login') }}">login</a></li> 
+                                        @else
+                                        <li>
+                                        <a href="{{ url('/logout') }}"
+                                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();"><i class="fa fa-out"></i> Logout</a>
+                                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                            </form>
+                                       </li>
+                                    @endif                                    
                                 </ul>
                             </li>
-                        </ul>
-                        <ul>
-                            @if (Auth::guest())
-                                <li><a href="{{ url('/login') }}"><i class="fa fa-check"></i> Login</a></li>
-                                @else
-                                <li>
-                                <a href="{{ url('/logout') }}"
-                                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();"><i class="fa fa-out"></i> Logout</a>
-                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                    </form>
-                               </li>
-                            @endif
                         </ul>
                         
                     </div>
@@ -46,7 +43,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <div class="logo">
-                        <a href="{{ url('/') }}"><img src="{{ url('public/aqsha/img/logo_2.png') }}" alt="" /></a>
+                        <a href="{{ url('/') }}"><img src="{{ url('public/aqsha/img/logo-lah.png') }}" alt="" /></a>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
