@@ -22,6 +22,9 @@ Route::group(['namespace' => 'Front'], function() {
   Route::get('/cart/remove/{id}', 'CartController@destroy');
   Route::put('/cart/update/{id}', 'CartController@update');
 
+  Route::get('/checkout', 'CheckoutController@index');
+  Route::post('/formvalidate', 'CheckoutController@formvalidate');
+
 });
 
 
