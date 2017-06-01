@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-4">
                     <div class="header-top-left">
-                        <span><a href="#">Call us toll free:</a>(+1)866-550-3669</span>
+                        <span><a href="#">Call us toll free:</a>(+62)xxx-xxx-xxxx</span>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-8">

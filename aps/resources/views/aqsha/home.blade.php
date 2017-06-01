@@ -95,7 +95,7 @@
                       </div>
                       <div class="product-content product-content-right">
                           <div class="pro-title">
-                              <h4><a href="product-details-mug.html">{{ $product->product_name }}</a></h4>
+                              <h4><a href="{{ url('product_detail/') }}/{{ $product->id }}">{{ $product->product_name }}</a></h4>
                           </div>
                           <div class="pro-rating ">
                               <a href="#"><i class="fa fa-star"></i></a>
