@@ -46,7 +46,7 @@
 												@endif
 											@endforeach
 											</td>
-											<td class="product-name"><a href="product-details.html">{{ $cartItem->name }}</a></td>
+											<td class="product-name"><a href="#">{{ $cartItem->name }}</a></td>
 											<td class="product-price"><span class="amount">Rp {{ number_format($cartItem->price, 2, ',', '.') }}</span></td>
 											<td class="product-quantity">
 												{!! Form::open(['url' => ['cart/update', $cartItem->rowId], 'method'=>'put']) !!}

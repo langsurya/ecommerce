@@ -79,7 +79,6 @@
                                         <a href="{{ url('cart') }}">
                                             <span class="title-cart">my cart</span>
                                             <span class="count-item">{{ Cart::count() }} items</span>
-                                            {{-- <span class="price">Rp {{ Cart::subtotal() }}</span> --}}
                                         </a>
                                     </div>
                                     <div class="top-cart-content">
@@ -87,7 +86,7 @@
                                             <!-- single item -->
                                             @foreach ($cartItems as $cartItem)
                                                 <li>
-                                                    <a class="product-image" href="product-details-gelang.html">
+                                                    <a class="product-image" href="#">
                                                     @foreach ($image as $img)
                                                         @if ($img->imagefirst->id_product == $cartItem->id)
                                                             <img src="{{ url($img->imagefirst->path_thumb) }}" alt="">
@@ -96,7 +95,7 @@
                                                     </a>
                                                     <div class="product-details">
                                                         <p class="cartproduct-name">
-                                                            <a href="product-details-gelang.html">{{ $cartItem->name }} </a>
+                                                            <a href="#">{{ $cartItem->name }} </a>
                                                         </p>
                                                         <strong class="qty">qty:{{ $cartItem->qty }}</strong>
                                                         <span class="sig-price">Rp {{ number_format($cartItem->price*$cartItem->qty, 2, ',', '.') }}</span>
