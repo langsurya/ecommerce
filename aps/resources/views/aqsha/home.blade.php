@@ -29,7 +29,7 @@
                 </div>
                 <div class="product-content">
                   <div class="pro-title">
-                    <h4><a href="product-details-lukisan-karang-1.html">Lukisan Karang</a></h4>
+                    <h4><a href="#">Lukisan Karang</a></h4>
                   </div>
                   <div class="pro-rating ">
                     <a href="#"><i class="fa fa-star"></i></a>
@@ -154,7 +154,7 @@
                     <span class="new">new</span>
                 </div>
             </div>
-            
+
             <div class="col-lg-8 col-md-8 col-sm-12 dotted-style-2 col_m  col-xs-12">
                 <div class="single-product-items-2-active ">
                     <div class="single-product-items-2">
