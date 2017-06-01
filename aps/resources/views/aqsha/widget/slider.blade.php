@@ -18,11 +18,11 @@
                 @foreach ($products as $product)
                   <div class="single-product single-product-sidebar white-bg">
                       <div class="product-img product-img-left">
-                          <a href="product-details-mangkuk-1.html"><img src="{{ $product->image()->first()->path_full }}" alt="" /></a>
+                          <a href="{{ url('product_detail/') }}/{{ $product->id }}"><img src="{{ $product->image()->first()->path_full }}" alt="" /></a>
                       </div>
                       <div class="product-content product-content-right">
                           <div class="pro-title">
-                              <h4><a href="product-details-mangkuk-1.html">{{ $product->product_name }}</a></h4>
+                              <h4><a href="{{ url('product_detail/') }}/{{ $product->id }}">{{ $product->product_name }}</a></h4>
                           </div>
                           <div class="pro-rating ">
                               <a href="#"><i class="fa fa-star"></i></a>

@@ -15,6 +15,7 @@ Auth::routes();
 // Panggil Controller di dalam folder Front dgn 'namespace'
 Route::group(['namespace' => 'Front'], function() { 
   Route::get('/', 'PagesController@index');
+  Route::get('/product_detail/{id}', 'PagesController@product_detail');
   
   Route::get('cart', 'CartController@index');
   Route::get('cart/addItem/{id}', 'CartController@addItem');

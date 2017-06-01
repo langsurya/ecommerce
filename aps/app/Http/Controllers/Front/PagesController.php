@@ -41,10 +41,12 @@ class PagesController extends Controller {
 	}
 
 
-	public function product_details($id) {
-		$products = \App\Models\Products\Product::find($id);
-								// dd($Products);
-		return view('front.shop.product_details', compact('products'));
+	public function product_detail($id) {
+		$this->data['products'] = \App\Models\Products\Product::find($id);
+		$this->data['images'] = \App\Models\Products\Gambar::get()->where('id_product', $id);
+		$this->data['cartItems'] = Cart::content();
+								// dd($this->data['images']);
+		return view('aqsha.product_details', $this->data );
 	}
 
 }

@@ -56,15 +56,16 @@
             </div>
             <div class="col-lg-8 col-md-8 col-sm-12 dotted-style-2 col_m  col-xs-12">
               <div class="single-product-items-2-active ">
+                {{-- tengah --}}
                 <div class="single-product-items-2">
                   @foreach ($productsk as $row_center)
                     <div class="single-product single-product-sidebar white-bg">
                       <div class="product-img product-img-left">
-                        <a href="product-details-mangkuk-1.html"><img src="{{ $row_center->image()->first()->path_full }}" alt="" /></a>
+                        <a href="{{ url('product_detail/') }}/{{ $row_center->id }}"><img src="{{ $row_center->image()->first()->path_full }}" alt="" /></a>
                       </div>
                       <div class="product-content product-content-right">
                         <div class="pro-title">
-                          <h4><a href="product-details-mangkuk-1.html">{{ $row_center->product_name }}</a></h4>
+                          <h4><a href="{{ url('product_detail/') }}/{{ $row_center->id }}">{{ $row_center->product_name }}</a></h4>
                         </div>
                         <div class="pro-rating ">
                           <a href="#"><i class="fa fa-star"></i></a>
@@ -85,11 +86,12 @@
                     </div>                                     
                   @endforeach
                 </div>
+                {{-- kanan --}}
                 <div class="single-product-items-2">
                   @foreach ($products as $product)
                     <div class="single-product single-product-sidebar white-bg">
                       <div class="product-img product-img-left">
-                      <a href="product-details-pot.html"><img src="{{ $product->image()->first()->path_full }}" alt="" /></a>
+                      <a href="{{ url('product_detail/') }}/{{ $product->id }}"><img src="{{ $product->image()->first()->path_full }}" alt="" /></a>
                       </div>
                       <div class="product-content product-content-right">
                           <div class="pro-title">
@@ -152,6 +154,7 @@
                     <span class="new">new</span>
                 </div>
             </div>
+            
             <div class="col-lg-8 col-md-8 col-sm-12 dotted-style-2 col_m  col-xs-12">
                 <div class="single-product-items-2-active ">
                     <div class="single-product-items-2">
