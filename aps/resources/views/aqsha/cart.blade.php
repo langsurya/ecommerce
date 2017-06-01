@@ -4,21 +4,7 @@
 	{{-- expr --}}
 @endsection
 @section('js')
-	<script>
-		@foreach ($cartItems as $cartItem)
-			var count{{$cartItem->id}} = {{$cartItem->qty}};
-			var countEl{{$cartItem->id}} = document.getElementById("count{{$cartItem->id}}");
-			function plus{{$cartItem->id}}() {
-				count{{$cartItem->id}}++;
-				countEl{{$cartItem->id}}.value = count{{$cartItem->id}};
-			}
-			function minus{{$cartItem->id}}() {
-				if (count{{$cartItem->id}} > 1) {
-					count{{$cartItem->id}}--;
-					countEl{{$cartItem->id}}.value = count{{$cartItem->id}};
-				}
-			}
-		@endforeach
+	{{-- script js --}}
 	</script>
 @endsection
 @section('content')
@@ -65,8 +51,7 @@
 											<td class="product-quantity">
 												{!! Form::open(['url' => ['cart/update', $cartItem->rowId], 'method'=>'put']) !!}
 												{{-- <input type="button" value="-" onclick="minus{{$cartItem->id}}()"> --}}
-												<input type="number" onclick="event.preventDefault();
-                           document.getElementById('qty-form').submit();" name="qty" id="count{{$cartItem->id}}" value="{{ $cartItem->qty }}" />
+												<input type="number" name="qty" value="{{ $cartItem->qty }}" />
 												<input type="submit" value="update">
 												{!! Form::close() !!}
 												{{-- <input type="button" value="+" onclick="plus{{$cartItem->id}}()"> --}}
