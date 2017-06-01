@@ -25,7 +25,7 @@
 
               <div class="single-product pt-30 pb-20 white-bg">
                 <div class="product-img pb-40">
-                	<a href="product-details-hiasan-1.html"><img src="{{ url('public/aqsha/') }}/img/product/lukisan karang.jpg" alt="" /></a>
+                	<a href="#"><img src="{{ url('public/aqsha/') }}/img/product/lukisan karang.jpg" alt="" /></a>
                 </div>
                 <div class="product-content">
                   <div class="pro-title">
