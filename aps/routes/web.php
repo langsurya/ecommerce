@@ -19,6 +19,7 @@ Route::group(['namespace' => 'Front'], function() {
   
   Route::get('cart', 'CartController@index');
   Route::get('cart/addItem/{id}', 'CartController@addItem');
+  Route::put('cart/addItemQty/{id}', 'CartController@addItemQty');
 
   Route::get('/cart/remove/{id}', 'CartController@destroy');
   Route::put('/cart/update/{id}', 'CartController@update');

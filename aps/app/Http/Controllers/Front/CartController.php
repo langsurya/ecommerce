@@ -34,6 +34,14 @@ class CartController extends Controller
   	return back();
   }
 
+  public function addItemQty(Request $request, $id) {
+    $products = Product::find($id);
+    // dd($products);
+    Cart::add($id, $products->product_name, $request->qty, $products->product_price);
+
+    return redirect('/');
+  }
+
   public function destroy($id) {
   	Cart::remove($id);
 

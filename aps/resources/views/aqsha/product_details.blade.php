@@ -23,7 +23,6 @@
 								<div class="tab-pane active" id="home">
 									<div class="pro-large-img">
 										<img src="{{ url('/') }}/{{ $images->first()->path_full }}" alt="" />
-										{{-- <a class="popup-link" href="img/product/produk4.jpg">View larger <i class="fa fa-search-plus" aria-hidden="true"></i></a> --}}
 									</div>
 								</div>
 							</div>
@@ -61,11 +60,13 @@
 								<p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!</p>
 							</div>
 							<div class="box-quantity">
-								<form action="#">
+							{!! Form::open(['url' => ['cart/addItemQty', $products->id], 'method'=>'put']) !!}
+								{{-- <form action="#"> --}}
 									<label>Quantity</label>	
-									<input type="number" value="1" />
-									<button>add to cart</button>
-								</form>
+									<input type="number" name="qty" value="1" />
+									<button type="submit">add to cart</button>
+								{{-- </form> --}}
+							{!! Form::close() !!}
 							</div>
 							<div class="usefull_link_block">
 								<ul>

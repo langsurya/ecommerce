@@ -43,9 +43,14 @@ class PagesController extends Controller {
 
 	public function product_detail($id) {
 		$this->data['products'] = \App\Models\Products\Product::find($id);
+		$this->data['image'] = Product::with([
+                  // 'image' 
+                ])
+                  ->take(12)->orderBy('created_at', 'asc')
+                  ->get();
 		$this->data['images'] = \App\Models\Products\Gambar::get()->where('id_product', $id);
 		$this->data['cartItems'] = Cart::content();
-								// dd($this->data['images']);
+								// dd($this->data['image']->first()->path_full);
 		return view('aqsha.product_details', $this->data );
 	}
 
