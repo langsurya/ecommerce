@@ -119,22 +119,22 @@
 					<div class="col-lg-12">
 						<div class="brand-active border-1">
 							<div class="single-brand">
-								<a href="#"><img src="img/brand/1.jpg" alt="" /></a>
+								<a href="#"><img src="{{ url('public/aqsha/') }}/img/brand/1.jpg" alt="" /></a>
 							</div>
 							<div class="single-brand">
-								<a href="#"><img src="img/brand/2.jpg" alt="" /></a>
+								<a href="#"><img src="{{ url('public/aqsha/') }}/img/brand/2.jpg" alt="" /></a>
 							</div>
 							<div class="single-brand">
-								<a href="#"><img src="img/brand/3.jpg" alt="" /></a>
+								<a href="#"><img src="{{ url('public/aqsha/') }}/img/brand/3.jpg" alt="" /></a>
 							</div>
 							<div class="single-brand">
-								<a href="#"><img src="img/brand/4.jpg" alt="" /></a>
+								<a href="#"><img src="{{ url('public/aqsha/') }}/img/brand/4.jpg" alt="" /></a>
 							</div>
 							<div class="single-brand">
-								<a href="#"><img src="img/brand/5.jpg" alt="" /></a>
+								<a href="#"><img src="{{ url('public/aqsha/') }}/img/brand/5.jpg" alt="" /></a>
 							</div>
 							<div class="single-brand">
-								<a href="#"><img src="img/brand/6.jpg" alt="" /></a>
+								<a href="#"><img src="{{ url('public/aqsha/') }}/img/brand/6.jpg" alt="" /></a>
 							</div>
 						</div>
 					</div>
