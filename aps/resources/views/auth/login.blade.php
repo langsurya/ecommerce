@@ -60,7 +60,7 @@
                                     <a href="{{ url('/password/reset') }}" class="lost_password">Lost your password?</a>                               
                                         <input type="checkbox" name="remember">
                                         Remember me
-                                    </label>                                
+                                    </label>
                                     <input value="Login" type="submit">
                                 </div>                              
                             </form>

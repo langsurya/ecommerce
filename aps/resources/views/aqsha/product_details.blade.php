@@ -7,7 +7,7 @@
 			<div class="container">
 				<ol class="breadcrumb">
 				  <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
-				  <li class="active">Product Details </li>
+				  <li class="active">Product Details</li>
 				</ol>			
 			</div>
 		</div>

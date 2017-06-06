@@ -54,4 +54,9 @@ class PagesController extends Controller {
 		return view('aqsha.product_details', $this->data );
 	}
 
+	public function profile() {
+		$this->data['cartItems'] = Cart::content();
+		return view('aqsha.profile', $this->data);
+	}
+
 }

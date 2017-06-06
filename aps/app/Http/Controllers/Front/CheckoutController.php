@@ -12,6 +12,8 @@ use App\Models\Products\Product;
 use App\Models\Products\Gambar;
 use App\Models\Address;
 
+use App\Models\orders;
+
 class CheckoutController extends Controller
 {
   public function index() {
@@ -54,7 +56,11 @@ class CheckoutController extends Controller
    	$address->user_id = $userid;
    	$address->notes = $request->notes;
    	$address->phone = $request->phone;
+    $address->payment_type = $request->pay;
    	$address->save();
-   	dd('done');
+
+    orders::createOrder();
+    Cart::destroy();
+    return redirect('profile');
   }
 }

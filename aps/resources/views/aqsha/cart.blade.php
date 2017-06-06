@@ -65,7 +65,7 @@
 							</div>
 							<div class="row">
 								<div class="col-md-9 col-sm-7 col-xs-12">
-									<div class="buttons-cart">
+									{{-- <div class="buttons-cart">
 										<input type="submit" value="Update Cart" />
 										<a href="{{ url('/') }}">Continue Shopping</a>
 									</div>
@@ -74,7 +74,7 @@
 										<p>Enter your coupon code if you have one.</p>
 										<input type="text" placeholder="Coupon code" />
 										<input type="submit" value="Apply Coupon" />
-									</div>
+									</div> --}}
 								</div>
 								<div class="col-md-3 col-sm-5 col-xs-12">
 									<div class="cart_totals">

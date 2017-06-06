@@ -27,6 +27,7 @@ Route::group(['namespace' => 'Front'], function() {
 
   Route::get('/checkout', 'CheckoutController@index');
   Route::post('/formvalidate', 'CheckoutController@formvalidate');
+  Route::get('/profile', 'PagesController@profile');
 
 });
 

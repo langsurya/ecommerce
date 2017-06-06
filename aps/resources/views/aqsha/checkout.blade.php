@@ -98,14 +98,14 @@
 									<div class="country-select">
 										<label>Country <span class="required">*</span></label>
 										<select name="country">
-										  <option value="volvo">bangladesh</option>
-										  <option value="saab">Algeria</option>
-										  <option value="mercedes">Afghanistan</option>
-										  <option value="audi">Ghana</option>
-										  <option value="audi2">Albania</option>
-										  <option value="audi3">Bahrain</option>
-										  <option value="audi4">Colombia</option>
-										  <option value="audi5">Dominican Republic</option>
+										  <option >bangladesh</option>
+										  <option >Algeria</option>
+										  <option >Afghanistan</option>
+										  <option >Ghana</option>
+										  <option >Albania</option>
+										  <option >Bahrain</option>
+										  <option >Colombia</option>
+										  <option >Dominican Republic</option>
 										</select> 										
 									</div>
 								</div>
@@ -139,6 +139,16 @@
 										<textarea id="checkout-mess" name="notes" cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery." >{{ old('notes') }}</textarea>
 									</div>									
 								</div>
+								<div class="col-md-12">
+									<div class="country-select">
+										<label>Type Pembayaran <span class="required">*</span></label>
+										<select name="pay">
+										  <option value="cod">COD</option>
+										  <option value="transfer">Transfer Bank</option>
+										  <option value="paypal">Paypal</option>
+										</select> 										
+									</div>
+								</div>
 								{{-- <div class="col-md-12">
 									<div class="checkout-form-list create-acc">	
 										<input id="cbox" type="checkbox" />
@@ -152,7 +162,7 @@
 								</div> --}}								
 							</div>																			
 						</div>
-					</div>	
+					</div>
 					<div class="col-lg-6 col-md-6">
 						<div class="your-order">
 							<h3>Your order</h3>
@@ -165,31 +175,33 @@
 										</tr>							
 									</thead>
 									<tbody>
+									@foreach ($cartItems as $cartItem)
 										<tr class="cart_item">
 											<td class="product-name">
-												Vestibulum suscipit <strong class="product-quantity"> X 1</strong>
+												{{ $cartItem->name }} <strong class="product-quantity"> X 1</strong>
 											</td>
 											<td class="product-total">
-												<span class="amount">$165.00</span>
+												<span class="amount">{{ number_format($cartItem->price, '0', ',', '.') }}</span>
 											</td>
 										</tr>
-										<tr class="cart_item">
+									@endforeach
+										{{-- <tr class="cart_item">
 											<td class="product-name">
 												Vestibulum dictum magna	<strong class="product-quantity"> X 1</strong>
 											</td>
 											<td class="product-total">
 												<span class="amount">$50.00</span>
 											</td>
-										</tr>
+										</tr> --}}
 									</tbody>
 									<tfoot>
 										<tr class="cart-subtotal">
 											<th>Cart Subtotal</th>
-											<td><span class="amount">$215.00</span></td>
+											<td><span class="amount">{{ Cart::subtotal() }}</span></td>
 										</tr>
 										<tr class="order-total">
 											<th>Order Total</th>
-											<td><strong><span class="amount">$215.00</span></strong>
+											<td><strong><span class="amount">{{ Cart::total() }}</span></strong>
 											</td>
 										</tr>								
 									</tfoot>
@@ -247,7 +259,7 @@
 								</div>
 							</div>
 						</div>
-					</div>	
+					</div>
 				</form>
 			</div>
 		</div>
@@ -267,22 +279,22 @@
 				<div class="col-lg-12">
 					<div class="brand-active border-1">
 						<div class="single-brand">
-							<a href="#"><img src="img/brand/1.jpg" alt="" /></a>
+							<a href="#"><img src="{{ url('/public/aqsha/') }}/img/brand/1.jpg" alt="" /></a>
 						</div>
 						<div class="single-brand">
-							<a href="#"><img src="img/brand/2.jpg" alt="" /></a>
+							<a href="#"><img src="{{ url('/public/aqsha/') }}/img/brand/2.jpg" alt="" /></a>
 						</div>
 						<div class="single-brand">
-							<a href="#"><img src="img/brand/3.jpg" alt="" /></a>
+							<a href="#"><img src="{{ url('/public/aqsha/') }}/img/brand/3.jpg" alt="" /></a>
 						</div>
 						<div class="single-brand">
-							<a href="#"><img src="img/brand/4.jpg" alt="" /></a>
+							<a href="#"><img src="{{ url('/public/aqsha/') }}/img/brand/4.jpg" alt="" /></a>
 						</div>
 						<div class="single-brand">
-							<a href="#"><img src="img/brand/5.jpg" alt="" /></a>
+							<a href="#"><img src="{{ url('/public/aqsha/') }}/img/brand/5.jpg" alt="" /></a>
 						</div>
 						<div class="single-brand">
-							<a href="#"><img src="img/brand/6.jpg" alt="" /></a>
+							<a href="#"><img src="{{ url('/public/aqsha/') }}/img/brand/6.jpg" alt="" /></a>
 						</div>
 					</div>
 				</div>
@@ -305,7 +317,7 @@
 					<div class="col-lg-12">
 						<div class="single-blog">
 							<div class="blog-img">
-								<img src="img/blog/1.jpg" alt="" />
+								<img src="{{ url('/public/aqsha') }}/img/blog/1.jpg" alt="" />
 							</div>
 							<div class="blog-content-inner">
 								<div class="blog-content white-bg">
@@ -319,7 +331,7 @@
 					<div class="col-lg-12">
 						<div class="single-blog">
 							<div class="blog-img">
-								<img src="img/blog/2.jpg" alt="" />
+								<img src="{{ url('/public/aqsha') }}/img/blog/2.jpg" alt="" />
 							</div>
 							<div class="blog-content-inner">
 								<div class="blog-content white-bg">
@@ -333,7 +345,7 @@
 					<div class="col-lg-12">
 						<div class="single-blog">
 							<div class="blog-img">
-								<img src="img/blog/3.jpg" alt="" />
+								<img src="{{ url('/public/aqsha') }}/img/blog/3.jpg" alt="" />
 							</div>
 							<div class="blog-content-inner">
 								<div class="blog-content white-bg">
