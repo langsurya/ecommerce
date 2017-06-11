@@ -66,22 +66,67 @@
                             </form>
                         </div>
                     </div>
-                    {{-- <div class="col-md-6 col-lg-6 col-sm-6">
-                        <div class="form-fields pb-30">
-                            <h2>Register</h2>
-                            <p>
-                                <label>Email address  <span class="required">*</span></label>
-                                <input type="text">
-                            </p>
-                            <p>
-                                <label>Password <span class="required">*</span></label>
-                                <input type="password">
-                            </p>
-                        </div>
-                        <div class="form-action floatright">
-                            <input value="Register" type="submit">
-                        </div>
-                    </div> --}}
+                    <div class="col-md-6 col-lg-6 col-sm-6">
+                        <form  role="form" method="POST" action="{{ url('/register') }}">
+                            {{ csrf_field() }}
+                            <div class="form-fields pb-30">
+                                <h2>Register</h2>
+                                <p>
+                                    <label>Full Name  <span class="required">*</span></label>
+                                    <input type="text" name="name" value="{{ old('name') }}" required autofocus>
+
+                                    @if ($errors->has('name'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
+                                </p>
+                                <p>
+                                    <label>Username  <span class="required">*</span></label>
+                                    <input type="text"  name="username" value="{{ old('username') }}" required autofocus>
+
+                                    @if ($errors->has('username'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('username') }}</strong>
+                                        </span>
+                                    @endif
+                                </p>
+                                <p>
+                                    <label>Email address  <span class="required">*</span></label>
+                                    <input type="email" name="email" value="{{ old('email') }}" required>
+
+                                    @if ($errors->has('email'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                                    @endif
+                                </p>
+                                <p>
+                                    <label>Password <span class="required">*</span></label>
+                                    <input type="password" name="password" required>
+
+                                    @if ($errors->has('password'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                    @endif
+                                </p>
+                                <p>
+                                    <label>Confirm Password <span class="required">*</span></label>
+                                    <input type="password" name="password_confirmation" required>
+
+                                    @if ($errors->has('password_confirmation'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                        </span>
+                                    @endif
+                                </p>
+                            </div>
+                            <div class="form-action floatright">
+                                <input value="Register" type="submit">
+                            </div>                            
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

@@ -12,6 +12,11 @@ use DB;
 
 class PagesController extends Controller {
 
+	public function __construct() {
+
+		$this->data['cartItems'] = Cart::content();	
+	}
+
 	/**
 	 * Display a listing of the resurce.
 	 * 
@@ -24,7 +29,6 @@ class PagesController extends Controller {
 
 		// $this->data['featured_products'] = \App\Models\Products\Product::paginate(12);
 
-		$this->data['cartItems'] = Cart::content();
 		$this->data['image'] = Product::with([
                   // 'image' 
                 ])
@@ -55,8 +59,13 @@ class PagesController extends Controller {
 	}
 
 	public function profile() {
-		$this->data['cartItems'] = Cart::content();
+
 		return view('aqsha.profile', $this->data);
+	}
+
+	public function about() {
+
+		return view('aqsha.about', $this->data);
 	}
 
 }

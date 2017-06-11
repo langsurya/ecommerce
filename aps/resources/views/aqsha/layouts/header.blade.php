@@ -15,7 +15,6 @@
                                 <i class="fa fa-user"></i> <?php if(Auth::check()) { echo Auth::user()->name; } else { echo " My Account"; }  ?></a>
                                 <ul class="show-toggle">
                                     @if (Auth::guest())
-                                        <li><a href="{{ url('/register') }}">register</a></li>
                                         <li><a href="{{ url('/login') }}">login</a></li> 
                                         @else
                                         <li>

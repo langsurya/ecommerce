@@ -1,7 +1,7 @@
 <?php
 
 Auth::routes();
-
+// view form login ada di vendor AuthenticatesUsers.com
 // Route::get('/home', [
 //   'as' => 'home.index', 'uses'=>  'HomeController@index']);
 
@@ -15,7 +15,7 @@ Auth::routes();
 // Panggil Controller di dalam folder Front dgn 'namespace'
 Route::group(['namespace' => 'Front'], function() { 
   Route::get('/', 'PagesController@index');
-  Route::get('/logins', 'PagesController@login');
+  // Route::get('/logins', 'PagesController@login');
   Route::get('/product_detail/{id}', 'PagesController@product_detail');
   
   Route::get('cart', 'CartController@index');
@@ -28,6 +28,7 @@ Route::group(['namespace' => 'Front'], function() {
   Route::get('/checkout', 'CheckoutController@index');
   Route::post('/formvalidate', 'CheckoutController@formvalidate');
   Route::get('/profile', 'PagesController@profile');
+  Route::get('/about', 'PagesController@about');
 
 });
 
