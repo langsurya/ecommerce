@@ -149,11 +149,11 @@ NOTE: This is product-tab style file. All product-tab related style included in 
   font-size: 17px;
   height: 25px;
   left: 8px;
-  line-height: 20px;
+  line-height: 25px;
   opacity: 0;
   position: absolute;
   text-align: center;
-  top: 48%;
+  top: 30%;
   width: 25px;
 }
 .dotted-style-1 .owl-carousel:hover .owl-controls .owl-nav div{
