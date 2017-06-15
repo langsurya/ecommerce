@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend\Otorisasi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Models\Users;
 
 class PenggunaController extends Controller
 {
@@ -15,7 +16,8 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-      return view('backend.otorisasi.pengguna.index');
+        $users = Users::where('admin', '=', 1)->get();
+        return view('backend.otorisasi.pengguna.index',  compact('users'));
     }
 
     /**

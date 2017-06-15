@@ -72,10 +72,11 @@
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach ($users as $user)
                       <tr role="row" class="odd">
                         <td class="sorting_1">1</td>
-                        <td>admin</td>
-                        <td>admin@gmail.com</td>
+                        <td>{{ $user->username }}</td>
+                        <td>{{ $user->email }}</td>
                         <td>Admin</td>
                         <td>
                           <small class="label label-primary">Active</small>
@@ -86,20 +87,7 @@
                           <a href="#" class="fa fa-trash"></a>
                         </td>
                       </tr>
-                      <tr role="row" class="odd">
-                        <td class="sorting_1">1</td>
-                        <td>user</td>
-                        <td>user@gmail.com</td>
-                        <td>Kasir</td>
-                        <td>
-                            <small class="label label-primary">Active</small>
-                        </td>
-                        <td>
-                          <a href="#" class="fa fa-eye"></a>
-                          <a href="#" class="fa fa-edit"></a>
-                          <a href="#" class="fa fa-trash"></a>
-                        </td>
-                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

@@ -24,10 +24,15 @@ class PagesController extends Controller {
 	 */
 	public function index() {
 		// ambil data Product
-		$this->data['products'] = \App\Models\Products\Product::orderBy('id', 'DESC')->limit(3)->offset(0)->get(); // get() or pageinate() or all()
-		$this->data['productsk'] = \App\Models\Products\Product::orderBy('id', 'DESC')->limit(3)->offset(3)->get();
+		$this->data['products'] = \App\Models\Products\Product::orderBy('id', 'DESC')
+															->limit(3)->offset(0)->get(); // get() or pageinate() or all()
+		$this->data['productsk'] = \App\Models\Products\Product::orderBy('id', 'DESC')
+															->limit(3)->offset(3)->get();
+		$this->data['featurs'] = \App\Models\Products\Product::orderBy('id', 'DESC')
+															->limit(6)->offset(0)->get();
 
-		// $this->data['featured_products'] = \App\Models\Products\Product::paginate(12);
+		$this->data['date'] = DB::select('SELECT DAY(created_at) FROM product');
+                // dd($this->data['date']);
 
 		$this->data['image'] = Product::with([
                   // 'image' 

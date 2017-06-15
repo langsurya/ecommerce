@@ -47,18 +47,51 @@
           <div class="box-body">
             <div class="nav-tabs-custom">
               <ul class="nav nav-tabs">
-                <li class=""><a href="#semua" data-toggle="tab" aria-expanded="false">Semua <span class="badge">50</span></a></li>
-                <li class=""><a href="#blmbayar" data-toggle="tab" aria-expanded="false">Belum Bayarn <span class="badge">15</span></a></li>
-                <li class="active"><a href="#diperiksa" data-toggle="tab" aria-expanded="true">Diperiksa Finance <span class="badge">3</span></a></li>
+                <li class="active"><a href="#semua" data-toggle="tab" aria-expanded="false">Semua <span class="badge">50</span></a></li>
+                <li class=""><a href="#blmbayar" data-toggle="tab" aria-expanded="false">Belum Bayar <span class="badge">15</span></a></li>
+                <li><a href="#diperiksa" data-toggle="tab" aria-expanded="true">Diperiksa Finance <span class="badge">3</span></a></li>
                 <li><a href="#dikemas" data-toggle="tab" aria-expanded="true">Belum Dikemas <span class="badge">7</span></a></li>
                 <li><a href="#dikirim" data-toggle="tab" aria-expanded="true">Belum Dikirim <span class="badge">7</span></a></li>
                 <li><a href="#selesai" data-toggle="tab" aria-expanded="true">Selesai <span class="badge">4</span></a></li>
                 <li><a href="#batal" data-toggle="tab" aria-expanded="true">Batal <span class="badge">2</span></a></li>
               </ul>
               <div class="tab-content">
-                <div class="tab-pane" id="semua">
+                <div class="tab-pane active" id="semua">
                   <!-- table -->
-                  semua
+                  <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header pull-right">
+              <h3 class="box-title">
+              <a href="{{ url('/admin/pelanggan/create') }}" class="btn btn-block btn-primary"><span class="fa fa-plus"></span> Pelanggan</a>
+            </h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row">
+                  {{-- <div class="col-sm-6"></div> --}}
+                </div>
+                <div class="row">
+                  <div class="col-sm-4">PO
+                    
+                  </div>
+                  <div class="col-sm-4">Barang
+                    
+                  </div>
+                  <div class="col-sm-4">Status Transaksi
+                    
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+        </div>
+      </div>
+    </section>
                   <!-- /.table -->
                 </div>
                 <!-- /.tab-pane -->
@@ -68,7 +101,7 @@
                 </div>
                 <!-- /.tab-pane -->
 
-                <div class="tab-pane active" id="diperiksa">
+                <div class="tab-pane" id="diperiksa">
                   <form class="form-horizontal">
                     <div class="form-group">
                       <label for="inputName" class="col-sm-2 control-label">Name</label>
