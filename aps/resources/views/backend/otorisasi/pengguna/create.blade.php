@@ -1,14 +1,20 @@
 @extends('backend.layouts.master')
-@section('title','Ekspedisi')
+@section('title','Pengguna')
+@section('css')
+  {{-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"> --}}
+  <link rel="stylesheet" href="{{ asset('public/css/bootstrap-toggle.min.css') }}">
+@endsection
 @section('js')
-  <script>
+{{-- Bootstrap toggle --}}
+<script src="{{ asset('public/js/bootstrap-toggle.min.js') }}"></script>
+ {{--  <script>
   $(function() {
     $('#toggle-two').bootstrapToggle({
       on: 'Active',
-      off: 'Banned'
+      off: 'Null'
     });
   })
-  </script>
+  </script> --}}
 @endsection
 @section('content')
   <!-- Content Header (Page header) -->
@@ -21,7 +27,7 @@
 
   <!-- Main Content -->
   <section class="content">
-    {!! Form::open(array('route' => 'ekspedisi.store','method'=>'POST')) !!}
+    {!! Form::open(array('route' => 'pengguna.store','method'=>'POST')) !!}
   		@include('backend.otorisasi.pengguna.form')
   	{!! Form::close() !!}
   </section>

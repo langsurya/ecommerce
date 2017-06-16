@@ -44,7 +44,22 @@ class PenggunaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'username' => 'required|unique:users',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6',
+            'admin' => 'required',
+        ]);
+        // return User::create($request->all());
+        // User::create([
+        //     'name' => $data['name'],
+        //     'username' => $data['username'],
+        //     'email' => $data['email'],
+        //     'password' => bcrypt($data['password']),
+        //     'admin' => $data['admin'],
+        // ]);
+        return $request['name'];
     }
 
     /**

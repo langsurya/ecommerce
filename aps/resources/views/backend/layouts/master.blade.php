@@ -8,8 +8,7 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="{{ asset('public/assets/bootstrap/css/bootstrap.min.css') }}">
-  {{-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"> --}}
-  <link rel="stylesheet" href="{{ asset('public/css/bootstrap-toggle.min.css') }}">
+  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
@@ -60,8 +59,7 @@
 <script src="{{ asset('public/assets/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="{{ asset('public/assets/bootstrap/js/bootstrap.min.js') }}"></script>
-{{-- Bootstrap toggle --}}
-<script src="{{ asset('js/bootstrap-toggle.min.js') }}"></script>
+
 <!-- Select2 -->
 <script src="{{ asset('public/assets/plugins/select2/select2.full.min.js') }}"></script>
 

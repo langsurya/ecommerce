@@ -345,14 +345,15 @@
             <div class="section-title">
               <h3>Featured Products</h3>
             </div>
-            <div class="new-product-active border-1">               
-              <div class="single-product  white-bg">
+            <div class="new-product-active border-1">
+            @foreach ($featurs as $featur)            
+              <div class="single-product white-bg">
                 <div class="product-img product-20">
-                  <a href="product-details-mug.html"><img src="{{ url('public/aqsha/') }}/img/product/Mug.jpg" alt="" /></a>
+                  <a href="{{ url('product_detail/') }}/{{ $featur->id }}"><img src="{{ $featur->image()->first()->path_full }}" alt="" /></a>
                 </div>
                 <div class="product-content product-i">
                   <div class="pro-title">
-                    <h4><a href="#">Mug</a></h4>
+                    <h4><a href="{{ url('product_detail/') }}/{{ $featur->id }}">{{ $featur->product_name }}">{{ $featur->product_name }}</a></h4>
                   </div>
                   <div class="pro-rating ">
                     <a href="#"><i class="fa fa-star"></i></a>
@@ -362,11 +363,11 @@
                     <a href="#"><i class="fa fa-star"></i></a>
                   </div>
                   <div class="price-box">
-                    <span class="price product-price">Rp 150.000,00</span>
+                    <span class="price product-price">Rp {{ number_format($featur->product_price, 2, ",", ".") }}</span>
                   </div>
                   <div class="product-icon">
                     <div class="product-icon-left f-left">
-                      <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                      <a href="{{ url('/cart/addItem')}}/{{ $featur->id }}"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
                     </div>
                     <div class="product-icon-right floatright">
                       <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
@@ -376,66 +377,7 @@
                 </div>
                 <span class="new">new</span>
               </div>
-              <div class="single-product  white-bg">
-                <div class="product-img product-20">
-                  <a href="#"><img src="{{ url('public/aqsha/') }}/img/product/mangkuk keramik.jpg" alt="" /></a>
-                </div>  
-                <div class="product-content product-i">
-                  <div class="pro-title">
-                    <h4><a href="product-details-mangkuk-1.html">Mangkuk Keramik 20cm</a></h4>
-                  </div>
-                  <div class="pro-rating ">
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </div>
-                  <div class="price-box">
-                    <span class="price product-price">Rp 350.000,00</span>
-                  </div>
-                  <div class="product-icon">
-                    <div class="product-icon-left f-left">
-                      <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                    </div>
-                    <div class="product-icon-right floatright">
-                      <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                      <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              @for ($i = 1; $i < 5; $i++)
-              <div class="single-product  white-bg">
-                <div class="product-img product-20">
-                  <a href="product-details-pot.html"><img src="{{ url('public/aqsha/') }}/img/product/keramik pot.jpg" alt="" /></a>
-                </div>
-                <div class="product-content product-i">
-                  <div class="pro-title">
-                    <h4><a href="product-details-mug.html">Keramik Pot</a></h4>
-                  </div>
-                  <div class="pro-rating ">
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </div>
-                  <div class="price-box">
-                    <span class="price product-price">Rp 800.000,00</span>
-                  </div>
-                  <div class="product-icon">
-                    <div class="product-icon-left f-left">
-                      <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                    </div>
-                    <div class="product-icon-right floatright">
-                      <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                      <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              @endfor
+            @endforeach
             </div>
             <div class="new-product-active">
               @foreach ($featurs as $featur)
@@ -469,152 +411,7 @@
                 </div>
                 <span class="new">new </span>
               </div>
-              @endforeach            
-              {{-- <div class="single-product  white-bg">
-                <div class="product-img product-20">
-                  <a href="product-details-mangkuk-1.html"><img src="{{ url('public/aqsha/') }}/img/product/mangkuk keramik.jpg" alt="" /></a>
-                </div>  
-                <div class="product-content product-i">
-                  <div class="pro-title">
-                    <h4><a href="product-details-mangkuk-1.html">Mangkuk Keramik 20cm</a></h4>
-                  </div>
-                  <div class="pro-rating ">
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </div>
-                  <div class="price-box">
-                    <span class="price product-price">Rp 350.000,00</span>
-                  </div>
-                  <div class="product-icon">
-                    <div class="product-icon-left f-left">
-                      <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                    </div>
-                    <div class="product-icon-right floatright">
-                      <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                      <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="single-product  white-bg">
-                <div class="product-img product-20">
-                  <a href="product-details-pot.html"><img src="{{ url('public/aqsha/') }}/img/product/keramik pot.jpg" alt="" /></a>
-                </div>
-                <div class="product-content product-i">
-                  <div class="pro-title">
-                    <h4><a href="product-details-mug.html">Keramik Pot</a></h4>
-                  </div>
-                  <div class="pro-rating ">
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </div>
-                  <div class="price-box">
-                    <span class="price product-price">Rp 800.000,00</span>
-                  </div>
-                  <div class="product-icon">
-                    <div class="product-icon-left f-left">
-                      <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                    </div>
-                    <div class="product-icon-right floatright">
-                      <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                      <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="single-product  white-bg">
-                <div class="product-img product-20">
-                  <a href="product-details-pot.html"><img src="{{ url('public/aqsha/') }}/img/product/keramik pot.jpg" alt="" /></a>
-                </div>
-                <div class="product-content product-i">
-                  <div class="pro-title">
-                    <h4><a href="product-details-mug.html">Keramik Pot</a></h4>
-                  </div>
-                  <div class="pro-rating ">
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </div>
-                  <div class="price-box">
-                    <span class="price product-price">Rp 800.000,00</span>
-                  </div>
-                  <div class="product-icon">
-                    <div class="product-icon-left f-left">
-                      <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                    </div>
-                    <div class="product-icon-right floatright">
-                      <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                      <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="single-product  white-bg">
-                <div class="product-img product-20">
-                  <a href="product-details-pot.html"><img src="{{ url('public/aqsha/') }}/img/product/keramik pot.jpg" alt="" /></a>
-                </div>
-                <div class="product-content product-i">
-                  <div class="pro-title">
-                    <h4><a href="product-details-mug.html">Keramik Pot</a></h4>
-                  </div>
-                  <div class="pro-rating ">
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </div>
-                  <div class="price-box">
-                    <span class="price product-price">Rp 800.000,00</span>
-                  </div>
-                  <div class="product-icon">
-                    <div class="product-icon-left f-left">
-                      <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                    </div>
-                    <div class="product-icon-right floatright">
-                      <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                      <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="single-product  white-bg">
-                <div class="product-img product-20">
-                  <a href="product-details-pot.html"><img src="{{ url('public/aqsha/') }}/img/product/keramik pot.jpg" alt="" /></a>
-                </div>
-                <div class="product-content product-i">
-                  <div class="pro-title">
-                    <h4><a href="product-details-mug.html">Keramik Pot</a></h4>
-                  </div>
-                  <div class="pro-rating ">
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                    <a href="#"><i class="fa fa-star"></i></a>
-                  </div>
-                  <div class="price-box">
-                    <span class="price product-price">Rp 800.000,00</span>
-                  </div>
-                  <div class="product-icon">
-                    <div class="product-icon-left f-left">
-                      <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                    </div>
-                    <div class="product-icon-right floatright">
-                      <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                      <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div> --}}
+              @endforeach
             </div>
           </div>
         </div>

@@ -123,12 +123,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     });
 
     Route::group(['namespace' => 'Otorisasi'], function() {
-      Route::get('pengguna', [
-        'as' => 'pengguna.index', 'uses' => 'PenggunaController@index'
-      ]);
-      Route::get('pengguna/create', [
-        'as' => 'pengguna.create', 'uses' => 'PenggunaController@create'
-      ]);
+      Route::resource('pengguna', 'PenggunaController');
     });
   });
 });

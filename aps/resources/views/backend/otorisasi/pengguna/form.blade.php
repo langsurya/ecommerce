@@ -14,20 +14,48 @@
   <div class="box-body" style="display: block;">
     <div class="row">
       <div class="col-md-12">
+        <div class="form-group">
+          <label>Full Name</label>
+          {!! Form::text('name', null, array('placeholder' => 'Full name','class' => 'form-control')) !!}
+        </div>
+        @if ($errors->has('name'))
+          <span class="help-block">
+              <strong>{{ $errors->first('name') }}</strong>
+          </span>
+        @endif       
         {{-- row 1 col 3 --}}
         <div class="form-group">
           <label>Username</label>
-          {!! Form::text('name', null, array('placeholder' => 'username','class' => 'form-control')) !!}
+          {!! Form::text('username', null, array('placeholder' => 'username','class' => 'form-control')) !!}
         </div>
+        @if ($errors->has('username'))
+          <span class="help-block">
+              <strong>{{ $errors->first('username') }}</strong>
+          </span>
+        @endif
         {{-- /.form-group --}}
         <div class="form-group">
           <label>Email</label>
           {!! Form::email('email', null, ['placeholder' => 'Email','class' => 'form-control']) !!}
         </div>
+        @if ($errors->has('email'))
+          <span class="help-block">
+              <strong>{{ $errors->first('email') }}</strong>
+          </span>
+        @endif
         <!-- /.form-group -->
         <div class="form-group">
+          <label>Password</label>
+          {!! Form::text('password', null, array('placeholder' => 'password','class' => 'form-control')) !!}
+        </div>
+        @if ($errors->has('password'))
+          <span class="help-block">
+              <strong>{{ $errors->first('password') }}</strong>
+          </span>
+        @endif
+        <div class="form-group">
           <label>Status</label><br>
-          {{ Form::checkbox('status', 0, null, ['data-toggle' => 'toggle', 'data-on'=>'Active', 'data-off'=>'Banned']) }}
+          {{ Form::checkbox('admin', 0, null, ['data-toggle' => 'toggle', 'data-on'=>'Admin', 'data-off'=>'User']) }}
           {{-- <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled"> --}}
         </div>
         <!-- /.form-group -->
