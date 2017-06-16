@@ -59,39 +59,39 @@
                 <div class="tab-pane active" id="semua">
                   <!-- table -->
                   <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header pull-right">
-              <h3 class="box-title">
-              <a href="{{ url('/admin/pelanggan/create') }}" class="btn btn-block btn-primary"><span class="fa fa-plus"></span> Pelanggan</a>
-            </h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                <div class="row">
-                  {{-- <div class="col-sm-6"></div> --}}
-                </div>
-                <div class="row">
-                  <div class="col-sm-4">PO
-                    
-                  </div>
-                  <div class="col-sm-4">Barang
-                    
-                  </div>
-                  <div class="col-sm-4">Status Transaksi
-                    
-                  </div>
-                </div>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="box">
+                          <div class="box-header pull-right">
+                            <h3 class="box-title">
+                            <a href="{{ url('/admin/pelanggan/create') }}" class="btn btn-block btn-primary"><span class="fa fa-plus"></span> Pelanggan</a>
+                          </h3>
+                          </div>
+                          <!-- /.box-header -->
+                          <div class="box-body">
+                            <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                              <div class="row">
+                                {{-- <div class="col-sm-6"></div> --}}
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-4">PO
+                                  
+                                </div>
+                                <div class="col-sm-4">Barang
+                                  
+                                </div>
+                                <div class="col-sm-4">Status Transaksi
+                                  
+                                </div>
+                              </div>
 
-              </div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-        </div>
-      </div>
-    </section>
+                            </div>
+                          </div>
+                          <!-- /.box-body -->
+                        </div>
+                      </div>
+                    </div>
+                  </section>
                   <!-- /.table -->
                 </div>
                 <!-- /.tab-pane -->
@@ -102,57 +102,40 @@
                 <!-- /.tab-pane -->
 
                 <div class="tab-pane" id="diperiksa">
-                  <form class="form-horizontal">
-                    <div class="form-group">
-                      <label for="inputName" class="col-sm-2 control-label">Name</label>
+                  <section class="content">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="box">
+                          <div class="box-header pull-right">
+                            <h3 class="box-title">
+                            <a href="{{ url('/admin/pelanggan/create') }}" class="btn btn-block btn-primary"><span class="fa fa-plus"></span> Pelanggan</a>
+                          </h3>
+                          </div>
+                          <!-- /.box-header -->
+                          <div class="box-body">
+                            <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                              <div class="row">
+                                {{-- <div class="col-sm-6"></div> --}}
+                              </div>
+                              <div class="row">
+                                <div class="col-sm-4">PO
+                                  
+                                </div>
+                                <div class="col-sm-4">Barang
+                                  
+                                </div>
+                                <div class="col-sm-4">Status Transaksi
+                                  
+                                </div>
+                              </div>
 
-                      <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputName" placeholder="Name">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                      <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputName" placeholder="Name">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-                      <div class="col-sm-10">
-                        <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-sm-offset-2 col-sm-10">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                          </label>
+                            </div>
+                          </div>
+                          <!-- /.box-body -->
                         </div>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-danger">Submit</button>
-                      </div>
-                    </div>
-                  </form>
+                  </section>
                 </div>
                 <!-- /.tab-pane -->
                 <div class="tab-pane" id="dikemas">
