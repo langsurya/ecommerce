@@ -409,7 +409,6 @@
                     </div>
                   </div>
                 </div>
-                <span class="new">new </span>
               </div>
               @endforeach
             </div>

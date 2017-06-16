@@ -64,7 +64,7 @@
                         <div class="box">
                           <div class="box-header pull-right">
                             <h3 class="box-title">
-                            <a href="{{ url('/admin/pelanggan/create') }}" class="btn btn-block btn-primary"><span class="fa fa-plus"></span> Pelanggan</a>
+                            <a href="{{ url('/admin/pelanggan/create') }}" class="btn btn-block btn-primary"><span class="fa fa-plus"></span> </a>
                           </h3>
                           </div>
                           <!-- /.box-header -->
@@ -108,7 +108,7 @@
                         <div class="box">
                           <div class="box-header pull-right">
                             <h3 class="box-title">
-                            <a href="{{ url('/admin/pelanggan/create') }}" class="btn btn-block btn-primary"><span class="fa fa-plus"></span> Pelanggan</a>
+                            <a href="{{ url('/admin/pelanggan/create') }}" class="btn btn-block btn-primary"><span class="fa fa-plus"></span> </a>
                           </h3>
                           </div>
                           <!-- /.box-header -->

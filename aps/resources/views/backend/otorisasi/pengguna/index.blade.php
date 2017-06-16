@@ -61,30 +61,25 @@
                 <div class="col-sm-12">
                   <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                     <thead>
-                      <tr role="row">
+                      <tr role="row" align="center">
                         <th width="10px">#</th>
                         <th>Username</th>
                         <th>Email</th>
                         <th>Roles</th>
-                        <th width="20px">Status</th>
-                        <th>
-                        </th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach ($users as $user)
-                      <tr role="row" class="odd">
+                      <tr role="row" align="center">
                         <td class="sorting_1">1</td>
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->email }}</td>
                         <td>Admin</td>
                         <td>
-                          <small class="label label-primary">Active</small>
-                        </td>
-                        <td>
                           <a href="#" class="fa fa-eye"></a>
                           <a href="#" class="fa fa-edit"></a>
-                          <a href="#" class="fa fa-trash"></a>
+                          {{-- <a href="#" class="fa fa-trash"></a> --}}
                         </td>
                       </tr>
                       @endforeach
