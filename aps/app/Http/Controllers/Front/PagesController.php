@@ -44,9 +44,9 @@ class PagesController extends Controller {
 	}
 
 	public function shop(){
-		$Products = \App\Models\Products\Product::paginate(5); // get() or pageinate() or all()
+		$this->data['Products'] = \App\Models\Products\Product::paginate(5); // get() or pageinate() or all()
 		
-		return view('front.shop.products')->with('Products', $Products);
+		return view('aqsha.shop')->with($this->data);
 	}
 
 

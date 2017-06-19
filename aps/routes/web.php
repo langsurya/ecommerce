@@ -15,6 +15,7 @@ Auth::routes();
 // Panggil Controller di dalam folder Front dgn 'namespace'
 Route::group(['namespace' => 'Front'], function() { 
   Route::get('/', 'PagesController@index');
+
   // Route::get('/logins', 'PagesController@login');
   Route::get('/product_detail/{id}', 'PagesController@product_detail');
   
@@ -28,6 +29,7 @@ Route::group(['namespace' => 'Front'], function() {
   Route::get('/checkout', 'CheckoutController@index');
   Route::post('/formvalidate', 'CheckoutController@formvalidate');
   Route::get('/profile', 'PagesController@profile');
+  Route::get('/shop', 'PagesController@shop');
   Route::get('/about', 'PagesController@about');
 
 });
@@ -126,16 +128,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
       Route::resource('pengguna', 'PenggunaController');
     });
   });
-});
-
-Route::group(['namespace' => 'Front'], function() {
-  // Route::get('front', 'PageController@index');
-  // Route::get('shop', 'PageController@shop');
-  // Route::get('product_details/{id}', 'PageController@product_details');
-  // Route::get('cart', 'CartController@index');
-  // Route::get('cart/addItem/{id}', 'CartController@addItem');
-
-  // Route::get('/cart/remove/{id}', 'CartController@destroy');
-  // Route::put('/cart/update/{id}', 'CartController@update');
-
 });
