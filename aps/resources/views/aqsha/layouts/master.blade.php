@@ -8,7 +8,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" href="{{ url('public/aqsha/') }}/img/favicon.png" />
+        {{-- <link rel="icon" href="{{ url('public/aqsha/') }}/img/favicon.png" /> --}}
         <!-- Place favicon.ico in the root directory -->
             <!-- all css here -->
             <!-- bootstrap.min.css -->
