@@ -73,8 +73,8 @@
         </a>
         <ul class="treeview-menu">
           <li class="{{ Request::is('admin/realtime') ? 'active' : null }}"><a href="{{ url('/admin/realtime') }}"><i class="fa  fa-file"></i> Real Time Stock</a></li>
-          <li class="{{ Request::is('admin/entry') ? 'active' : null }}"><a href="{{ url('/admin/entry') }}"><i class="fa fa-file"></i> Entry Stock</a></li>
-          <li class="{{ Request::is('admin/history') ? 'active' : null }}"><a href="{{ url('/admin/history') }}"><i class="fa fa-file"></i> History Stock</a></li>
+          {{-- <li class="{{ Request::is('admin/entry') ? 'active' : null }}"><a href="{{ url('/admin/entry') }}"><i class="fa fa-file"></i> Entry Stock</a></li>
+          <li class="{{ Request::is('admin/history') ? 'active' : null }}"><a href="{{ url('/admin/history') }}"><i class="fa fa-file"></i> History Stock</a></li> --}}
         </ul>
       </li>
       {{-- Finance --}}
