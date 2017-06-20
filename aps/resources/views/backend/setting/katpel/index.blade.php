@@ -80,7 +80,7 @@
                       @endforeach
                     </tbody>
                   </table>
-                <center>  {!! $katpel->render() !!} </center>
+                {{-- <center>  {!! $katpel->render() !!} </center> --}}
                 </div>
               </div>
 

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
+use App\Models\Products\Product;
+
 class RealtimeController extends Controller
 {
     /**
@@ -15,7 +17,12 @@ class RealtimeController extends Controller
      */
     public function index()
     {
-      return view('backend.stock.realtime.index');
+        $this->data['products'] = Product::all();
+        $this->data['stoks_ready'] = Product::where('product_stok', '>', 5)->get();
+        $this->data['stoks_kurang'] = Product::where('product_stok', '<=', 5)->get();
+        $this->data['stoks_kosong'] = Product::where('product_stok', '<', 1)->get();
+        return view('backend.stock.realtime.index', $this->data)
+                ->with('i')->with('r')->with('k')->with('g');
     }
 
     /**

@@ -70,34 +70,20 @@
                       </tr>
                     </thead>
                     <tbody>
-                    @foreach ($product as $k)
-                      <tr role="row" class="odd">
-                        <td class="sorting_1">{{++$i}}</td>
-                        <td>{{$k->product_sku}}</td>
-                        <td>{{$k->product_name}}</td>
-                        <td>{{$k->product_price}}</td>
-                        <td>{{$k->product_stok}}</td>
-                        <td>
-                          <a class="btn btn-primary" href="{{ route('produk.edit',$k->id) }}"><span class="fa fa-edit"></span> </a>
-                          <button class="btn btn-primary" type="button" title="view"><span class="fa fa-eye"></span></button>
-                          <button class="btn btn-danger" type="button" title="Hapus"><span class="fa fa-trash"></span></button>
-                        </td>
-                      </tr>
-                    @endforeach
-                      {{-- <tr role="row" class="odd">
-                        <td class="sorting_1">1</td>
-                        <td>PRD00213124</td>
-                        <td>Botol Susu</td>
-                        <td>Rp. 50.000</td>
-                        <td>Rp. 45.000</td>
-                        <td>0</td>
-                        <td>
-                          <button class="btn btn-primary" type="button" title="view"><span class="fa fa-eye"></span></button>
-                          <button class="btn btn-primary" type="button" title="edit"><span class="fa fa-edit"></span></button>
-                          <button class="btn btn-danger" type="button" title="Hapus"><span class="fa fa-trash"></span></button>
-                        </td>
-                      </tr>   --}}                    
-
+                      @foreach ($product as $k)
+                        <tr role="row" class="odd">
+                          <td class="sorting_1">{{++$i}}</td>
+                          <td>{{$k->product_sku}}</td>
+                          <td>{{$k->product_name}}</td>
+                          <td>{{$k->product_price}}</td>
+                          <td>{{$k->product_stok}}</td>
+                          <td>
+                            <a class="btn btn-primary" href="{{ route('produk.edit',$k->id) }}"><span class="fa fa-edit"></span> </a>
+                            <button class="btn btn-primary" type="button" title="view"><span class="fa fa-eye"></span></button>
+                            <button class="btn btn-danger" type="button" title="Hapus"><span class="fa fa-trash"></span></button>
+                          </td>
+                        </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
