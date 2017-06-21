@@ -37,11 +37,7 @@
         @include('aqsha.layouts.header')
         <!-- header -->
         <!-- mainmenu-area-start -->
-        @if (Request::is('/'))
-            @include('aqsha.layouts.menu_home')
-            @else
-            @include('aqsha.layouts.menu')               
-        @endif
+        @include('aqsha.layouts.menu')               
         <!-- mainmenu-area-end -->
         
         @yield('content')
