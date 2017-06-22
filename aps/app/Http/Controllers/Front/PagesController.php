@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Front;
 
-use Request;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Products\Product;
 use App\Models\Products\Gambar;
+use App\Models\Users;
+use App\User;
 use DB;
 
 
@@ -64,8 +67,23 @@ class PagesController extends Controller {
 	}
 
 	public function profile() {
+		$userid = Auth::user()->id;
+    $this->data['user'] = User::find($userid);
 
 		return view('aqsha.profile', $this->data);
+	}
+
+	public function profile_update(Request $request, $id) {
+
+		// dd($request->phone);
+		DB::table('users')
+            ->where('id', $id)
+            ->update([
+            	'name' => $request->name,
+            	'email' => $request->email,
+            	'phone' => $request->phone,
+            	]);
+		return back();
 	}
 
 	public function about() {

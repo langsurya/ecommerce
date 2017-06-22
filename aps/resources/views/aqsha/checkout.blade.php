@@ -19,59 +19,7 @@
 		</div>
 	</div>
 	<!-- breadcrumb end -->	
-	<!-- coupon-area start -->
-	{{-- <div class="coupon-area pt-30">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="coupon-accordion">
-						<!-- ACCORDION START -->
-						<h3>Returning customer? <span id="showlogin">Click here to login</span></h3>
-						<div id="checkout-login" class="coupon-content">
-							<div class="coupon-info">
-								<p class="coupon-text">Quisque gravida turpis sit amet nulla posuere lacinia. Cras sed est sit amet ipsum luctus.</p>
-								<form action="#">
-									<p class="form-row-first">
-										<label>Username or email <span class="required">*</span></label>
-										<input type="text" />
-									</p>
-									<p class="form-row-last">
-										<label>Password  <span class="required">*</span></label>
-										<input type="text" />
-									</p>
-									<p class="form-row">					
-										<input type="submit" value="Login" />
-										<label>
-											<input type="checkbox" />
-											 Remember me 
-										</label>
-									</p>
-									<p class="lost-password">
-										<a href="#">Lost your password?</a>
-									</p>
-								</form>
-							</div>
-						</div>
-						<!-- ACCORDION END -->	
-						<!-- ACCORDION START -->
-						<h3>Have a coupon? <span id="showcoupon">Click here to enter your code</span></h3>
-						<div id="checkout_coupon" class="coupon-checkout-content">
-							<div class="coupon-info">
-								<form action="#">
-									<p class="checkout-coupon">
-										<input type="text" placeholder="Coupon code" />
-										<input type="submit" value="Apply Coupon" />
-									</p>
-								</form>
-							</div>
-						</div>
-						<!-- ACCORDION END -->						
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> --}}<hr>
-	<!-- coupon-area end -->
+	<hr>
 	<!-- checkout-area start -->
 	<div class="checkout-area">
 		<div class="container">
@@ -143,10 +91,9 @@
 									<div class="country-select">
 										<label>Type Pembayaran <span class="required">*</span></label>
 										<select name="pay">
-										  <option value="cod">COD</option>
-										  <option value="bri">BRI</option>
-										  <option value="bca">BCA</option>
-										  <option value="mandiri">MANDIRI</option>
+											@foreach ($payments as $pay)
+										  <option value="{{ $pay->nama_bank }}">{{ $pay->nama_bank }}</option>
+											@endforeach
 										</select> 										
 									</div>
 								</div>

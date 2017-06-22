@@ -25,13 +25,13 @@
       <div class="col-md-12">
         {{-- row 1 col 3 --}}
         <div class="form-group">
-          <label>Nama Bank</label>
-          {!! Form::text('nama_bank', null, array('placeholder' => 'Nama Bank','class' => 'form-control')) !!}
+          <label>Nama </label>
+          {!! Form::text('nama_bank', null, array('placeholder' => 'Nama','class' => 'form-control')) !!}
         </div>
         {{-- /.form-group --}}
         <div class="form-group">
-          <label>No Rekening</label>
-          {!! Form::text('no_rekening', null, array('placeholder' => 'No Rekening','class' => 'form-control')) !!}
+          <label>No Rek</label>
+          {!! Form::text('no_rekening', null, array('placeholder' => 'No Rek','class' => 'form-control')) !!}
         </div>
         <!-- /.form-group -->
         <div class="form-group">
@@ -40,8 +40,8 @@
         </div>
         <!-- /.form-group -->
         <div class="form-group">
-          <label>Cabang</label>
-          {!! Form::text('cabang', null, array('placeholder' => 'Cabang','class' => 'form-control')) !!}
+          <label>Keterangan</label>
+          {!! Form::text('keterangan', null, array('placeholder' => 'Cabang','class' => 'form-control')) !!}
         </div>
         <!-- /.form-group -->
 

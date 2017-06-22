@@ -61,10 +61,11 @@
                   <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                     <thead>
                     <tr role="row">
-                      <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">#</th>
-                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Name</th>
-                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Keterangan</th>
-                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Status</th>
+                      <th width="10px">#</th>
+                      <th>Nama Bank</th>
+                      <th>No.Rek</th>
+                      <th>Atas Nama</th>
+                      <th>Keterangan</th>
                       <th width="100px">Aksi</th>
                     </tr>
                     </thead>
@@ -78,6 +79,7 @@
                               <td>{{ $payment->nama_bank }}</td>
                               <td>{{ $payment->no_rekening }}</td>
                               <td>{{ $payment->pemilik }}</td>
+                              <td>{{ $payment->keterangan }}</td>
                               <td>
                                 <a class="btn btn-primary" href="{{ route('payment.edit',$payment->id) }}" title="Edit"><span class="fa fa-edit"></span> </a>
                                 {!! Form::open(['method' => 'DELETE','route' => ['payment.destroy', $payment->id],'style'=>'display:inline']) !!}

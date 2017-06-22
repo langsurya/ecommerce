@@ -12,11 +12,12 @@
                     <div class="header-top-right">
                         <ul>
                             <li class="slide-toggle"><a href="#">
-                                <i class="fa fa-user"></i> <?php if(Auth::check()) { echo Auth::user()->name; } else { echo " My Account"; }  ?></a>
+                                <i class="fa fa-user"></i> <?php if(Auth::check()) { echo 'Hallo, '. ucwords(Auth::user()->name); } else { echo "My Account"; }  ?></a>
                                 <ul class="show-toggle">
                                     @if (Auth::guest())
                                         <li><a href="{{ url('/login') }}">login</a></li> 
                                         @else
+                                        <li><a href="{{ url('/profile') }}">My Profile</a></li>
                                         <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();

@@ -41,12 +41,12 @@ class PaymentController extends Controller
 
     public function store(Request $request)
     {
-      $this->validate($request, [
-        'nama_bank' => 'required',
-        'no_rekening' => 'required',
-        'pemilik' => 'required',
-        'cabang' => 'required',
-      ]);
+      // $this->validate($request, [
+      //   'nama_bank' => 'required',
+      //   'no_rekening' => 'required',
+      //   'pemilik' => 'required',
+      //   'keterangan' => 'required',
+      // ]);
       Payment::create($request->all());
       return redirect()->route('payment.index')
         ->with('success','Pelanggan created successfully');
@@ -60,12 +60,12 @@ class PaymentController extends Controller
 
     public function update(Request $request, $id)
     {
-      $this->validate($request, [
-        'nama_bank' => 'required',
-        'no_rekening' => 'required',
-        'pemilik' => 'required',
-        'cabang' => 'required',
-      ]);
+      // $this->validate($request, [
+      //   'nama_bank' => 'required',
+      //   'no_rekening' => 'required',
+      //   'pemilik' => 'required',
+      //   'cabang' => 'required',
+      // ]);
 		  Payment::find($id)->update($request->all());
 
       return redirect()->route('payment.index')

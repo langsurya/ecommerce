@@ -127,8 +127,8 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="{{ url('/admin/pengguna') }}"><i class="fa fa-group"></i> Pengguna</a></li>
-          <li><a href="{{ url('/admin/role') }}"><i class="fa fa-truck"></i> Role (empty)</a></li>
-          <li><a href="{{ url('/admin/route') }}"><i class="fa fa-chain"></i> Route (empty)</a></li>
+          {{-- <li><a href="{{ url('/admin/role') }}"><i class="fa fa-truck"></i> Role (empty)</a></li>
+          <li><a href="{{ url('/admin/route') }}"><i class="fa fa-chain"></i> Route (empty)</a></li> --}}
         </ul>
       </li>
 

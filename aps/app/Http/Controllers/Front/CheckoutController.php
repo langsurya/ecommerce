@@ -13,6 +13,7 @@ use App\Models\Products\Gambar;
 use App\Models\Address;
 use App\User;
 use App\Models\orders;
+use DB;
 
 class CheckoutController extends Controller
 {
@@ -20,6 +21,7 @@ class CheckoutController extends Controller
   	// check for user login
   	if (Auth::check()) {
       $userid = Auth::user()->id;
+      $this->data['payments'] = DB::table('payments')->get();
       $this->data['user'] = User::find($userid);
       $this->data['cartItems'] = Cart::content();
 			$this->data['image'] = Product::with([
