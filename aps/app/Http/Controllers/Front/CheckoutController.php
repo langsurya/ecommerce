@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Products\Product;
 use App\Models\Products\Gambar;
 use App\Models\Address;
-
+use App\User;
 use App\Models\orders;
 
 class CheckoutController extends Controller
@@ -19,7 +19,9 @@ class CheckoutController extends Controller
   public function index() {
   	// check for user login
   	if (Auth::check()) {
-  		$this->data['cartItems'] = Cart::content();
+      $userid = Auth::user()->id;
+      $this->data['user'] = User::find($userid);
+      $this->data['cartItems'] = Cart::content();
 			$this->data['image'] = Product::with([
                   // 'image' 
                 ])

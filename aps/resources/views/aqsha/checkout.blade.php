@@ -85,7 +85,7 @@
 								<div class="col-md-12">
 									<div class="checkout-form-list">
 										<label>Fullname <span class="required">*</span></label>{{ $errors->first('fullname') }}
-										<input name="fullname" type="text" placeholder="" value="{{ old('fullname') }}" />
+										<input name="fullname" type="text" placeholder="" value="{{ $user->name }}" />
 									</div>
 								</div>
 								<div class="col-md-12">
@@ -124,7 +124,7 @@
 								<div class="col-md-6">
 									<div class="checkout-form-list">
 										<label>Email Address <span class="required">*</span></label>{{ $errors->first('email') }}										
-										<input name="email" type="email" placeholder=""value="{{ old('email') }}" />
+										<input name="email" type="email" placeholder="" value="{{ $user->email }}" />
 									</div>
 								</div>
 								<div class="col-md-6">
@@ -144,8 +144,9 @@
 										<label>Type Pembayaran <span class="required">*</span></label>
 										<select name="pay">
 										  <option value="cod">COD</option>
-										  <option value="transfer">Transfer Bank</option>
-										  <option value="paypal">Paypal</option>
+										  <option value="bri">BRI</option>
+										  <option value="bca">BCA</option>
+										  <option value="mandiri">MANDIRI</option>
 										</select> 										
 									</div>
 								</div>
