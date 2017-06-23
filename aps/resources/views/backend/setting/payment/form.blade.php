@@ -41,7 +41,7 @@
         <!-- /.form-group -->
         <div class="form-group">
           <label>Keterangan</label>
-          {!! Form::text('keterangan', null, array('placeholder' => 'Cabang','class' => 'form-control')) !!}
+          {!! Form::text('keterangan', null, array('placeholder' => 'Keterangan','class' => 'form-control')) !!}
         </div>
         <!-- /.form-group -->
 
