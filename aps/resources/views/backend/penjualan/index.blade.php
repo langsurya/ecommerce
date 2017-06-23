@@ -74,7 +74,7 @@
                               <div class="col-sm-12">
                                 <table class="table">
                                   <thead>
-                                    <th>PO #</th>
+                                    <th>PO # {{ $order->id }}</th>
                                     <th>Barang</th>
                                     <th>Status Transaksi</th>                                  
                                   </thead>
@@ -137,7 +137,7 @@
                               <div class="col-sm-12">
                                 <table class="table">
                                   <thead>
-                                    <th>PO #</th>
+                                    <th>PO # {{ $order->id }}</th>
                                     <th>Barang</th>
                                     <th>Status Transaksi</th>                                  
                                   </thead>
