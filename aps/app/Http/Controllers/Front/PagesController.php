@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Products\Product;
 use App\Models\Products\Gambar;
-use App\Models\Users;
 use App\User;
 use DB;
 
@@ -16,8 +15,13 @@ use DB;
 class PagesController extends Controller {
 
 	public function __construct() {
-
-		$this->data['cartItems'] = Cart::content();	
+	
+		// $this->data['cartItems'] = Cart::content();
+		$this->data['image'] = Product::with([
+                  // 'image' 
+                ])
+                  ->take(12)->orderBy('created_at', 'asc')
+                  ->get();
 	}
 
 	/**
@@ -33,33 +37,22 @@ class PagesController extends Controller {
 															->limit(3)->offset(3)->get();
 		$this->data['featurs'] = \App\Models\Products\Product::orderBy('id', 'DESC')
 															->limit(6)->offset(0)->get();
-
+		$this->data['cartItems'] = Cart::content();
 		$this->data['date'] = DB::select('SELECT DAY(created_at) FROM product');
                 // dd($this->data['date']);
-
-		$this->data['image'] = Product::with([
-                  // 'image' 
-                ])
-                  ->take(12)->orderBy('created_at', 'asc')
-                  ->get();
-		return view('aqsha.home')
-						->with($this->data);
+		return view('aqsha.home', $this->data);
+						// ->with($this->data);
 	}
 
 	public function shop(){
 		$this->data['Products'] = \App\Models\Products\Product::paginate(5); // get() or pageinate() or all()
-		
+		$this->data['cartItems'] = Cart::content();
 		return view('aqsha.shop')->with($this->data);
 	}
 
 
 	public function product_detail($id) {
 		$this->data['products'] = \App\Models\Products\Product::find($id);
-		$this->data['image'] = Product::with([
-                  // 'image' 
-                ])
-                  ->take(12)->orderBy('created_at', 'asc')
-                  ->get();
 		$this->data['images'] = \App\Models\Products\Gambar::get()->where('id_product', $id);
 		$this->data['cartItems'] = Cart::content();
 								// dd($this->data['image']->first()->path_full);
@@ -69,7 +62,7 @@ class PagesController extends Controller {
 	public function profile() {
 		$userid = Auth::user()->id;
     $this->data['user'] = User::find($userid);
-
+    $this->data['cartItems'] = Cart::content();
 		return view('aqsha.profile', $this->data);
 	}
 
@@ -87,7 +80,7 @@ class PagesController extends Controller {
 	}
 
 	public function about() {
-
+		$this->data['cartItems'] = Cart::content();
 		return view('aqsha.about', $this->data);
 	}
 

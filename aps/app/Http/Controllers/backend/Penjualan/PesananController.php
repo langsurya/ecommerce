@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend\Penjualan;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
@@ -15,7 +16,13 @@ class PesananController extends Controller
      */
     public function index()
     {
-      return view('backend.penjualan.index');
+        $this->data['orders'] = DB::table('orders_product')
+                    ->leftjoin('product', 'product.id', '=', 'orders_product.product_id')
+                    ->leftjoin('orders', 'orders.id', '=', 'orders_product.orders_id')
+                    ->leftjoin('users', 'users.id', '=', 'orders.user_id')
+                    ->leftjoin('address', 'address.orders_id', '=', 'orders.id')
+                    ->get();
+      return view('backend.penjualan.index', $this->data);
     }
 
     /**

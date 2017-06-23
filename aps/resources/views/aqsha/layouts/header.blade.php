@@ -112,7 +112,9 @@
                                             Subtotal: <span class="sig-price">Rp {{ Cart::subtotal() }}</span>
                                         </div>
                                         <div class="cart-actions">
-                                            <button><span>Checkout</span></button>
+                                            <form action="{{ url('/checkout') }}">
+                                                <button type="submit"><span>Checkout</span></button>
+                                            </form>
                                         </div>
                                     </div>                                      
                                 </div>
