@@ -20,7 +20,8 @@ class PesananController extends Controller
                     ->leftjoin('product', 'product.id', '=', 'orders_product.product_id')
                     ->leftjoin('orders', 'orders.id', '=', 'orders_product.orders_id')
                     ->leftjoin('users', 'users.id', '=', 'orders.user_id')
-                    ->leftjoin('address', 'address.orders_id', '=', 'orders.id')
+                    ->leftjoin('address', 'address.id', '=', 'orders_product.orders_id')
+                    ->select('product.product_name', 'product.product_price as harga', 'orders.total', 'orders.status' ,'orders.id AS po', 'orders.created_at', 'users.name', 'address.fullname')
                     ->get();
       return view('backend.penjualan.index', $this->data);
     }

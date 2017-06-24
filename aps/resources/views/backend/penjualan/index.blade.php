@@ -74,7 +74,7 @@
                               <div class="col-sm-12">
                                 <table class="table">
                                   <thead>
-                                    <th>PO # {{ $order->id }}</th>
+                                    <th>PO # {{ $order->po }}</th>
                                     <th>Barang</th>
                                     <th>Status Transaksi</th>                                  
                                   </thead>
@@ -90,8 +90,10 @@
                                     <td>
                                       <a href="">{{ $order->product_name }}</a><br>
                                       <div class="alert alert-warning col-sm-8">
+                                        <h5> Harga : Rp {{ number_format($order->harga, '2', ',','.') }}</h5>
+
                                         <h5> Tagihan</h5>
-                                        <h4> Rp. {{ $order->total }}</h4>
+                                        <h4> Rp {{ $order->total }}</h4>
                                         <b> Belum Bayar</b>
                                       </div>
                                     </td>
@@ -137,7 +139,7 @@
                               <div class="col-sm-12">
                                 <table class="table">
                                   <thead>
-                                    <th>PO # {{ $order->id }}</th>
+                                    <th>PO # {{ $order->po }}</th>
                                     <th>Barang</th>
                                     <th>Status Transaksi</th>                                  
                                   </thead>
