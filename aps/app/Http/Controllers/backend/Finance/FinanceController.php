@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend\Finance;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
@@ -15,7 +16,20 @@ class FinanceController extends Controller
      */
     public function index()
     {
-      return view('backend.finance.index');
+        $this->data['semua'] = DB::table('orders')
+                    ->leftjoin('address', 'address.id', '=', 'orders.id')
+                    ->leftjoin('users', 'users.id', '=', 'orders.user_id')
+                    ->select('users.name', 'address.payment_type as pay', 'orders.total', 'orders.status' ,'orders.id AS po', 'address.fullname')
+                    ->orderBy('orders.id', 'desc')
+                    ->get();
+        $this->data['pending'] = DB::table('orders')
+                    ->leftjoin('address', 'address.id', '=', 'orders.id')
+                    ->leftjoin('users', 'users.id', '=', 'orders.user_id')
+                    ->select('users.name', 'address.payment_type as pay', 'orders.total', 'orders.status' ,'orders.id AS po', 'address.fullname')
+                    ->where('orders.status', '=', 'pending')
+                    ->orderBy('orders.id', 'desc')
+                    ->get();
+        return view('backend.finance.index', $this->data)->with('i');
     }
 
     /**

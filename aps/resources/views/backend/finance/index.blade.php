@@ -94,134 +94,208 @@
                 </div>
                 <!-- box-body --><br>
                 <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs">
-                      <li class="active"><a href="#semua" data-toggle="tab" aria-expanded="false">Semua <span class="badge">3</span></a></li>
-                      <li class=""><a href="#pending" data-toggle="tab" aria-expanded="false">Pending <span class="badge">15</span></a></li>
-                      <li class=""><a href="#disetujui" data-toggle="tab" aria-expanded="true">Disetujui<span class="badge">14</span></a></li>
-                      <li><a href="#ditolak" data-toggle="tab" aria-expanded="true">Ditolak <span class="badge">7</span></a></li>
-                    </ul>
-                    <div class="tab-content">
-                      <div class="tab-pane active" id="semua">
-                        <!-- row -->
-                        <div class="row">
-                          <div class="col-xs-12">
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a href="#semua" data-toggle="tab" aria-expanded="false">Semua <span class="badge">{{ count($semua) }}</span></a></li>
+                    <li class=""><a href="#pending" data-toggle="tab" aria-expanded="false">Pending <span class="badge">{{ count($pending) }}</span></a></li>
+                    <li class=""><a href="#disetujui" data-toggle="tab" aria-expanded="true">Disetujui<span class="badge">14</span></a></li>
+                    <li><a href="#ditolak" data-toggle="tab" aria-expanded="true">Ditolak <span class="badge">7</span></a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="semua">
+                      <!-- row -->
+                      <div class="row">
+                        <div class="col-xs-12">
 
-                            <div class="box">
-                              <div class="box-header">
-                                <h3 class="box-title">
-                                  Semua Pesanan
-                                </h3>
-                                <h3 class="box-title pull-right">
-                                  <a href="{{ url('/backend/finance/store') }}" class="btn btn-block btn-primary">
-                                    <span class="fa  fa-save"></span> Simpan
-                                  </a>
-                                </h3><hr>
-                              </div>
-                              <!-- /.box-header -->
-                              <!-- box-body -->
-                              <div class="">
-                                <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                                  <!-- row -->
-                                  <div class="row">
-                                    <div class="col-sm-6">
-                                      <div class="dataTables_length" id="example1_length">
-                                        {{-- Show entries --}}
-                                      </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                      <div id="example1_filter" class="dataTables_filter">
-                                        {{-- pencarian data  --}}
-                                      </div>
-                                    </div>
+                          <div class="box">
+                            <div class="box-header">
+                              <h3 class="box-title">
+                                Semua Pesanan
+                              </h3>
+                              <h3 class="box-title pull-right">
+                                <a href="{{ url('/backend/finance/store') }}" class="btn btn-block btn-primary">
+                                  <span class="fa  fa-save"></span> Simpan
+                                </a>
+                              </h3><hr>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- box-body -->
+                            <div class="">
+                              <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                
+                                <div class="row">
+                                  <div class="col-sm-12">
+                                    <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                      <thead>
+                                        <tr role="row">
+                                          <th width="10px">#</th>
+                                          <th width="100px">Nomor PO</th>
+                                          <th>Nama Pengguna</th>
+                                          <th>Nama Pelanggan</th>
+                                          <th>Nama Bank</th>
+                                          <th>Total</th>
+                                          <th>Status Finance</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                      @foreach ($semua as $order)
+                                        <tr role="row" class="odd">
+                                          <td class="sorting_1">{{ ++$i }}</td>
+                                          <td>{{ $order->po }}</td>
+                                          <td>{{ $order->name }}</td>
+                                          <td>{{ $order->fullname }}</td>
+                                          <td>{{ $order->pay }}</td>
+                                          <td>Rp {{ $order->total }}</td>
+                                          <td>
+                                            <select name="status" id="" class="form-control">
+                                            <option>-status-</option>
+                                              <option value="disetujui" {{ ($order->status == 'disetujui') ? 'selected' : '' }}>Disetujui</option>
+                                              <option value="ditolak" {{ ($order->status == 'ditolak') ? 'selected' : '' }}>Ditolak</option>
+                                              <option value="pending" {{ ($order->status == 'pending') ? 'selected' : '' }}>Pending</option>
+                                            </select>
+                                          </td>
+                                        </tr>
+                                      @endforeach
+                                        <tr role="row" class="odd">
+                                          <td class="sorting_1">1</td>
+                                          <td>49</td>
+                                          <td>kasir 1</td>
+                                          <td>Agis Setiawan</td>
+                                          <td>BCA</td>
+                                          <td>Rp 339.000</td>
+                                          <td>
+                                            {{ Form::select('status', [
+                                              'i' => 'Disetujui',
+                                              'k' => 'Ditolak',
+                                              'g' => 'Pending'
+                                            ], null, ['class' => 'form-control']
+                                            ) }}
+                                          </td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                          <td class="sorting_1">2</td>
+                                          <td>50</td>
+                                          <td>kasir 2</td>
+                                          <td>Dita Andriani</td>
+                                          <td>BRI</td>
+                                          <td>Rp 439.000</td>
+                                          <td>
+                                            {{ Form::select('status', [
+                                              'i' => 'Disetujui',
+                                              'k' => 'Ditolak',
+                                              'g' => 'Pending'
+                                            ], null, ['class' => 'form-control']
+                                            ) }}
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
                                   </div>
-                                  <!-- /.row -->
-                                  <div class="row">
-                                    <div class="col-sm-12">
-                                      <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
-                                        <thead>
-                                          <tr role="row">
-                                            <th width="10px">#</th>
-                                            <th width="100px">Nomor PO</th>
-                                            <th>Nama Pengguna</th>
-                                            <th>Nama Pelanggan</th>
-                                            <th>Nama Bank</th>
-                                            <th>Total</th>
-                                            <th>Status Finance</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr role="row" class="odd">
-                                            <td class="sorting_1">1</td>
-                                            <td>49</td>
-                                            <td>kasir 1</td>
-                                            <td>Agis Setiawan</td>
-                                            <td>BCA</td>
-                                            <td>Rp 339.000</td>
-                                            <td>
-                                              {{ Form::select('status', [
-                                                'i' => 'Disetujui',
-                                                'k' => 'Ditolak',
-                                                'g' => 'Pending'
-                                              ], null, ['class' => 'form-control']
-                                              ) }}
-                                            </td>
-                                          </tr>
-                                          <tr role="row" class="odd">
-                                            <td class="sorting_1">2</td>
-                                            <td>50</td>
-                                            <td>kasir 2</td>
-                                            <td>Dita Andriani</td>
-                                            <td>BRI</td>
-                                            <td>Rp 439.000</td>
-                                            <td>
-                                              {{ Form::select('status', [
-                                                'i' => 'Disetujui',
-                                                'k' => 'Ditolak',
-                                                'g' => 'Pending'
-                                              ], null, ['class' => 'form-control']
-                                              ) }}
-                                            </td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div class="col-sm-7">
-                                      <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
-                                        {{-- fungsi prev & next --}}
-                                      </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-sm-7">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                                      {{-- fungsi prev & next --}}
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                              <!-- /.box-body -->
                             </div>
-                            <!-- /.box -->
+                            <!-- /.box-body -->
                           </div>
+                          <!-- /.box -->
                         </div>
-                        <!-- /.row -->
                       </div>
-                      <!-- /.tab-pane -->
-                      <div class="tab-pane" id="pending">
-                        <!-- The timeline -->
-                        blm bayar
-                      </div>
-                      <!-- /.tab-pane -->
-
-                      <div class="tab-pane" id="disetujui">
-                        disetujui
-                      </div>
-                      <!-- /.tab-pane -->
-                      <div class="tab-pane" id="ditolak">
-                        <!-- The timeline -->
-                        blm ditolak
-                      </div>
-                      <!-- /.tab-pane -->
-
+                      <!-- /.row -->
                     </div>
-                    <!-- /.tab-content -->
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="pending">
+                      <!-- row -->
+                      <div class="row">
+                        <div class="col-xs-12">
+
+                          <div class="box">
+                            <div class="box-header">
+                              <h3 class="box-title">
+                                Pending Pesanan
+                              </h3>
+                              <h3 class="box-title pull-right">
+                                <a href="{{ url('/backend/finance/store') }}" class="btn btn-block btn-primary">
+                                  <span class="fa  fa-save"></span> Simpan
+                                </a>
+                              </h3><hr>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- box-body -->
+                            <div class="">
+                              <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row">
+                                  <div class="col-sm-12">
+                                    <table id="example2" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                      <thead>
+                                        <tr role="row">
+                                          <th width="10px">#</th>
+                                          <th width="100px">Nomor PO</th>
+                                          <th>Nama Pengguna</th>
+                                          <th>Nama Pelanggan</th>
+                                          <th>Nama Bank</th>
+                                          <th>Total</th>
+                                          <th>Status Finance</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                      @foreach ($pending as $order)
+                                        <tr role="row" class="odd">
+                                          <td class="sorting_1">{{ ++$i }}</td>
+                                          <td>{{ $order->po }}</td>
+                                          <td>{{ $order->name }}</td>
+                                          <td>{{ $order->fullname }}</td>
+                                          <td>{{ $order->pay }}</td>
+                                          <td>Rp {{ $order->total }}</td>
+                                          <td>
+                                            <select name="status" id="" class="form-control">
+                                            <option value="">-status-</option>
+                                              <option value="disetujui" {{ ($order->status == 'disetujui') ? 'selected' : '' }}>Disetujui</option>
+                                              <option value="ditolak" {{ ($order->status == 'ditolak') ? 'selected' : '' }}>Ditolak</option>
+                                              <option value="pending" {{ ($order->status == 'pending') ? 'selected' : '' }}>Pending</option>
+                                            </select>
+                                          </td>
+                                        </tr>
+                                      @endforeach
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-sm-7">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                                      {{-- fungsi prev & next --}}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- /.box-body -->
+                          </div>
+                          <!-- /.box -->
+                        </div>
+                      </div>
+                      <!-- /.row -->
+                    </div>
+                    <!-- /.tab-pane -->
+
+                    <div class="tab-pane" id="disetujui">
+                      disetujui
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="ditolak">
+                      <!-- The timeline -->
+                      blm ditolak
+                    </div>
+                    <!-- /.tab-pane -->
+
                   </div>
+                  <!-- /.tab-content -->
+                </div>
                 <div class="box-body">
                 </div>
                 <!-- /.box-body -->
