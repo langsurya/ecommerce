@@ -60,6 +60,9 @@ class PagesController extends Controller {
 	}
 
 	public function profile() {
+		if (!Auth::check()) {
+			return redirect('login');
+		}
 		$userid = Auth::user()->id;
     $this->data['user'] = User::find($userid);
     $this->data['cartItems'] = Cart::content();

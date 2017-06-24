@@ -139,7 +139,7 @@
                                       <tbody>
                                       @foreach ($semua as $order)
                                         <tr role="row" class="odd">
-                                          <td class="sorting_1">{{ ++$i }}</td>
+                                          <td class="sorting_1">{{ ++$s }}</td>
                                           <td>{{ $order->po }}</td>
                                           <td>{{ $order->name }}</td>
                                           <td>{{ $order->fullname }}</td>
@@ -245,7 +245,7 @@
                                       <tbody>
                                       @foreach ($pending as $order)
                                         <tr role="row" class="odd">
-                                          <td class="sorting_1">{{ ++$i }}</td>
+                                          <td class="sorting_1">{{ ++$p }}</td>
                                           <td>{{ $order->po }}</td>
                                           <td>{{ $order->name }}</td>
                                           <td>{{ $order->fullname }}</td>

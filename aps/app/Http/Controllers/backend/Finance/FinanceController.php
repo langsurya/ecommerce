@@ -29,7 +29,7 @@ class FinanceController extends Controller
                     ->where('orders.status', '=', 'pending')
                     ->orderBy('orders.id', 'desc')
                     ->get();
-        return view('backend.finance.index', $this->data)->with('i');
+        return view('backend.finance.index', $this->data)->with('s')->with('p');
     }
 
     /**
