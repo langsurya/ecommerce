@@ -17,7 +17,7 @@ class PenggunaController extends Controller
     public function index()
     {
         $users = Users::where('admin', '=', 1)->get();
-        return view('backend.otorisasi.pengguna.index',  compact('users'));
+        return view('backend.otorisasi.pengguna.index',  compact('users'))->with('i');
     }
 
     /**
@@ -49,17 +49,18 @@ class PenggunaController extends Controller
             'username' => 'required|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6',
-            'admin' => 'required',
         ]);
-        // return User::create($request->all());
-        // User::create([
-        //     'name' => $data['name'],
-        //     'username' => $data['username'],
-        //     'email' => $data['email'],
-        //     'password' => bcrypt($data['password']),
-        //     'admin' => $data['admin'],
-        // ]);
-        return $request['name'];
+
+        Users::create([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'admin' => $request->admin,
+            'phone' =>'',
+        ]);
+        return redirect()->route('pengguna.index')
+        ->with('success','Pengguna created successfully');
     }
 
     /**
