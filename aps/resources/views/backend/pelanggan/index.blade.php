@@ -24,7 +24,7 @@
         Pelanggan
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ url('/admin/') }}"><i class="fa fa-home"></i> Home</a></li>
         <li class="active">Pelanggan</li>
       </ol>
     </section>
@@ -51,24 +51,24 @@
                     <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                       <thead>
                       <tr role="row">
-                        <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">#</th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">ID</th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Nama</th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">No HP</th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Email</th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Aksi</th>
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>Nama</th>
+                        <th>No HP</th>
+                        <th>Email</th>
+                        <th>Aksi</th>
                       </tr>
                       </thead>
                       <tbody>
                         @foreach ($pelanggans as $pel)
-                          @if ($pel->id==1)
+                          @if ($pel->admin==1)
                             {{-- jika ID pelanggan 1/pertama data tidak ditampilkan --}}
                             @else
                               <tr role="row" class="odd">
-                                <td class="sorting_1">{{ ++$i }}</td>
-                                <td>{{ $pel->id_pel }}</td>
+                                <td width="10px">{{ ++$i }}</td>
+                                <td width="15px">{{ $pel->id }}</td>
                                 <td>{{ $pel->name }}</td>
-                                <td>{{ $pel->hp }}</td>
+                                <td>{{ $pel->phone }}</td>
                                 <td>{{ $pel->email }}</td>
                                 <td>
                                   <a class="btn btn-primary" href="{{ route('pelanggan.edit',$pel->id) }}"><span class="fa fa-edit"></span> Edit</a>
@@ -81,7 +81,7 @@
                         @endforeach
                       </tbody>
                     </table>
-                  <center>  {!! $pelanggans->render() !!} </center>
+                  {{-- <center>  {!! $pelanggans->render() !!} </center> --}}
                   </div>
                 </div>
 

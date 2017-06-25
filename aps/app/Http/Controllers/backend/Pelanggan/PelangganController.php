@@ -8,13 +8,15 @@ use App\Http\Requests;
 // memanggil query builder
 // use Illuminate\Support\Facades\DB;
 use DB;
+use App\Models\Users;
 use App\Pelanggan;
 
 class PelangganController extends Controller
 {
     public function index(Request $request)
     {
-      $pelanggans = Pelanggan::orderBy('id','DESC')->paginate(5);
+      // $pelanggans = Pelanggan::orderBy('id','DESC')->paginate(5);
+      $pelanggans = Users::orderBy('name','ASC')->get();
       return view('backend.pelanggan.index',compact('pelanggans'))
         ->with('i', ($request->input('page', 1) - 1) * 5);
     }
