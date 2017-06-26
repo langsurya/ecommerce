@@ -55,8 +55,7 @@
         @endif
         <div class="form-group">
           <label>Status</label><br>
-          {{ Form::checkbox('admin', 0, null, ['data-toggle' => 'toggle', 'data-on'=>'Admin', 'data-off'=>'User']) }}
-          {{-- <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled"> --}}
+          {{ Form::checkbox('admin', 1, null, ['data-toggle' => 'toggle', 'data-on'=>'Admin', 'data-off'=>'User']) }}
         </div>
         <!-- /.form-group -->
       </div>

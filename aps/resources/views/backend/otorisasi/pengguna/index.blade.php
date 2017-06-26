@@ -63,6 +63,7 @@
                     <thead>
                       <tr role="row" align="center">
                         <th width="10px">#</th>
+                        <th>Fullname</th>
                         <th>Username</th>
                         <th>Email</th>
                         <th>Roles</th>
@@ -72,10 +73,11 @@
                     <tbody>
                       @foreach ($users as $user)
                       <tr role="row" align="center">
-                        <td class="sorting_1">1</td>
+                        <td class="sorting_1">{{ ++$i }}</td>
+                        <td>{{ $user->name }}</td>
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>Admin</td>
+                        <td>{{ ($user->admin == 1) ? 'Admin' : 'Kasir' }}</td>
                         <td>
                           <a href="#" class="fa fa-eye"></a>
                           <a href="#" class="fa fa-edit"></a>

@@ -7,14 +7,7 @@
 @section('js')
 {{-- Bootstrap toggle --}}
 <script src="{{ asset('public/js/bootstrap-toggle.min.js') }}"></script>
- {{--  <script>
-  $(function() {
-    $('#toggle-two').bootstrapToggle({
-      on: 'Active',
-      off: 'Null'
-    });
-  })
-  </script> --}}
+  
 @endsection
 @section('content')
   <!-- Content Header (Page header) -->

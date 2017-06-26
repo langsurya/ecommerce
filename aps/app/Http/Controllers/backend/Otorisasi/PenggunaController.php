@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Users;
+use Illuminate\Support\Facades\DB;
 
 class PenggunaController extends Controller
 {
@@ -16,7 +17,9 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-        $users = Users::where('admin', '=', 1)->get();
+        $users = Users::where('admin', 1)->orWhere('admin',2)->get();
+        // DB::select("SELECT * from users where admin = 1 OR admin = 2");
+        // Users::where('admind', 1)->where('admin',2)->get();
         return view('backend.otorisasi.pengguna.index',  compact('users'))->with('i');
     }
 
@@ -28,7 +31,7 @@ class PenggunaController extends Controller
     public function create()
     {
       $breadcrumb = '<ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
         <li><a href="#">Pengguna</a></li>
         <li class="active">Tambah Pengguna</li>
       </ol>';
@@ -50,17 +53,22 @@ class PenggunaController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6',
         ]);
-
+        if ($request->admin==1) {
+            $admin = 1;
+        }elseif ($request->admin==null) {
+            $admin = 2;
+        }
         Users::create([
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'admin' => $request->admin,
+            'admin' => $admin,
             'phone' =>'',
         ]);
         return redirect()->route('pengguna.index')
         ->with('success','Pengguna created successfully');
+        return $request->admin;
     }
 
     /**
