@@ -54,6 +54,7 @@
                         <th>#</th>
                         <th>ID</th>
                         <th>Nama</th>
+                        <th>Username</th>
                         <th>No HP</th>
                         <th>Email</th>
                         <th>Aksi</th>
@@ -61,13 +62,14 @@
                       </thead>
                       <tbody>
                         @foreach ($pelanggans as $pel)
-                          @if ($pel->admin==1)
+                          @if (($pel->admin==1)||($pel->admin==2))
                             {{-- jika ID pelanggan 1/pertama data tidak ditampilkan --}}
                             @else
                               <tr role="row" class="odd">
                                 <td width="10px">{{ ++$i }}</td>
                                 <td width="15px">{{ $pel->id }}</td>
                                 <td>{{ $pel->name }}</td>
+                                <td>{{ $pel->username }}</td>
                                 <td>{{ $pel->phone }}</td>
                                 <td>{{ $pel->email }}</td>
                                 <td>

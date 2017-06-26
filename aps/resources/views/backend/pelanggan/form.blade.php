@@ -24,50 +24,50 @@
     <div class="row">
       <div class="col-md-12">
         {{-- row 1 col 3 --}}
-        <div class="form-group col-md-4">
-          <label>ID </label>
-            {!! Form::text('','BKR00'.($pel_id), array('disabled','class' => 'form-control')) !!}
-            <input type="text" name="id_pel" value="BKR00{{$pel_id}}" hidden="">
+        <div class="form-group col-md-8">
+          <label>Nama </label>
+          {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
         </div>
+        @if ($errors->has('name'))
+          <span class="help-block">
+              <strong>{{ $errors->first('name') }}</strong>
+          </span>
+        @endif 
         <!-- /.form-group -->
         <div class="form-group col-md-4">
           <label>No HP</label>
-          {!! Form::text('hp', null, array('placeholder' => 'No Hp','class' => 'form-control')) !!}
+          {!! Form::text('phone', null, array('placeholder' => 'No Hp','class' => 'form-control')) !!}
         </div>
         <!-- /.form-group -->
         <div class="form-group col-md-4">
-          <label>Status</label>
-          {{ Form::select('status', [
-             'Aktif' => 'Aktif',
-             'Tidak' => 'Tidak'], null, ['class' => 'form-control']
-          ) }}
+          <label>Username </label>
+          {!! Form::text('username', null, array('placeholder' => 'Username','class' => 'form-control')) !!}
+          @if ($errors->has('username'))
+            <span class="help-block">
+                <strong>{{ $errors->first('username') }}</strong>
+            </span>
+          @endif 
         </div>
-        <!-- /.form-group -->
-        {{-- row 2 col 2 --}}
-        <div class="form-group col-md-4">
-          <label>Kategori</label>
-          {{ Form::select('kategori', [
-             'Aktif' => 'Aktif',
-             'Tidak' => 'Tidak'], null, ['class' => 'form-control']
-          ) }}
-        </div>
-        <!-- /.form-group -->
-        <div class="form-group col-md-8">
-          <label>Nama</label>
-          {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
-        </div>
+        
         {{-- /.row 3 --}}
         <div class="form-group col-md-4">
           <label>Email</label>
           {!! Form::email('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+          @if ($errors->has('email'))
+          <span class="help-block">
+              <strong>{{ $errors->first('email') }}</strong>
+          </span>
+        @endif 
         </div>
+        
         <div class="form-group col-md-4">
-          <label>Line</label>
-          {!! Form::text('line', null, array('placeholder' => 'Line','class' => 'form-control')) !!}
-        </div>
-        <div class="form-group col-md-4">
-          <label>Bbm</label>
-          {!! Form::text('bbm', null, array('placeholder' => 'Bbm','class' => 'form-control')) !!}
+          <label>Password</label>
+          <input class="form-control" type="text" name="password" placeholder="Password" value="{{ old('password') }}">
+          @if ($errors->has('password'))
+            <span class="help-block">
+                <strong>{{ $errors->first('password') }}</strong>
+            </span>
+          @endif 
         </div>
         <div class="form-group col-md-12">
           <label>Alamat</label>

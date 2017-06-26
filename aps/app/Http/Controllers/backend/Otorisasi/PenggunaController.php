@@ -63,6 +63,7 @@ class PenggunaController extends Controller
             'password' => bcrypt($request->password),
             'admin' => $admin,
             'phone' =>'',
+            'alamat' =>'',
         ]);
         return redirect()->route('pengguna.index')
         ->with('success','Pengguna created successfully');

@@ -24,26 +24,30 @@ class PelangganController extends Controller
     public function create()
     {
       // menampilkan data id terakhir dengan query builder
-      $pelanggans = DB::table('pelanggans')
+      $this->data['pelanggans'] = DB::table('users')
                 ->latest('id')
                 ->first();
                 // dd ($pelanggans);
-      return view('backend/pelanggan/create', ['pelanggans' => $pelanggans, 'fungsi'=>'create']);
+      return view('backend/pelanggan/create', $this->data, ['fungsi'=>'create']);
     }
 
     public function store(Request $request)
     {
       $this->validate($request, [
-        'id_pel' => 'required',
-        'status' => 'required',
         'name' => 'required',
-        'hp' => 'required',
-        'email' => 'required|email',
-        'line' => 'required',
-        'bbm' => 'required',
-        'alamat' => 'required',
+        'phone' => 'required',
+        'username' => 'required|unique:users',
+        'email' => 'required|email|max:255|unique:users',
+        'password' => 'required',
       ]);
-      Pelanggan::create($request->all());
+      Users::create([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'alamat' => $request->alamat,
+        ]);
       return redirect()->route('pelanggan.index')
         ->with('success','Pelanggan created successfully');
     }
@@ -55,7 +59,7 @@ class PelangganController extends Controller
 
     public function edit($id)
     {
-      $pelanggans = Pelanggan::findOrFail($id);
+      $pelanggans = Users::findOrFail($id);
       // dd($pelanggans);
       // view berfungsi untuk melihat/membuka file edit.blade.php di dalam folder pelanggan
       //
@@ -64,17 +68,53 @@ class PelangganController extends Controller
 
     public function update(Request $request, $id)
     {
+      if ($request->password == '') {
+        $user = Users::findOrFail($id);
+        $value = $user->password;
+
+        if ($request->username==$user->username) {
+          $val = 'required';
+        }elseif($request->username!=$user->username){
+          $val = 'required|unique:users';
+        }
+
+        if ($request->email==$user->email) {
+          $val1 = 'required';
+          $email = $user->email;
+        }elseif($request->email!=$user->email){
+          $val1 = 'required|email|max:255|unique:users';
+        }
+      }elseif(isset($request->password)){
+        $value = bcrypt($request->password);
+        
+        $user = Users::findOrFail($id);
+        if ($request->username==$user->username) {
+          $val = 'required';
+        }elseif($request->username!=$user->username){
+          $val = 'required|unique:users';
+        }
+
+        if ($request->email==$user->email) {
+          $val1 = 'required';
+          $email = $user->email;
+        }elseif($request->email!=$user->email){
+          $val1 = 'required|email|max:255|unique:users';
+        }
+      }
       $this->validate($request, [
-        'id_pel' => 'required',
-        'status' => 'required',
         'name' => 'required',
-        'hp' => 'required',
-        'email' => 'required|email',
-        'line' => 'required',
-        'bbm' => 'required',
-        'alamat' => 'required',
+        'username' => $val,
+        'email' => $val1,
       ]);
-		  Pelanggan::find($id)->update($request->all());
+
+		  Users::find($id)->update([
+          'name' => $request->name,
+          'phone' => $request->phone,
+          'username' => $request->username,
+          'email' => $request->email,
+          'password' => $value,
+          'alamat' => $request->alamat,
+        ]);
 
       return redirect()->route('pelanggan.index')
         ->with('success','Pelanggan created successfully');
@@ -82,7 +122,7 @@ class PelangganController extends Controller
 
     public function destroy($id)
     {
-      Pelanggan::find($id)->delete();
+      Users::find($id)->delete();
       return redirect()->route('pelanggan.index')
         ->with('success','Pelanggan deleted successfully');
     }
