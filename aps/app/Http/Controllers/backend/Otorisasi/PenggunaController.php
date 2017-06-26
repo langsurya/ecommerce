@@ -18,8 +18,6 @@ class PenggunaController extends Controller
     public function index()
     {
         $users = Users::where('admin', 1)->orWhere('admin',2)->get();
-        // DB::select("SELECT * from users where admin = 1 OR admin = 2");
-        // Users::where('admind', 1)->where('admin',2)->get();
         return view('backend.otorisasi.pengguna.index',  compact('users'))->with('i');
     }
 
