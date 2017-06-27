@@ -23,8 +23,8 @@
               <div class="box-body">
                 {{-- row 1 col 3 --}}
                 <div class="form-group">
-                  <label>Pelanggan</label> <input type="text" id="id_tampil" size="2">
-                  <select class="form-control" name="fullname" id="get_id" onchange="tampilkan_id()">
+                  <label>Pelanggan</label> <input type="text" name="id" id="id_tampil" size="2">
+                  <select class="form-control" id="get_id" onchange="tampilkan_id()">
                     <option value="">Pilih Pelanggan</option>
                   @foreach ($pelanggans as $pelanggan)
                     @if (($pelanggan->admin==1)||($pelanggan->admin==2))
@@ -58,6 +58,10 @@
                 <div class="form-group">
                   <label>Kota</label>
                   <input class="form-control" type="text" name="city" value="">
+                </div>
+                <div class="form-group">
+                  <label>Kode Pos</label>
+                  <input class="form-control" type="text" name="postcode" value="">
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
@@ -160,7 +164,7 @@
                     </div>
                     <div class="col-md-1"><a href="{{ url('/cart/remove') }}/{{ $cartItem->rowId }}"><i class="fa fa-trash"></i></a></div>
                   </div>
-                @endforeach <hr>
+                @endforeach <hr> 
                 <div class="row">
                   <div class="col-md-9">
                     Sub Total
@@ -198,9 +202,9 @@
                   <div class="col-md-3">
                     <div class="form-group">
                       <label>Ekspedisi</label>
-                      <select class="form-control" name="" id="">
+                      <select class="form-control" name="ekspedisi" id="">
                       @foreach ($ekspedisi as $ekspe)
-                        <option value="">{{ $ekspe->name }}</option>
+                        <option value="{{ $ekspe->name }}">{{ $ekspe->name }}</option>
                       @endforeach
                       </select>
                     </div>
@@ -210,11 +214,11 @@
                   <div class="col-md-3">
                     <div class="form-group">
                       <label>Paket</label>
-                      <select class="form-control" name="" id="">
-                        <option value="">SS</option>
-                        <option value="">YES</option>
-                        <option value="">REG</option>
-                        <option value="">OKE</option>
+                      <select class="form-control" name="paket" id="">
+                        <option value="SS">SS</option>
+                        <option value="YES">YES</option>
+                        <option value="REG">REG</option>
+                        <option value="OKE">OKE</option>
                       </select>
                     </div>
                     <!-- /.form-group -->
@@ -233,7 +237,8 @@
                     <!-- /.form-group -->
                     <div class="form-group">
                       <label>Biaya Kirim</label>
-                      {{ Form::text('biaya', null, array('class' => 'form-control')) }}
+                      <input id="theText" type="text" size="10" />
+                      {{-- {{ Form::text('biaya', null, array('class' => 'form-control')) }} --}}
                     </div>
                     <!-- /.form-group -->
                   </div>
@@ -243,7 +248,7 @@
                 <hr>
                 <div class="form-group">
                   <h4>Total Bayar</h4>
-                  <h3>Rp {{ Cart::subtotal() }}</h3>
+                  <h3>Rp <span id="theOutputText">{{ str_replace(',00', '', str_replace('.', '', Cart::subtotal())) }}</span></h3>
                 </div>
               </div>
               <!-- /.box-body -->

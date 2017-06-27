@@ -55,6 +55,8 @@ class CheckoutController extends Controller
   	$address->address = $request->address;
    	$address->country = $request->country;
    	$address->city = $request->city;
+    $address->ekspedisi = '';
+    $address->paket = '';
    	$address->postcode = $request->postcode;
    	$address->email = $request->email;
    	$address->user_id = $userid;

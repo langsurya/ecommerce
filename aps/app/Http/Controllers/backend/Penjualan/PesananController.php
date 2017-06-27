@@ -10,6 +10,8 @@ use App\Http\Requests;
 use App\Models\Products\Product;
 use App\Models\Ekspedisi;
 use App\Models\Users;
+use App\Models\Address;
+use App\Models\orders;
 
 class PesananController extends Controller
 {
@@ -26,6 +28,7 @@ class PesananController extends Controller
                     ->leftjoin('users', 'users.id', '=', 'orders.user_id')
                     ->leftjoin('address', 'address.id', '=', 'orders_product.orders_id')
                     ->select('product.product_name', 'product.product_price as harga', 'orders.total', 'orders.status' ,'orders.id AS po', 'orders.created_at', 'users.name', 'address.fullname')
+                    ->orderBy('orders.id','DESC')
                     ->get();
       return view('backend.penjualan.index', $this->data);
     }
@@ -53,7 +56,29 @@ class PesananController extends Controller
      */
     public function store(Request $request)
     {
-        return back();
+        // dd($request->all());
+
+        $pelanggan = Users::find($request->id);
+        // dd($request->id);
+        $address = new Address;
+        $address->fullname = $pelanggan->name;
+        $address->address = $request->alamat;
+        $address->city = $request->city;
+        $address->country = 'Indonesia';
+        $address->user_id = $request->id;
+        $address->notes = $request->notes;
+        $address->postcode = $request->postcode;
+        $address->email = $request->email;
+        $address->phone = $request->phone;
+        $address->payment_type = $request->payment_type;
+        $address->ekspedisi = $request->ekspedisi;
+        $address->paket = $request->paket;
+        $address->save();
+
+        orders::createOrder();
+        Cart::destroy();
+        return redirect('admin/pesanan');
+        // return back();
     }
 
     /**
