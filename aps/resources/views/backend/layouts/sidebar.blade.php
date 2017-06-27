@@ -31,7 +31,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ Request::is('admin/pesanan') ? 'active' : null }}"><a href="{{ url('admin/pesanan') }}">Pesanan</a></li>
+          <li class="{{ Request::is('admin/pesanan') ? 'active' : null }}"><a href="{{ url('admin/pesanan') }}"><i class="fa fa-file"></i> Pesanan</a></li>
         </ul>
       </li>
       {{-- Produk --}}
