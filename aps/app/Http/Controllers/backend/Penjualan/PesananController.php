@@ -4,8 +4,12 @@ namespace App\Http\Controllers\backend\Penjualan;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Models\Products\Product;
+use App\Models\Ekspedisi;
+use App\Models\Users;
 
 class PesananController extends Controller
 {
@@ -33,7 +37,12 @@ class PesananController extends Controller
      */
     public function create()
     {
-      return view('backend.penjualan.create',  ['fungsi'=>'create', 'title' => 'Tambah Pesanan']);
+        $this->data['cartItems'] = Cart::content();
+        $this->data['products'] = Product::all();
+        $this->data['ekspedisi'] = Ekspedisi::all();
+        $this->data['pelanggans'] = Users::orderBy('name','ASC')->get();
+        $this->data['payments'] = DB::table('payments')->get();
+      return view('backend.penjualan.create', $this->data,  ['fungsi'=>'create', 'title' => 'Tambah Pesanan'])->with('i');
     }
 
     /**
@@ -44,7 +53,7 @@ class PesananController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return back();
     }
 
     /**

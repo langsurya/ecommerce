@@ -53,6 +53,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     // baca class Controller Pesanan di folder backend/Penjualan
     Route::group(['namespace' => 'Penjualan'], function() {
       // menampilkan link web:8000/admin/pesanan
+      // Route::resource('pesanan', 'PesananController');
       Route::get('pesanan', [
         'as' => 'pesanan.index', 'uses' => 'PesananController@index'
       ]);
