@@ -26,10 +26,11 @@ class PesananController extends Controller
                     ->leftjoin('product', 'product.id', '=', 'orders_product.product_id')
                     ->leftjoin('orders', 'orders.id', '=', 'orders_product.orders_id')
                     ->leftjoin('users', 'users.id', '=', 'orders.user_id')
-                    ->leftjoin('address', 'address.id', '=', 'orders_product.orders_id')
+                    ->leftjoin('address', 'address.orders_id', '=', 'orders_product.orders_id')
                     ->select('product.product_name', 'product.product_price as harga', 'orders.total', 'orders.status' ,'orders.id AS po', 'orders.created_at', 'users.name', 'address.fullname')
                     ->orderBy('orders.id','DESC')
                     ->get();
+                // dd($this->data['orders']);
       return view('backend.penjualan.index', $this->data);
     }
 
@@ -57,28 +58,59 @@ class PesananController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        
+        DB::table('orders')->insert([
+            'status' => 'pending',
+            'user_id' => $request->id,
+            'created_at' => new \DateTime(),
+            'updated_at' => new \DateTime(),
+            'total'=> Cart::total()
+            ]);
+        $orders = DB::table('orders')
+                ->orderBy('id', 'desc')
+                ->limit(1)
+                ->get();
 
-        $pelanggan = Users::find($request->id);
-        // dd($request->id);
-        $address = new Address;
-        $address->fullname = $pelanggan->name;
-        $address->address = $request->alamat;
-        $address->city = $request->city;
-        $address->country = 'Indonesia';
-        $address->user_id = $request->id;
-        $address->notes = $request->notes;
-        $address->postcode = $request->postcode;
-        $address->email = $request->email;
-        $address->phone = $request->phone;
-        $address->payment_type = $request->payment_type;
-        $address->ekspedisi = $request->ekspedisi;
-        $address->paket = $request->paket;
-        $address->save();
-
-        orders::createOrder();
+        foreach ($orders as $order) {
+            $pelanggan = Users::find($request->id);
+            $userid = Auth::user()->id;
+            // dd($request->id);
+            $address = new Address;
+            $address->fullname = $pelanggan->name;
+            $address->address = $request->alamat;
+            $address->city = $request->city;
+            $address->country = 'Indonesia';
+            $address->user_id = $userid;
+            $address->orders_id = $order->id;
+            $address->notes = $request->notes;
+            $address->postcode = $request->postcode;
+            $address->email = $request->email;
+            $address->phone = $request->phone;
+            $address->payment_type = $request->payment_type;
+            $address->ekspedisi = $request->ekspedisi;
+            $address->paket = $request->paket;
+            $address->biaya_kirim = $request->biaya_kirim;
+            $address->save();
+            // dd($order->id);
+            $cartItems = Cart::content();
+            foreach ($cartItems as $cartItem) {
+                // dd($cartItem->qty);
+                echo $cartItem->price;
+                echo "<br>";
+                DB::table('orders_product')->insert([
+                    'tax' => Cart::tax(),
+                    'total' => $cartItem->price * $cartItem->qty,
+                    'product_id' => $cartItem->id,
+                    'orders_id' => $order->id,
+                    'qty' => $cartItem->qty,
+                    'created_at' => new \DateTime(),
+                    'updated_at' => new \DateTime(),
+                ]);
+            }
+        }
+        // orders::createOrder();
         Cart::destroy();
         return redirect('admin/pesanan');
-        // return back();
     }
 
     /**

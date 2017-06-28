@@ -50,22 +50,31 @@ class CheckoutController extends Controller
   	$userid = Auth::user()->id;
     
   	// dd($request->all());
-  	$address = new Address;
-  	$address->fullname = $request->fullname;
-  	$address->address = $request->address;
-   	$address->country = $request->country;
-   	$address->city = $request->city;
-    $address->ekspedisi = '';
-    $address->paket = '';
-   	$address->postcode = $request->postcode;
-   	$address->email = $request->email;
-   	$address->user_id = $userid;
-   	$address->notes = $request->notes;
-   	$address->phone = $request->phone;
-    $address->payment_type = $request->pay;
-   	$address->save();
 
     orders::createOrder();
+    $orders = DB::table('orders')
+                ->orderBy('id', 'desc')
+                ->limit(1)
+                ->get();
+
+    foreach ($orders as $order) {
+    	$address = new Address;
+    	$address->fullname = $request->fullname;
+    	$address->address = $request->address;
+     	$address->country = $request->country;
+     	$address->city = $request->city;
+      $address->postcode = $request->postcode;
+      $address->email = $request->email;
+      $address->user_id = $userid;
+      $address->orders_id = $order->id;
+      $address->notes = $request->notes;
+      $address->phone = $request->phone;
+      $address->payment_type = $request->pay;
+      // $address->ekspedisi = '';
+      // $address->paket = '';
+      // $address->biaya_kirim = '';
+     	$address->save();
+     }
     Cart::destroy();
     return redirect('profile');
   }

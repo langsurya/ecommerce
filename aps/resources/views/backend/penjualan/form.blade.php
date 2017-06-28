@@ -78,18 +78,7 @@
               <!-- ./box-body -->
             </div>
             <!-- ./box -->
-
-            <div class="box">
-              <div class="box-body">
-                <div class="form-group">
-                  <label>Catatan</label>
-                  <textarea name="notes" class="form-control"></textarea>
-                </div>
-                <!-- /.form-group -->
-              </div>
-              <!-- /.box-body -->
-            </div>
-            <!-- ./box -->
+            
           </div>
           <!-- /.col-md-3 -->
           <div class="col-md-9">
@@ -116,11 +105,6 @@
                         @endforeach
                       </select>
                     </div>
-                      {{-- <form action="{{ url('/admin/pesanan/addItem/') }}" method="POST"> --}}
-                        {{-- {{ csrf_field() }} --}}
-                        {{-- <input type="hidden" name="id" id="hasil" size="4" style="text-align: center;"> --}}
-                        {{-- <button class="btn btn-primary" type="submit"><span class="fa fa-plus"></span> Tambah Barang</button> --}}
-                      {{-- </form> --}}
                       <input type="hidden" id="hasil" size="4" style="text-align: center;">
                       <a class="btn btn-primary" id="link"><span class="fa fa-plus"></span> Tambah Barang </a>
 
@@ -237,7 +221,7 @@
                     <!-- /.form-group -->
                     <div class="form-group">
                       <label>Biaya Kirim</label>
-                      <input id="theText" type="text" size="10" />
+                      <input id="theText" type="text" name="biaya_kirim" size="10" />
                       {{-- {{ Form::text('biaya', null, array('class' => 'form-control')) }} --}}
                     </div>
                     <!-- /.form-group -->
@@ -256,23 +240,18 @@
             <!-- /.box -->
             <div class="box box-warning box-solid">
               <div class="box-header with-border">
-                <h3 class="box-title">Pembayaran</h3>
+                <h3 class="box-title">Catatan</h3>
                 <div class="box-tools pull-right">
-                  {{-- <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                  </button> --}}
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                  </button>
                 </div>
                 <!-- /.box-tools -->
               </div>
               <!-- /.box-header -->
               <div class="box-body">
                 <div class="row">
-                  <div class="col-md-3">
-                    <label>Status Bayar</label>
-                    {{ Form::select('status_bayar', [
-                      'belum_bayar' => 'Belum Bayar',
-                      'sudah_bayar' => 'Sudah Bayar'
-                    ], null, ['class' => 'form-control']
-                    ) }}
+                  <div class="col-md-12">
+                  <textarea name="notes" class="form-control"></textarea>
                   </div>
                 </div>
               </div>
