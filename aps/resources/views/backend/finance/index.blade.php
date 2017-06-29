@@ -12,7 +12,31 @@
       });
       $('#example2').DataTable({
         "paging": true,
-        "lengthChange": false,
+        "lengthChange": true,
+        "searching": false,
+        "ordering": false,
+        "info": true,
+        "autoWidth": false
+      });
+      $('#example3').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": false,
+        "ordering": false,
+        "info": true,
+        "autoWidth": false
+      });
+      $('#example4').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": false,
+        "ordering": false,
+        "info": true,
+        "autoWidth": false
+      });
+      $('#example5').DataTable({
+        "paging": true,
+        "lengthChange": true,
         "searching": false,
         "ordering": false,
         "info": true,
@@ -46,7 +70,7 @@
             <!-- /.box-header -->
             <div class="box-body">
               <div class="box">
-                <div class="box-header with-border">
+                {{-- <div class="box-header with-border">
                   <div class="row">
                     <div class="col-md-2">
                       <div class="form-group">
@@ -91,31 +115,23 @@
                       <!-- /.form-group -->
                     </div>
                   </div>
-                </div>
+                </div> --}}
                 <!-- box-body --><br>
                 <div class="nav-tabs-custom">
                   <ul class="nav nav-tabs">
                     <li class="active"><a href="#semua" data-toggle="tab" aria-expanded="false">Semua <span class="badge">{{ count($semua) }}</span></a></li>
                     <li class=""><a href="#pending" data-toggle="tab" aria-expanded="false">Pending <span class="badge">{{ count($pending) }}</span></a></li>
-                    <li class=""><a href="#disetujui" data-toggle="tab" aria-expanded="true">Disetujui<span class="badge">14</span></a></li>
-                    <li><a href="#ditolak" data-toggle="tab" aria-expanded="true">Ditolak <span class="badge">7</span></a></li>
+                    <li class=""><a href="#disetujui" data-toggle="tab" aria-expanded="true">Disetujui<span class="badge">{{ count($disetujui) }}</span></a></li>
+                    <li><a href="#ditolak" data-toggle="tab" aria-expanded="true">Ditolak <span class="badge">{{ count($ditolak) }}</span></a></li>
                   </ul>
                   <div class="tab-content">
                     <div class="tab-pane active" id="semua">
                       <!-- row -->
                       <div class="row">
                         <div class="col-xs-12">
-
                           <div class="box">
                             <div class="box-header">
-                              <h3 class="box-title">
-                                Semua Pesanan
-                              </h3>
-                              <h3 class="box-title pull-right">
-                                <a href="{{ url('/backend/finance/store') }}" class="btn btn-block btn-primary">
-                                  <span class="fa  fa-save"></span> Simpan
-                                </a>
-                              </h3><hr>
+                              <h3 class="box-title"> Semua Pesanan</h3>
                             </div>
                             <!-- /.box-header -->
                             <!-- box-body -->
@@ -124,7 +140,7 @@
                                 
                                 <div class="row">
                                   <div class="col-sm-12">
-                                    <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                    <table id="example2" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                       <thead>
                                         <tr role="row">
                                           <th width="10px">#</th>
@@ -139,54 +155,27 @@
                                       <tbody>
                                       @foreach ($semua as $order)
                                         <tr role="row" class="odd">
+                                          {!! Form::open(array('route' => 'finance.store','method'=>'POST')) !!}
                                           <td class="sorting_1">{{ ++$s }}</td>
-                                          <td>{{ $order->po }}</td>
+                                          <td>{{ $order->po }} <input type="hidden" size="5" name="po" value="{{ $order->po }}"></td>
                                           <td>{{ $order->name }}</td>
                                           <td>{{ $order->fullname }}</td>
                                           <td>{{ $order->pay }}</td>
                                           <td>Rp {{ $order->total }}</td>
                                           <td>
+                                          {{-- {!! Form::open(['url' => 'admin/finance/store', 'method'=>'post']) !!} --}}
                                             <select name="status" id="" class="form-control">
                                             <option>-status-</option>
                                               <option value="disetujui" {{ ($order->status == 'disetujui') ? 'selected' : '' }}>Disetujui</option>
                                               <option value="ditolak" {{ ($order->status == 'ditolak') ? 'selected' : '' }}>Ditolak</option>
                                               <option value="pending" {{ ($order->status == 'pending') ? 'selected' : '' }}>Pending</option>
                                             </select>
+                                            <button type="submit" class="btn btn-primary pull-right"><span class="fa fa-save"></span> Update</button>
                                           </td>
+                                          {!! Form::close() !!}
                                         </tr>
                                       @endforeach
-                                        <tr role="row" class="odd">
-                                          <td class="sorting_1">1</td>
-                                          <td>49</td>
-                                          <td>kasir 1</td>
-                                          <td>Agis Setiawan</td>
-                                          <td>BCA</td>
-                                          <td>Rp 339.000</td>
-                                          <td>
-                                            {{ Form::select('status', [
-                                              'i' => 'Disetujui',
-                                              'k' => 'Ditolak',
-                                              'g' => 'Pending'
-                                            ], null, ['class' => 'form-control']
-                                            ) }}
-                                          </td>
-                                        </tr>
-                                        <tr role="row" class="odd">
-                                          <td class="sorting_1">2</td>
-                                          <td>50</td>
-                                          <td>kasir 2</td>
-                                          <td>Dita Andriani</td>
-                                          <td>BRI</td>
-                                          <td>Rp 439.000</td>
-                                          <td>
-                                            {{ Form::select('status', [
-                                              'i' => 'Disetujui',
-                                              'k' => 'Ditolak',
-                                              'g' => 'Pending'
-                                            ], null, ['class' => 'form-control']
-                                            ) }}
-                                          </td>
-                                        </tr>
+                                        
                                       </tbody>
                                     </table>
                                   </div>
@@ -201,7 +190,7 @@
                               </div>
                             </div>
                             <!-- /.box-body -->
-                          </div>
+                          </div>                          
                           <!-- /.box -->
                         </div>
                       </div>
@@ -216,13 +205,8 @@
                           <div class="box">
                             <div class="box-header">
                               <h3 class="box-title">
-                                Pending Pesanan
+                                Pending
                               </h3>
-                              <h3 class="box-title pull-right">
-                                <a href="{{ url('/backend/finance/store') }}" class="btn btn-block btn-primary">
-                                  <span class="fa  fa-save"></span> Simpan
-                                </a>
-                              </h3><hr>
                             </div>
                             <!-- /.box-header -->
                             <!-- box-body -->
@@ -230,7 +214,7 @@
                               <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                                 <div class="row">
                                   <div class="col-sm-12">
-                                    <table id="example2" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                    <table id="example3" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                       <thead>
                                         <tr role="row">
                                           <th width="10px">#</th>
@@ -251,14 +235,7 @@
                                           <td>{{ $order->fullname }}</td>
                                           <td>{{ $order->pay }}</td>
                                           <td>Rp {{ $order->total }}</td>
-                                          <td>
-                                            <select name="status" id="" class="form-control">
-                                            <option value="">-status-</option>
-                                              <option value="disetujui" {{ ($order->status == 'disetujui') ? 'selected' : '' }}>Disetujui</option>
-                                              <option value="ditolak" {{ ($order->status == 'ditolak') ? 'selected' : '' }}>Ditolak</option>
-                                              <option value="pending" {{ ($order->status == 'pending') ? 'selected' : '' }}>Pending</option>
-                                            </select>
-                                          </td>
+                                          <td> {{ $order->status }}</td>
                                         </tr>
                                       @endforeach
                                       </tbody>
@@ -284,12 +261,127 @@
                     <!-- /.tab-pane -->
 
                     <div class="tab-pane" id="disetujui">
-                      disetujui
+                      <!-- row -->
+                      <div class="row">
+                        <div class="col-xs-12">
+
+                          <div class="box">
+                            <div class="box-header">
+                              <h3 class="box-title">
+                                Disetujui
+                              </h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- box-body -->
+                            <div class="">
+                              <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row">
+                                  <div class="col-sm-12">
+                                    <table id="example4" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                      <thead>
+                                        <tr role="row">
+                                          <th width="10px">#</th>
+                                          <th width="100px">Nomor PO</th>
+                                          <th>Nama Pengguna</th>
+                                          <th>Nama Pelanggan</th>
+                                          <th>Nama Bank</th>
+                                          <th>Total</th>
+                                          <th>Status Finance</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                      @foreach ($disetujui as $order)
+                                        <tr role="row" class="odd">
+                                          <td class="sorting_1">{{ ++$i }}</td>
+                                          <td>{{ $order->po }}</td>
+                                          <td>{{ $order->name }}</td>
+                                          <td>{{ $order->fullname }}</td>
+                                          <td>{{ $order->pay }}</td>
+                                          <td>Rp {{ $order->total }}</td>
+                                          <td> {{ $order->status }}</td>
+                                        </tr>
+                                      @endforeach
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-sm-7">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                                      {{-- fungsi prev & next --}}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- /.box-body -->
+                          </div>
+                          <!-- /.box -->
+                        </div>
+                      </div>
+                      <!-- /.row -->
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="ditolak">
-                      <!-- The timeline -->
-                      blm ditolak
+                      <!-- row -->
+                      <div class="row">
+                        <div class="col-xs-12">
+
+                          <div class="box">
+                            <div class="box-header">
+                              <h3 class="box-title">
+                                Ditolak
+                              </h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- box-body -->
+                            <div class="">
+                              <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row">
+                                  <div class="col-sm-12">
+                                    <table id="example5" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                      <thead>
+                                        <tr role="row">
+                                          <th width="10px">#</th>
+                                          <th width="100px">Nomor PO</th>
+                                          <th>Nama Pengguna</th>
+                                          <th>Nama Pelanggan</th>
+                                          <th>Nama Bank</th>
+                                          <th>Total</th>
+                                          <th>Status Finance</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                      @foreach ($ditolak as $order)
+                                        <tr role="row" class="odd">
+                                          <td class="sorting_1">{{ ++$k }}</td>
+                                          <td>{{ $order->po }}</td>
+                                          <td>{{ $order->name }}</td>
+                                          <td>{{ $order->fullname }}</td>
+                                          <td>{{ $order->pay }}</td>
+                                          <td>Rp {{ $order->total }}</td>
+                                          <td> {{ $order->status }}</td>
+                                        </tr>
+                                      @endforeach
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-sm-7">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                                      {{-- fungsi prev & next --}}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- /.box-body -->
+                          </div>
+                          <!-- /.box -->
+                        </div>
+                      </div>
+                      <!-- /.row -->
                     </div>
                     <!-- /.tab-pane -->
 

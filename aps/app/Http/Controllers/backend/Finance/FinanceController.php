@@ -17,19 +17,33 @@ class FinanceController extends Controller
     public function index()
     {
         $this->data['semua'] = DB::table('orders')
-                    ->leftjoin('address', 'address.id', '=', 'orders.id')
+                    ->leftjoin('address', 'address.orders_id', '=', 'orders.id')
                     ->leftjoin('users', 'users.id', '=', 'orders.user_id')
                     ->select('users.name', 'address.payment_type as pay', 'orders.total', 'orders.status' ,'orders.id AS po', 'address.fullname')
                     ->orderBy('orders.id', 'desc')
                     ->get();
         $this->data['pending'] = DB::table('orders')
-                    ->leftjoin('address', 'address.id', '=', 'orders.id')
+                    ->leftjoin('address', 'address.orders_id', '=', 'orders.id')
                     ->leftjoin('users', 'users.id', '=', 'orders.user_id')
                     ->select('users.name', 'address.payment_type as pay', 'orders.total', 'orders.status' ,'orders.id AS po', 'address.fullname')
                     ->where('orders.status', '=', 'pending')
                     ->orderBy('orders.id', 'desc')
                     ->get();
-        return view('backend.finance.index', $this->data)->with('s')->with('p');
+        $this->data['disetujui'] = DB::table('orders')
+                    ->leftjoin('address', 'address.orders_id', '=', 'orders.id')
+                    ->leftjoin('users', 'users.id', '=', 'orders.user_id')
+                    ->select('users.name', 'address.payment_type as pay', 'orders.total', 'orders.status' ,'orders.id AS po', 'address.fullname')
+                    ->where('orders.status', '=', 'disetujui')
+                    ->orderBy('orders.id', 'desc')
+                    ->get();
+        $this->data['ditolak'] = DB::table('orders')
+                    ->leftjoin('address', 'address.orders_id', '=', 'orders.id')
+                    ->leftjoin('users', 'users.id', '=', 'orders.user_id')
+                    ->select('users.name', 'address.payment_type as pay', 'orders.total', 'orders.status' ,'orders.id AS po', 'address.fullname')
+                    ->where('orders.status', '=', 'ditolak')
+                    ->orderBy('orders.id', 'desc')
+                    ->get();
+        return view('backend.finance.index', $this->data)->with('s')->with('p')->with('i')->with('k');
     }
 
     /**
@@ -50,7 +64,14 @@ class FinanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        DB::table('orders')
+        ->where('id',$request->po)
+        ->update([
+            'status' => $request->status
+            ]);
+        return back();
+        // dd($request->all());
     }
 
     /**
@@ -84,7 +105,7 @@ class FinanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
     }
 
     /**
