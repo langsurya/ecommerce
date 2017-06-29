@@ -61,60 +61,62 @@
                   <div class="row">
                     <div class="col-xs-12">
                       @foreach ($orders as $order)
-                      <div class="box">
-                        <div class="box-header pull-right">
-                          <h3 class="box-title">
-                          <a href="#" class="btn btn-block btn-primary"><span class="fa fa-plus"></span> </a>
-                        </h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                          <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                            <div class="row">
-                              <div class="col-sm-12">
-                                <table class="table">
-                                  <thead>
-                                    <th>PO # {{ $order->po }}</th>
-                                    <th>Barang</th>
-                                    <th>Status Transaksi</th>                                  
-                                  </thead>
-                                  <tbody>
-                                    <td>
-                                    <h5>Pemesan</h5>
-                                    {{ $order->name }}
-                                    <h5>Dikirim Kepada</h5>
-                                    {{ $order->fullname }}
-                                    <h5>Tanggal Pesanan</h5>
-                                    {{ $order->created_at }}
-                                    </td>
-                                    <td>
-                                      <a href="">{{ $order->product_name }}</a><br>
-                                      <div class="alert alert-warning col-sm-8">
-                                        <h5> Harga : Rp {{ number_format($order->harga, '2', ',','.') }}</h5>
-
-                                        <h5> Tagihan</h5>
-                                        <h4> Rp {{ $order->total }}</h4>
-                                        <b> Belum Bayar</b>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="col-sm-6">
-                                        @if ($order->status == 'belum dibayar')
-                                        <button class="btn btn-block btn-primary">Belum Dibayar</button>
-                                        @elseif($order->status == 'pending')
-                                        <button class="btn btn-block btn-primary">Pending</button>
-                                        @endif
-                                      </div>
-                                    </td>
-                                  </tbody>
-                                </table>
-                              </div>
-                            </div>
-
+                        <div class="box">
+                          <div class="box-header pull-right">
+                            <h3 class="box-title">
+                            <a href="{{ url('/admin/pesanan/') }}/{{$order->po}}/edit" class=""><i class="fa fa-edit"></i> </a>
+                          </h3>
                           </div>
+                          <!-- /.box-header -->
+                          <div class="box-body">
+                            <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <table class="table">
+                                    <thead>
+                                      <th>PO # {{ $order->po }}</th>
+                                      <th>Barang</th>
+                                      <th>Status Transaksi</th>                                  
+                                    </thead>
+                                    <tbody>
+                                      <td class="col-sm-4">
+                                      <h5>Pemesan</h5>
+                                      {{ $order->name }}
+                                      <h5>Dikirim Kepada</h5>
+                                      {{ $order->fullname }}
+                                      <h5>Tanggal Pesanan</h5>
+                                      {{ $order->created_at }}
+                                      </td>
+                                        <td class="col-sm-4">
+                                          @foreach ($barangs as $barang)
+                                            <a href="">{{ ($order->po==$barang->id) ? $barang->product_name : '' }}</a>{{ ($order->po==$barang->id) ? ' ('.$barang->qty.')' .', ' : '' }}
+                                          @endforeach<br>
+                                          <div class="alert alert-warning col-sm-10">
+                                          {{-- @foreach ($barangs as $barang) --}}
+                                            <h5> Tagihan</h5>
+                                            <h4> Rp {{ $order->total }}</h4>
+                                            <b> {{ ($order->status=='pending') ? 'Belum Bayar' : $order->updated_at }}</b>
+                                          {{-- @endforeach --}}
+                                          </div> 
+                                        </td>
+                                      <td class="col-sm-4">
+                                        <div  class="col-sm-5">
+                                          @if ($order->status == 'belum dibayar')
+                                          <button class="btn btn-block btn-primary">Belum Dibayar</button>
+                                          @elseif($order->status == 'pending')
+                                          <button class="btn btn-block btn-primary">Pending</button>
+                                          @endif
+                                        </div>
+                                      </td>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                          <!-- /.box-body -->
                         </div>
-                        <!-- /.box-body -->
-                      </div>
                       @endforeach
                     </div>
                   </div>
@@ -152,7 +154,7 @@
                                     <h5>Tanggal Pesanan</h5>
                                     {{ $order->created_at }}
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                       <a href="">{{ $order->product_name }}</a><br>
                                       <div class="alert alert-warning col-sm-8">
                                         <h5> Tagihan</h5>
@@ -168,7 +170,7 @@
                                         <button class="btn btn-block btn-primary">Pending</button>
                                         @endif
                                       </div>
-                                    </td>
+                                    </td> --}}
                                   </tbody>
                                 </table>
                               </div>

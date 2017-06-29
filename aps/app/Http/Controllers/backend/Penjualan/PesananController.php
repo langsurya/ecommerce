@@ -23,14 +23,25 @@ class PesananController extends Controller
      */
     public function index()
     {
-        $this->data['orders'] = DB::table('orders_product')
+        $this->data['barangs'] = DB::table('orders_product')
                     ->leftjoin('product', 'product.id', '=', 'orders_product.product_id')
                     ->leftjoin('orders', 'orders.id', '=', 'orders_product.orders_id')
-                    ->leftjoin('users', 'users.id', '=', 'orders.user_id')
-                    ->leftjoin('address', 'address.orders_id', '=', 'orders_product.orders_id')
-                    ->select('product.product_name', 'product.product_price as harga', 'orders.total', 'orders.status' ,'orders.id AS po', 'orders.created_at', 'users.name', 'address.fullname')
+                    ->select('product.product_name', 'product.product_price as harga', 'orders_product.qty', 'orders.total', 'orders.status' ,'orders.id', 'orders.created_at')
                     ->orderBy('orders.id','DESC')
                     ->get();
+                    // dd($this->data['barangs']);
+            foreach ($this->data['barangs'] as $barang) {
+                $this->data['nama_produk'] = $barang->product_name;
+                $this->data['harga'] = $barang->harga;
+                // $this->data['id'] = $barang->po;
+                $this->data['total'] = $barang->total;
+            }
+        $this->data['orders'] = DB::table('orders')
+                ->leftjoin('address', 'address.orders_id', '=', 'orders.id')
+                ->leftjoin('users', 'users.id', '=', 'orders.user_id')
+                ->select('orders.id as po', 'orders.status', 'orders.total' ,'address.fullname', 'users.name','orders.created_at', 'orders.updated_at')
+                ->orderBy('orders.id','DESC')
+                ->get();
                 // dd($this->data['orders']);
       return view('backend.penjualan.index', $this->data);
     }
@@ -59,10 +70,11 @@ class PesananController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        
+        $userid = Auth::user()->id;
         DB::table('orders')->insert([
             'status' => 'pending',
-            'user_id' => $request->id,
+            'user_id' => $userid,
+            'pembayaran' => $request->pembayaran,
             'created_at' => new \DateTime(),
             'updated_at' => new \DateTime(),
             'total'=> Cart::total()
@@ -74,14 +86,14 @@ class PesananController extends Controller
 
         foreach ($orders as $order) {
             $pelanggan = Users::find($request->id);
-            $userid = Auth::user()->id;
+            
             // dd($request->id);
             $address = new Address;
             $address->fullname = $pelanggan->name;
             $address->address = $request->alamat;
             $address->city = $request->city;
             $address->country = 'Indonesia';
-            $address->user_id = $userid;
+            $address->user_id = $request->id;
             $address->orders_id = $order->id;
             $address->notes = $request->notes;
             $address->postcode = $request->postcode;
@@ -90,14 +102,12 @@ class PesananController extends Controller
             $address->payment_type = $request->payment_type;
             $address->ekspedisi = $request->ekspedisi;
             $address->paket = $request->paket;
-            $address->biaya_kirim = $request->biaya_kirim;
+            $address->ongkir = $request->ongkir;
             $address->save();
-            // dd($order->id);
+            
             $cartItems = Cart::content();
             foreach ($cartItems as $cartItem) {
-                // dd($cartItem->qty);
-                echo $cartItem->price;
-                echo "<br>";
+
                 DB::table('orders_product')->insert([
                     'tax' => Cart::tax(),
                     'total' => $cartItem->price * $cartItem->qty,
@@ -106,6 +116,12 @@ class PesananController extends Controller
                     'qty' => $cartItem->qty,
                     'created_at' => new \DateTime(),
                     'updated_at' => new \DateTime(),
+                ]);
+                $products = Product::find($cartItem->id);
+                DB::table('product')
+                    ->where('id', $cartItem->id)
+                    ->update([
+                        'product_stok' => ($products->product_stok-$cartItem->qty)
                 ]);
             }
         }
@@ -133,7 +149,42 @@ class PesananController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->data['pelanggans'] = Users::orderBy('name','ASC')->get();
+        $this->data['payments'] = DB::table('payments')->get();
+        $this->data['products'] = Product::all();
+        $this->data['ekspedisi'] = Ekspedisi::all();
+        $this->data['title'] = 'Edit Orders';
+        $this->data['address'] = DB::table('address')->where('orders_id', $id)->get();            
+        foreach ($this->data['address'] as $address) {
+            $this->data['fullname'] = $address->fullname;
+            $this->data['po'] = $address->orders_id;
+            $this->data['email'] = $address->email;
+            $this->data['phone'] = $address->phone;
+            $this->data['alamat'] = $address->address;
+            $this->data['postcode'] = $address->postcode;
+            $this->data['kota'] = $address->city;
+            $this->data['ongkir'] = $address->ongkir;
+            $this->data['payment'] = $address->payment_type;
+            $this->data['eksped'] = $address->ekspedisi;
+            $this->data['paket'] = $address->paket;
+            $this->data['berat'] = $address->berat;
+            $this->data['notes'] = $address->notes;
+        }
+        $this->data['orders'] = DB::table('orders_product')
+                    ->leftjoin('orders', 'orders.id', '=', 'orders_product.orders_id')
+                    ->leftjoin('product', 'product.id', '=', 'orders_product.product_id')
+                    ->select(
+                        'product.product_name as name', 'product.product_price',
+                        'orders.total as subtotal', 'orders.status', 'orders.pembayaran',
+                        'orders_product.total', 'orders_product.qty'
+                        )
+                    ->where('orders_product.orders_id', $id)
+                    ->get();
+        foreach ($this->data['orders'] as $orders) {
+            $this->data['subtotal'] = $orders->subtotal;
+        }
+        return view('backend.penjualan.edit', $this->data)
+            ->with('i');
     }
 
     /**
@@ -145,7 +196,24 @@ class PesananController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       // dd($request->all());
+    }
+
+    public function updatepenjualan(Request $request, $id)
+    {
+        DB::table('address')
+            ->where('orders_id', $id)
+            ->update([
+                'ekspedisi' => $request->ekspedisi,
+                'paket' => $request->paket,
+                'berat' => $request->berat,
+                'ongkir' => $request->ongkir,
+                ]);
+         DB::table('orders')
+            ->where('id', $id)
+            ->update(['pembayaran' => $request->pembayaran]);
+
+       return back();
     }
 
     /**

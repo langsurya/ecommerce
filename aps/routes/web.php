@@ -54,6 +54,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::group(['namespace' => 'Penjualan'], function() {
       // menampilkan link web:8000/admin/pesanan
       Route::resource('pesanan', 'PesananController');
+      Route::patch('pesanan/{pesanan}', [
+        'as' => 'pesanan.updatepenjualan', 'uses' => 'PesananController@updatepenjualan'
+      ]);
     });
 
     // baca class Controller Kategori, Produk di folder backend/Produk
