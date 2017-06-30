@@ -255,10 +255,6 @@
             <div class="box box-warning box-solid">
               <div class="box-header with-border">
                 <h3 class="box-title">Pembayaran</h3>
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                  </button>
-                </div>
                 <!-- /.box-tools -->
               </div>
               <!-- /.box-header -->
@@ -268,10 +264,10 @@
                     <div class="form-group">
                       <label>Status Bayar</label>
                       <select class="form-control" name="pembayaran" id="">
-                      @foreach ($orders as $order)
-                        <option value="belumdibayar" {{ ($order->pembayaran == 'belumdibayar') ? 'selected' : ''}}>Belum Bayar</option>
-                        <option value="sudahdibayar" {{ ($order->pembayaran == 'sudahdibayar') ? 'selected' : ''}}>Sudah Dibayar</option>
-                      @endforeach
+                      {{-- @foreach ($orders as $order) --}}
+                        <option value="belumbayar" {{ ($pembayaran == 'belumbayar') ? 'selected' : ''}}>Belum Bayar</option>
+                        <option value="sudahbayar" {{ ($pembayaran == 'sudahbayar') ? 'selected' : ''}}>Sudah Dibayar</option>
+                      {{-- @endforeach --}}
                       </select>
                     </div>
                     <!-- /.form-group -->

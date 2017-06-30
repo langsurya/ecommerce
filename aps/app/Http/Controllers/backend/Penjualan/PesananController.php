@@ -16,11 +16,7 @@ use App\Models\orders;
 
 class PesananController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $this->data['barangs'] = DB::table('orders_product')
@@ -39,18 +35,34 @@ class PesananController extends Controller
         $this->data['orders'] = DB::table('orders')
                 ->leftjoin('address', 'address.orders_id', '=', 'orders.id')
                 ->leftjoin('users', 'users.id', '=', 'orders.user_id')
-                ->select('orders.id as po', 'orders.status', 'orders.total' ,'address.fullname', 'users.name','orders.created_at', 'orders.updated_at')
+                ->select(
+                    'address.fullname', 'address.payment_type', 'address.ekspedisi', 'address.paket', 
+                    'orders.id as po', 'orders.status', 'orders.total', 'orders.pembayaran', 
+                    'orders.packing', 'orders.created_at', 'orders.updated_at',
+                    'users.name')
                 ->orderBy('orders.id','DESC')
                 ->get();
-                // dd($this->data['orders']);
+        $this->data['finances'] = DB::table('orders')
+                ->leftjoin('address', 'address.orders_id', '=', 'orders.id')
+                ->leftjoin('users', 'users.id', '=', 'orders.user_id')
+                ->select(
+                    'address.fullname', 'address.payment_type', 'address.ekspedisi', 'address.paket', 
+                    'orders.id as po', 'orders.status', 'orders.total', 'orders.pembayaran', 
+                    'orders.packing', 'orders.created_at', 'orders.updated_at',
+                    'users.name')
+                ->where('pembayaran','=','sudahbayar')
+                ->orderBy('orders.id','DESC')
+                ->get();
+        $this->data['semua'] = DB::table('orders')->count();
+        $this->data['belum'] = DB::table('orders')->where('pembayaran', '!=', 'sudahbayar')->count();
+        $this->data['finance'] = DB::table('orders')->where('pembayaran', '=', 'sudahbayar')->count();
+        $this->data['packing'] = DB::table('orders')->where('packing', '=', 'sudahpacking')->count();
+            // echo $this->data['belum'];
+        // $this->data['dibayar'] = DB::table('orders')->get();
+                // dd($this->data['belumdibayar']);
       return view('backend.penjualan.index', $this->data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $this->data['cartItems'] = Cart::content();
@@ -61,12 +73,6 @@ class PesananController extends Controller
       return view('backend.penjualan.create', $this->data,  ['fungsi'=>'create', 'title' => 'Tambah Pesanan'])->with('i');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         // dd($request->all());
@@ -130,23 +136,11 @@ class PesananController extends Controller
         return redirect('admin/pesanan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $this->data['pelanggans'] = Users::orderBy('name','ASC')->get();
@@ -180,20 +174,15 @@ class PesananController extends Controller
                         )
                     ->where('orders_product.orders_id', $id)
                     ->get();
-        foreach ($this->data['orders'] as $orders) {
-            $this->data['subtotal'] = $orders->subtotal;
+        $this->data['tbl_orders'] = DB::table('orders')->get();
+        foreach ($this->data['tbl_orders'] as $orders) {
+            $this->data['subtotal'] = $orders->total;
+            $this->data['pembayaran'] = $orders->pembayaran;
         }
         return view('backend.penjualan.edit', $this->data)
             ->with('i');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
        // dd($request->all());
@@ -216,12 +205,6 @@ class PesananController extends Controller
        return back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
