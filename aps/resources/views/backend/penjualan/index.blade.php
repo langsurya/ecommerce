@@ -292,7 +292,7 @@
                         <div class="box">
                           <div class="box-header pull-right">
                             <h3 class="box-title">
-                            <a href="{{ url('/admin/pesanan/') }}/{{$order->po}}/edit" class=""><i class="fa fa-edit"></i> </a>
+                            <a href="{{ url('/admin/pesananFinance/') }}/{{$order->po}}/edit" class=""><i class="fa fa-edit"></i> </a>
                           </h3>
                           </div>
                           <!-- /.box-header -->

@@ -72,7 +72,7 @@ class CheckoutController extends Controller
       $address->payment_type = $request->pay;
       // $address->ekspedisi = '';
       // $address->paket = '';
-      // $address->biaya_kirim = '';
+      $address->ongkir = 0;
      	$address->save();
      }
     Cart::destroy();
