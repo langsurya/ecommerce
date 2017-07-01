@@ -61,7 +61,7 @@
                   @foreach ($productsk as $row_center)
                     <div class="single-product single-product-sidebar white-bg">
                       <div class="product-img product-img-left">
-                        <a href="{{ url('product_detail/') }}/{{ $row_center->id }}"><img src="{{ $row_center->image()->first()->path_full }}" alt="" /></a>
+                        <a href="{{ url('product_detail/') }}/{{ $row_center->id }}"><img src="{{ $row_center->image()->first()->path_thumb }}" alt="" /></a>
                       </div>
                       <div class="product-content product-content-right">
                         <div class="pro-title">
@@ -383,7 +383,7 @@
               @foreach ($featurs as $featur)
               <div class="single-product  white-bg">
                 <div class="product-img product-20">
-                  <a href="{{ url('product_detail/') }}/{{ $featur->id }}"><img src="{{ $featur->image()->first()->path_full }}" alt="" /></a>
+                  <a href="{{ url('product_detail/') }}/{{ $featur->id }}"><img src="{{ $featur->image()->first()->path_thumb }}" alt="" /></a>
                 </div>
                 <div class="product-content product-i">
                   <div class="pro-title">
