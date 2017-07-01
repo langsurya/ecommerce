@@ -92,7 +92,6 @@
               <div class="box-body">
                 {{-- row 1 col 3 --}}
                 <div class="form-group">
-                  <label>Pelanggan</label> <input type="text" name="id" id="id_tampil" size="2" value="{{ $po }}">
                   <select class="form-control" id="get_id" onchange="tampilkan_id()" disabled="">
                     <option value="">{{ $address->fullname }}</option>
                   </select>
@@ -280,6 +279,31 @@
             <!-- /.box -->
             <div class="box box-primary box-solid">
               <div class="box-header with-border">
+                <h3 class="box-title">Packing</h3>
+                <!-- /.box-tools -->
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Status Packing</label>
+                      <select class="form-control" name="packing" id="">
+                        <option value="belum" {{ ($packing == 'belum') ? 'selected' : '' }}>Belum Dikemas</option>
+                        <option value="dikemas" {{ ($packing == 'dikemas') ? 'selected' : ''}}>Sudah dikemas</option>
+                      </select>
+                    </div>
+                    <!-- /.form-group -->
+                  </div> 
+             
+                </div>
+              </div>              
+            </div>
+            <!-- /.box -->
+
+            <!-- /.box -->
+            <div class="box box-primary box-solid">
+              <div class="box-header with-border">
                 <h3 class="box-title">Tracking</h3>
                 <!-- /.box-tools -->
               </div>
@@ -289,9 +313,9 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label>Status Pengiriman</label>
-                      <select class="form-control" name="pembayaran" id="">
-                        <option value="belumdikirim" {{ ($pengiriman == 'belumdikirim') ? 'selected' : ''}}>Belum Dikirim</option>
-                        <option value="sudahdikirim" {{ ($pengiriman == 'sudahdikirim') ? 'selected' : ''}}>Sudah Dikirim</option>
+                      <select class="form-control" name="pengiriman" id="">
+                        <option value="belum" {{ ($pengiriman == 'belum' OR $pengiriman == null) ? 'selected' : ''}}>Belum Dikirim</option>
+                        <option value="dikirim" {{ ($pengiriman == 'dikirim') ? 'selected' : ''}}>Sudah Dikirim</option>
                       </select>
                     </div>
                     <!-- /.form-group -->
@@ -300,7 +324,7 @@
                   <div class="col-md-3">
                     <div class="form-group">
                       <label>Nomor Resi</label>
-                      <input name="no_resi" class="form-control" type="text" value="">
+                      <input name="no_resi" class="form-control" type="text" value="{{ $no_resi }}">
                     </div>
                     <!-- /.form-group -->
                   </div>

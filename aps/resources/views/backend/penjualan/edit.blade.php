@@ -92,7 +92,7 @@
               <div class="box-body">
                 {{-- row 1 col 3 --}}
                 <div class="form-group">
-                  <label>Pelanggan</label> <input type="text" name="id" id="id_tampil" size="2" value="{{ $po }}">
+                  <label>Pelanggan</label> 
                   <select class="form-control" id="get_id" onchange="tampilkan_id()" disabled="">
                     <option value="">{{ $fullname }}</option>
                   </select>

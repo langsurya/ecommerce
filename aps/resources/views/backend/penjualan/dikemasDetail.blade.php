@@ -65,7 +65,7 @@
   <section class="content">
   {{-- <form method="post" action="{{ url('/admin/pesanan/') }}/{{ $po }}">
   <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
-  {!! Form::open(array('route' => ['pesananFinance.update', $po],'method'=>'PATCH')) !!}
+  {!! Form::open(array('route' => ['pesananDikemas.update', $po],'method'=>'PATCH')) !!}
     {{-- {!! Form::model(['method'=>'PATCH' ,'route' => ['pesanan.update', $po]]) !!} --}}
     <div class="box box-default">
       <div class="box-header with-border">
@@ -196,10 +196,10 @@
                     <div class="form-group">
                       <label>Paket</label>
                       <select class="form-control" name="paket" id="">
-                        <option value="SS" {{ ($address->eksped=='SS') ? 'selected' : '' }}>SS</option>
-                        <option value="YES" {{ ($address->eksped=='YES') ? 'selected' : '' }}>YES</option>
-                        <option value="REG" {{ ($address->eksped=='REG') ? 'selected' : '' }}>REG</option>
-                        <option value="OKE" {{ ($address->eksped=='OKE') ? 'selected' : '' }}>OKE</option>
+                        <option value="SS" {{ ($address->paket=='SS') ? 'selected' : '' }}>SS</option>
+                        <option value="YES" {{ ($address->paket=='YES') ? 'selected' : '' }}>YES</option>
+                        <option value="REG" {{ ($address->paket=='REG') ? 'selected' : '' }}>REG</option>
+                        <option value="OKE" {{ ($address->paket=='OKE') ? 'selected' : '' }}>OKE</option>
                       </select>
                     </div>
                     <!-- /.form-group -->
@@ -228,7 +228,7 @@
                 <hr>
                 <div class="form-group">
                   <h4>Total Bayar</h4>
-                  <h3>Rp {{ number_format(str_replace(',00', '', str_replace('.', '', $subtotal))+$address->ongkir, 0,',','.') }}</h3>
+                  <h3>Rp {{ number_format(str_replace(',00', '', str_replace('.', '', $subtotal))+$address->ongkir, 2,',','.') }}</h3>
                 </div>
               </div>
               <!-- /.box-body -->
@@ -287,10 +287,10 @@
 
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label>Status Proses</label>
-                      <select class="form-control" name="pembayaran" id="">
-                        <option value="belumdikemas">Belum Dikemas</option>
-                        <option value="sudahdikemas">Sudah Dikemas</option>
+                      <label>Packing</label>
+                      <select class="form-control" name="packing" id="">
+                        <option value="belum" {{ ($packing=='belum') ? 'selected' : '' }}>Belum Dikemas</option>
+                        <option value="dikemas" {{ ($packing=='dikemas') ? 'selected' : '' }}>Sudah Dikemas</option>
                       </select>
                     </div>
                     <!-- /.form-group -->

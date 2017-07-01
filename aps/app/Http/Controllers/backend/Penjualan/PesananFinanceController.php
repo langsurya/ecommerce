@@ -23,7 +23,7 @@ class PesananFinanceController extends Controller
         $this->data['payments'] = DB::table('payments')->get();
         $this->data['ekspedisi'] = Ekspedisi::all();
         $this->data['address'] = DB::table('address')
-                ->select('address.fullname', 'address.phone', 'address.email', 'address.city as kota', 'address.postcode', 'address.address as alamat', 'address.notes', 'address.ekspedisi as eksped', 'address.berat', 'address.ongkir', 'address.payment_type as payment')
+                ->select('address.fullname', 'address.phone', 'address.email', 'address.city as kota', 'address.postcode', 'address.address as alamat', 'address.notes', 'address.ekspedisi as eksped', 'address.paket', 'address.berat', 'address.ongkir', 'address.payment_type as payment')
                 ->where('orders_id', $id)->first(); 
         $this->data['orders'] = DB::table('orders_product')
                     ->leftjoin('orders', 'orders.id', '=', 'orders_product.orders_id')
@@ -49,8 +49,24 @@ class PesananFinanceController extends Controller
 
     public function update(Request $request, $id)
     {
-        echo "update finance area";
-        dd($request->all());
+        DB::table('address')
+            ->where('orders_id', $id)
+            ->update([
+                'ekspedisi' => $request->ekspedisi,
+                'paket' => $request->paket,
+                'berat' => $request->berat,
+                'ongkir' => $request->ongkir,
+                'notes' => $request->notes,
+                'payment_type' => $request->payment_type,
+        ]);
+         DB::table('orders')
+            ->where('id', $id)
+            ->update([
+                'pembayaran' => $request->pembayaran,
+        ]);
+
+       return back();
+        // dd($request->all());
     }
 
     public function destroy($id)

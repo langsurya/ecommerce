@@ -41,7 +41,9 @@ class PesananDikirimController extends Controller
         foreach ($this->data['tbl_orders'] as $orders) {
             $this->data['subtotal'] = $orders->total;
             $this->data['pembayaran'] = $orders->pembayaran;
+            $this->data['packing'] = $orders->packing;
             $this->data['pengiriman'] = $orders->pengiriman;
+            $this->data['no_resi'] = $orders->no_resi;
             $this->data['updated_at'] = $orders->updated_at;
         }
         return view('backend.penjualan.dikirimDetail', $this->data)
@@ -51,7 +53,27 @@ class PesananDikirimController extends Controller
     public function update(Request $request, $id)
     {
         echo "update Dikirim area";
-        dd($request->all());
+        DB::table('address')
+            ->where('orders_id', $id)
+            ->update([
+                'ekspedisi' => $request->ekspedisi,
+                'paket' => $request->paket,
+                'berat' => $request->berat,
+                'ongkir' => $request->ongkir,
+                'notes' => $request->notes,
+                'payment_type' => $request->payment_type,
+        ]);
+         DB::table('orders')
+            ->where('id', $id)
+            ->update([
+                'pembayaran' => $request->pembayaran,
+                'packing' => $request->packing,
+                'pengiriman' => $request->pengiriman,
+                'no_resi' => $request->no_resi,
+        ]);
+
+            return back();
+        // dd($request->all());
     }
 
     public function destroy($id)

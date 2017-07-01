@@ -92,7 +92,7 @@
               <div class="box-body">
                 {{-- row 1 col 3 --}}
                 <div class="form-group">
-                  <label>Pelanggan</label> <input type="text" name="id" id="id_tampil" size="2" value="{{ $po }}">
+                  {{-- <label>Pelanggan</label> <input type="text" name="id" id="id_tampil" size="2" value="{{ $po }}"> --}}
                   <select class="form-control" id="get_id" onchange="tampilkan_id()" disabled="">
                     <option value="">{{ $address->fullname }}</option>
                   </select>
@@ -196,10 +196,10 @@
                     <div class="form-group">
                       <label>Paket</label>
                       <select class="form-control" name="paket" id="">
-                        <option value="SS" {{ ($address->eksped=='SS') ? 'selected' : '' }}>SS</option>
-                        <option value="YES" {{ ($address->eksped=='YES') ? 'selected' : '' }}>YES</option>
-                        <option value="REG" {{ ($address->eksped=='REG') ? 'selected' : '' }}>REG</option>
-                        <option value="OKE" {{ ($address->eksped=='OKE') ? 'selected' : '' }}>OKE</option>
+                        <option value="SS" {{ ($address->paket=='SS') ? 'selected' : '' }}>SS</option>
+                        <option value="YES" {{ ($address->paket=='YES') ? 'selected' : '' }}>YES</option>
+                        <option value="REG" {{ ($address->paket=='REG') ? 'selected' : '' }}>REG</option>
+                        <option value="OKE" {{ ($address->paket=='OKE') ? 'selected' : '' }}>OKE</option>
                       </select>
                     </div>
                     <!-- /.form-group -->
@@ -228,7 +228,7 @@
                 <hr>
                 <div class="form-group">
                   <h4>Total Bayar</h4>
-                  <h3>Rp {{ number_format(str_replace(',00', '', str_replace('.', '', $subtotal))+$address->ongkir, 0,',','.') }}</h3>
+                  <h3>Rp {{ number_format(str_replace(',00', '', str_replace('.', '', $subtotal))+$address->ongkir, 2,',','.') }}</h3>
                 </div>
               </div>
               <!-- /.box-body -->
