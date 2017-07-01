@@ -91,7 +91,7 @@
                   @foreach ($products as $product)
                     <div class="single-product single-product-sidebar white-bg">
                       <div class="product-img product-img-left">
-                      <a href="{{ url('product_detail/') }}/{{ $product->id }}"><img src="{{ $product->image()->first()->path_full }}" alt="" /></a>
+                      <a href="{{ url('product_detail/') }}/{{ $product->id }}"><img src="{{ $product->image()->first()->path_thumb }}" alt="" /></a>
                       </div>
                       <div class="product-content product-content-right">
                         <div class="pro-title">
@@ -120,7 +120,7 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane" id="profile2">
+        {{-- <div class="tab-pane" id="profile2">
           <div class="row">
             <div class="col-lg-4 col-md-4 hidden-sm col_m  col-xs-12">
               <div class="single-product pt-30 pb-20 white-bg">
@@ -314,7 +314,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
       </div>              
     </div>
 	</div>
@@ -349,11 +349,11 @@
             @foreach ($featurs as $featur)            
               <div class="single-product white-bg">
                 <div class="product-img product-20">
-                  <a href="{{ url('product_detail/') }}/{{ $featur->id }}"><img src="{{ $featur->image()->first()->path_full }}" alt="" /></a>
+                  <a href="{{ url('product_detail/') }}/{{ $featur->id }}"><img src="{{ $featur->image()->first()->path_thumb }}" alt="" /></a>
                 </div>
                 <div class="product-content product-i">
                   <div class="pro-title">
-                    <h4><a href="{{ url('product_detail/') }}/{{ $featur->id }}">{{ $featur->product_name }}">{{ $featur->product_name }}</a></h4>
+                    <h4><a href="{{ url('product_detail/') }}/{{ $featur->id }}">{{ $featur->product_name }}</a></h4>
                   </div>
                   <div class="pro-rating ">
                     <a href="#"><i class="fa fa-star"></i></a>

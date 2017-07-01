@@ -6,7 +6,7 @@ namespace App\Http\Controllers\backend\Produk;
 use App\Http\Requests\backend\Products\ProductRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
+use Storage;
 use App\Models\Products\Product;
 use App\Models\Products\Gambar;
 use App\Models\Products\Category;
@@ -84,7 +84,7 @@ class ProdukController extends Controller
               $img->path_full = 'public/images/products/full/' . $name;
               $img->save();
               Image::make($image)->save($full . '/' . $name);
-              Image::make($image)->resize('100', '100')->save($thumb . '/' . $name);
+              Image::make($image)->resize('250', '250')->save($thumb . '/' . $name);
             }
           }
         } catch (Exception $e) {
@@ -144,6 +144,18 @@ class ProdukController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $pro = Gambar::where('id_product',$id)->get();
+      foreach ($pro as $p) {
+        unlink($p->path_full);
+        unlink($p->path_thumb);
+      }
+      DB::table('product')->where('id', '=', $id)->delete();
+      DB::table('product_img')->where('id_product', '=', $id)->delete();
+      DB::table('product_attr')->where('id_product', '=', $id)->delete();
+
+
+      return redirect()->route('produk.index')
+        ->with('success', 'Produk deleted Successfully');
+      // return $id;
     }
 }

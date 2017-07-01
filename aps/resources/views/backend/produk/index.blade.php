@@ -80,7 +80,9 @@
                           <td>
                             <a class="btn btn-primary" href="{{ route('produk.edit',$k->id) }}"><span class="fa fa-edit"></span> </a>
                             <button class="btn btn-primary" type="button" title="view"><span class="fa fa-eye"></span></button>
-                            <button class="btn btn-danger" type="button" title="Hapus"><span class="fa fa-trash"></span></button>
+                            {!! Form::open(['method' => 'DELETE','route' => ['produk.destroy', $k->id], 'style' => 'display:inline']) !!}
+                              <button class="btn btn-danger" type="submit" title="Hapus"><span class="fa fa-trash"></span></button>
+                              {!! Form::close() !!}
                           </td>
                         </tr>
                       @endforeach

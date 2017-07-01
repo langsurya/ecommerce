@@ -18,7 +18,7 @@
                 @foreach ($products as $product)
                   <div class="single-product single-product-sidebar white-bg">
                       <div class="product-img product-img-left">
-                          <a href="{{ url('product_detail/') }}/{{ $product->id }}"><img src="{{ $product->image()->first()->path_full }}" alt="" /></a>
+                          <a href="{{ url('product_detail/') }}/{{ $product->id }}"><img src="{{ $product->image()->first()->path_thumb }}" alt="" /></a>
                       </div>
                       <div class="product-content product-content-right">
                           <div class="pro-title">
