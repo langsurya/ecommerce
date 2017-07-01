@@ -65,7 +65,7 @@
   <section class="content">
   {{-- <form method="post" action="{{ url('/admin/pesanan/') }}/{{ $po }}">
   <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
-  {!! Form::open(array('route' => ['pesanan.updatepenjualan', $po],'method'=>'PUT')) !!}
+  {!! Form::open(array('route' => ['pesanan.update', $po],'method'=>'PUT')) !!}
     {{-- {!! Form::model(['method'=>'PATCH' ,'route' => ['pesanan.update', $po]]) !!} --}}
     <div class="box box-default">
       <div class="box-header with-border">
@@ -144,7 +144,7 @@
           <!-- /.col-md-3 -->
           <div class="col-md-9">
             <!-- box -->
-            <div class="box box-primary box-solid">
+            <div class="box box-warning box-solid">
               <div class="box-header with-border">
                 <h3 class="box-title">Produk</h3>
                 <!-- /.box-tools -->
@@ -213,10 +213,10 @@
                     <div class="form-group">
                       <label>Paket</label>
                       <select class="form-control" name="paket" id="">
-                        <option value="SS" {{ ($eksped=='SS') ? 'selected' : '' }}>SS</option>
-                        <option value="YES" {{ ($eksped=='YES') ? 'selected' : '' }}>YES</option>
-                        <option value="REG" {{ ($eksped=='REG') ? 'selected' : '' }}>REG</option>
-                        <option value="OKE" {{ ($eksped=='OKE') ? 'selected' : '' }}>OKE</option>
+                        <option value="SS" {{ ($paket=='SS') ? 'selected' : '' }}>SS</option>
+                        <option value="YES" {{ ($paket=='YES') ? 'selected' : '' }}>YES</option>
+                        <option value="REG" {{ ($paket=='REG') ? 'selected' : '' }}>REG</option>
+                        <option value="OKE" {{ ($paket=='OKE') ? 'selected' : '' }}>OKE</option>
                       </select>
                     </div>
                     <!-- /.form-group -->
@@ -226,8 +226,7 @@
                     <!-- /.form-group -->
                     <div class="form-group">
                       <label>Berat Kg</label>
-                      <input class="form-control" type="text" name="berat" value="{{ $berat }}">
-                      {{-- {{ Form::text('berat', null, array('class' => 'form-control')) }} --}}
+                      <input class="form-control" type="text" name="berat" value="{{ ($berat=='') ? 0 : $berat }}">
                     </div>
                     <!-- /.form-group -->
                   </div>
@@ -273,17 +272,6 @@
                     <!-- /.form-group -->
                   </div> 
 
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label>Tipe Pembayaran</label>
-                      <select class="form-control" name="payment_type">
-                        @foreach ($payments as $pay)
-                          <option value="{{ $pay->nama_bank }}" {{ ($pay->nama_bank==$payment) ? 'selected' : '' }}>{{ $pay->nama_bank . ' ('.$pay->no_rekening.')'}}</option>
-                        @endforeach
-                      </select>
-                    </div>
-                    <!-- /.form-group -->
-                  </div>              
                 </div>
               </div>
             </div>

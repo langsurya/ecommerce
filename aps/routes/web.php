@@ -55,9 +55,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
       // menampilkan link web:8000/admin/pesanan
       Route::resource('pesanan', 'PesananController');
       Route::resource('pesananFinance', 'PesananFinanceController');
-      Route::put('pesanan/{pesanan}', [
-        'as' => 'pesanan.updatepenjualan', 'uses' => 'PesananController@updatepenjualan'
-      ]);
+      Route::resource('pesananDikemas', 'PesananDikemasController');
+      // Route::put('pesanan/{pesanan}', [
+      //   'as' => 'pesanan.updatepenjualan', 'uses' => 'PesananController@updatepenjualan'
+      // ]);
       // Route::get('pesanan/{pesanan}/financeDetail', [
       //   'as' => 'pesanan.financeDetail', 'uses' => 'PesananController@financeDetail'
       // ]);

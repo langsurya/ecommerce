@@ -44,7 +44,7 @@
             <!-- /.form-group -->
             <div class="form-group">
               <label>Email</label>
-              <input class="form-control" type="text" name="email" value="">
+              <input class="form-control" id="email" type="text" name="email" value="" value="{{ old('email') }}">
             </div>
             <div class="form-group">
               <label>Tipe Pembayaran</label>
@@ -169,6 +169,7 @@
                 <div class="form-group">
                   <label>Ekspedisi</label>
                   <select class="form-control" name="ekspedisi" id="">
+                  <option value="">Pilih Ekspedisi</option>
                   @foreach ($ekspedisi as $ekspe)
                     <option value="{{ $ekspe->name }}">{{ $ekspe->name }}</option>
                   @endforeach
@@ -181,6 +182,7 @@
                 <div class="form-group">
                   <label>Paket</label>
                   <select class="form-control" name="paket" id="">
+                    <option value="">Pilih Paket</option>
                     <option value="SS">SS</option>
                     <option value="YES">YES</option>
                     <option value="REG">REG</option>

@@ -42,6 +42,18 @@ class PesananController extends Controller
                     'users.name')
                 ->orderBy('orders.id','DESC')
                 ->get();
+        $this->data['blmbayar'] = DB::table('orders')
+                ->leftjoin('address', 'address.orders_id', '=', 'orders.id')
+                ->leftjoin('users', 'users.id', '=', 'orders.user_id')
+                ->select(
+                    'address.fullname', 'address.payment_type', 'address.ekspedisi', 'address.paket', 
+                    'orders.id as po', 'orders.status', 'orders.total', 'orders.pembayaran', 
+                    'orders.packing', 'orders.created_at', 'orders.updated_at',
+                    'users.name')
+                ->where('pembayaran','!=','sudahbayar')
+                ->orWhere('pembayaran','=',null)
+                ->orderBy('orders.id','DESC')
+                ->get();
         $this->data['finances'] = DB::table('orders')
                 ->leftjoin('address', 'address.orders_id', '=', 'orders.id')
                 ->leftjoin('users', 'users.id', '=', 'orders.user_id')
@@ -53,10 +65,19 @@ class PesananController extends Controller
                 ->where('pembayaran','=','sudahbayar')
                 ->orderBy('orders.id','DESC')
                 ->get();
-        $this->data['semua'] = DB::table('orders')->count();
-        $this->data['belum'] = DB::table('orders')->where('pembayaran', '!=', 'sudahbayar')->count();
-        $this->data['finance'] = DB::table('orders')->where('pembayaran', '=', 'sudahbayar')->count();
-        $this->data['packing'] = DB::table('orders')->where('packing', '=', 'sudahpacking')->count();
+        $this->data['packings'] = DB::table('orders')
+                ->leftjoin('address', 'address.orders_id', '=', 'orders.id')
+                ->leftjoin('users', 'users.id', '=', 'orders.user_id')
+                ->select(
+                    'address.fullname', 'address.payment_type', 'address.ekspedisi', 'address.paket', 
+                    'orders.id as po', 'orders.status', 'orders.total', 'orders.pembayaran', 
+                    'orders.packing', 'orders.created_at', 'orders.updated_at',
+                    'users.name')
+                ->where('pembayaran','=','sudahbayar')
+                ->where('packing','=', null)
+                ->orWhere('packing','!=','dikemas')
+                ->orderBy('orders.id','DESC')
+                ->get();
             // echo $this->data['belum'];
         // $this->data['dibayar'] = DB::table('orders')->get();
                 // dd($this->data['belumdibayar']);
@@ -174,7 +195,7 @@ class PesananController extends Controller
                         )
                     ->where('orders_product.orders_id', $id)
                     ->get();
-        $this->data['tbl_orders'] = DB::table('orders')->get();
+        $this->data['tbl_orders'] = DB::table('orders')->where('id', $id)->get();
         foreach ($this->data['tbl_orders'] as $orders) {
             $this->data['subtotal'] = $orders->total;
             $this->data['pembayaran'] = $orders->pembayaran;
@@ -185,19 +206,13 @@ class PesananController extends Controller
 
     public function update(Request $request, $id)
     {
-       // dd($request->all());
-    }
-
-    public function updatepenjualan(Request $request, $id)
-    {
-        DB::table('address')
+       DB::table('address')
             ->where('orders_id', $id)
             ->update([
                 'ekspedisi' => $request->ekspedisi,
                 'paket' => $request->paket,
                 'berat' => $request->berat,
                 'ongkir' => $request->ongkir,
-                'payment_type' => $request->payment_type,
                 ]);
          DB::table('orders')
             ->where('id', $id)
@@ -206,11 +221,16 @@ class PesananController extends Controller
        return back();
     }
 
+    public function updatepenjualan(Request $request, $id)
+    {
+        
+    }
+
     public function financeDetail($id)
     {
+        $this->data['title'] = 'Edit Orders';
         $this->data['payments'] = DB::table('payments')->get();
         $this->data['ekspedisi'] = Ekspedisi::all();
-        $this->data['title'] = 'Edit Orders';
         $this->data['address'] = DB::table('address')
                 ->select('address.fullname', 'address.phone', 'address.email', 'address.city as kota', 'address.postcode', 'address.address as alamat', 'address.notes', 'address.ekspedisi as eksped', 'address.berat', 'address.ongkir', 'address.payment_type as payment')
                 ->where('orders_id', $id)->first(); 

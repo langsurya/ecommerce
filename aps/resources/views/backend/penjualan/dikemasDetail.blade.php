@@ -276,6 +276,29 @@
               </div>
             </div>
             <!-- /.box -->
+            <div class="box box-primary box-solid">
+              <div class="box-header with-border">
+                <h3 class="box-title">Packing</h3>
+                <!-- /.box-tools -->
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="row">
+
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Status Proses</label>
+                      <select class="form-control" name="pembayaran" id="">
+                        <option value="belumdikemas">Belum Dikemas</option>
+                        <option value="sudahdikemas">Sudah Dikemas</option>
+                      </select>
+                    </div>
+                    <!-- /.form-group -->
+                  </div> 
+          
+                </div>
+              </div>
+            </div>
           </div>
           <!-- /.col-md-9 -->
         </div>
