@@ -14,12 +14,12 @@ use App\Models\Users;
 use App\Models\Address;
 use App\Models\orders;
 
-class PesananFinanceController extends Controller
+class PesananDikirimController extends Controller
 {  
 
     public function edit($id)
     {
-        $this->data['title'] = 'Detail Finance';
+        $this->data['title'] = 'Dikirim Detail';
         $this->data['payments'] = DB::table('payments')->get();
         $this->data['ekspedisi'] = Ekspedisi::all();
         $this->data['address'] = DB::table('address')
@@ -41,15 +41,16 @@ class PesananFinanceController extends Controller
         foreach ($this->data['tbl_orders'] as $orders) {
             $this->data['subtotal'] = $orders->total;
             $this->data['pembayaran'] = $orders->pembayaran;
+            $this->data['pengiriman'] = $orders->pengiriman;
             $this->data['updated_at'] = $orders->updated_at;
         }
-        return view('backend.penjualan.financeDetail', $this->data)
+        return view('backend.penjualan.dikirimDetail', $this->data)
             ->with('i');
     }
 
     public function update(Request $request, $id)
     {
-        echo "update finance area";
+        echo "update Dikirim area";
         dd($request->all());
     }
 

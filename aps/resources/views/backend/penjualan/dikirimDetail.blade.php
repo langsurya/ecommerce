@@ -57,7 +57,7 @@
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       <li><a href="#">Pesanan</a></li>
-      <li class="active">{{ $title }}</li>
+      <li class="active">Tambah Pesanan</li>
     </ol>
   </section>
 
@@ -65,7 +65,7 @@
   <section class="content">
   {{-- <form method="post" action="{{ url('/admin/pesanan/') }}/{{ $po }}">
   <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
-  {!! Form::open(array('route' => ['pesananFinance.update', $po],'method'=>'PATCH')) !!}
+  {!! Form::open(array('route' => ['pesananDikirim.update', $po],'method'=>'PATCH')) !!}
     {{-- {!! Form::model(['method'=>'PATCH' ,'route' => ['pesanan.update', $po]]) !!} --}}
     <div class="box box-default">
       <div class="box-header with-border">
@@ -273,32 +273,42 @@
                     <!-- /.form-group -->
                   </div>              
                 </div>
-              </div>
+              </div>              
             </div>
+            <!-- /.box -->
+
             <!-- /.box -->
             <div class="box box-primary box-solid">
               <div class="box-header with-border">
-                <h3 class="box-title">Packing</h3>
+                <h3 class="box-title">Tracking</h3>
                 <!-- /.box-tools -->
               </div>
               <!-- /.box-header -->
               <div class="box-body">
                 <div class="row">
-
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label>Status Proses</label>
+                      <label>Status Pengiriman</label>
                       <select class="form-control" name="pembayaran" id="">
-                        <option value="belumdikemas">Belum Dikemas</option>
-                        <option value="sudahdikemas">Sudah Dikemas</option>
+                        <option value="belumdikirim" {{ ($pengiriman == 'belumdikirim') ? 'selected' : ''}}>Belum Dikirim</option>
+                        <option value="sudahdikirim" {{ ($pengiriman == 'sudahdikirim') ? 'selected' : ''}}>Sudah Dikirim</option>
                       </select>
                     </div>
                     <!-- /.form-group -->
                   </div> 
-          
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label>Nomor Resi</label>
+                      <input name="no_resi" class="form-control" type="text" value="">
+                    </div>
+                    <!-- /.form-group -->
+                  </div>
+             
                 </div>
-              </div>
+              </div>              
             </div>
+            <!-- /.box -->
           </div>
           <!-- /.col-md-9 -->
         </div>

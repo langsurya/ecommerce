@@ -19,7 +19,7 @@ class PesananDikemasController extends Controller
 
     public function edit($id)
     {
-        $this->data['title'] = 'Edit Orders';
+        $this->data['title'] = 'Detail Dikemas';
         $this->data['payments'] = DB::table('payments')->get();
         $this->data['ekspedisi'] = Ekspedisi::all();
         $this->data['address'] = DB::table('address')
@@ -49,7 +49,7 @@ class PesananDikemasController extends Controller
 
     public function update(Request $request, $id)
     {
-        echo "update finance area";
+        echo "update Dikemas area";
         dd($request->all());
     }
 

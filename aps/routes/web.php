@@ -56,6 +56,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
       Route::resource('pesanan', 'PesananController');
       Route::resource('pesananFinance', 'PesananFinanceController');
       Route::resource('pesananDikemas', 'PesananDikemasController');
+      Route::resource('pesananDikirim', 'PesananDikirimController');
       // Route::put('pesanan/{pesanan}', [
       //   'as' => 'pesanan.updatepenjualan', 'uses' => 'PesananController@updatepenjualan'
       // ]);

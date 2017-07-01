@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-@section('title','Pesanan')
+@section('title', $title)
 @section('js')
   <script>    
     // membuat function tampilkan_nama
@@ -57,7 +57,7 @@
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       <li><a href="#">Pesanan</a></li>
-      <li class="active">Tambah Pesanan</li>
+      <li class="active">{{ $title }}</li>
     </ol>
   </section>
 
