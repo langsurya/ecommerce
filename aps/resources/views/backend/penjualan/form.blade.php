@@ -23,7 +23,7 @@
           <div class="box-body">
             {{-- row 1 col 3 --}}
             <div class="form-group">
-              <label>Pelanggan</label> <input type="text" name="id" id="id_tampil" size="2">
+              <label>Pelanggan</label> <input type="text" name="id" id="id_tampil" size="2"> 
               <select class="form-control" id="get_id" onchange="tampilkan_id()">
                 <option value="">Pilih Pelanggan</option>
               @foreach ($pelanggans as $pelanggan)
@@ -143,12 +143,9 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <label>Discount Type</label>
-                  {{ Form::select('discount', [
-                    '' => 'Rp',
-                    'Pelanggan 1' => 'Pelanggan 1',
-                    'Pelanggan 1' => 'Pelanggan 1'
-                  ], null, ['class' => 'form-control']
-                  ) }}
+                  <select name="discount" id="" class="form-control">
+                    <option value="rp">Rp</option>
+                  </select>
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -205,7 +202,7 @@
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>Biaya Kirim</label>
-                  <input id="theText" type="text" name="ongkir" size="10" value="0" />
+                  <input class="form-control" id="theText" type="text" name="ongkir" size="10" value="0" />
                 </div>
                 <!-- /.form-group -->
               </div>

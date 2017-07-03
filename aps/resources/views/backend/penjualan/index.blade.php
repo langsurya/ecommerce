@@ -424,32 +424,38 @@
                                                 </div>                                            
                                               </div>
                                               <div class="row">
-                                              <div class="col-sm-6">
-                                                <div class="margin">{{ $order->ekspedisi }} - {{ $order->paket }}</div>
-                                              </div>                                            
-                                            </div>
-                                            <div class="row">
-                                              <div class="col-sm-6">
-                                                <div class="margin">Nomor Resi<br>-</div>
-                                              </div>                                            
-                                            </div>
+                                                <div class="col-sm-6">
+                                                  <div class="margin">{{ $order->ekspedisi }} - {{ $order->paket }}</div>
+                                                </div>                                            
+                                              </div>
+                                              <div class="row">
+                                                <div class="col-sm-6">
+                                                  <div class="margin">Nomor Resi<br>-</div>
+                                                </div>                                            
+                                              </div>
                                             @elseif($order->pengiriman == 'dikirim')
                                               <div class="row">
                                                 <div class="col-sm-6">
                                                 <button class="btn btn-block btn-success margin">Sudah Dikirim</button>
                                                 </div>                                            
                                               </div>
-                                            <div class="row">
-                                              <div class="col-sm-6">
-                                                <div class="margin">{{ $order->ekspedisi }} - {{ $order->paket }}</div>
-                                              </div>                                            
-                                            </div>
-                                            <div class="row">
-                                              <div class="col-sm-6">
-                                                <div class="margin">Nomor Resi<br>{{ $order->no_resi }}</div>
-                                              </div>                                            
-                                            </div>
+                                              <div class="row">
+                                                <div class="col-sm-6">
+                                                  <div class="margin">{{ $order->ekspedisi }} - {{ $order->paket }}</div>
+                                                </div>                                            
+                                              </div>
+                                              <div class="row">
+                                                <div class="col-sm-6">
+                                                  <div class="margin">Nomor Resi<br>{{ $order->no_resi }}</div>
+                                                </div>                                            
+                                              </div>
                                             @endif
+                                          @else
+                                            <div class="row">
+                                              <div class="col-sm-6">
+                                              <button class="btn btn-block btn-primary margin">Belum Dikemas</button>
+                                              </div>                                            
+                                            </div>
                                           @endif
                                         @endif
                                       </td>

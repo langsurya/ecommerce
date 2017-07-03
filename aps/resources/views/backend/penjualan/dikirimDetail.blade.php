@@ -56,7 +56,7 @@
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li><a href="#">Pesanan</a></li>
+      <li><a href="{{ url('admin/pesanan') }}">Pesanan</a></li>
       <li class="active">Tambah Pesanan</li>
     </ol>
   </section>
@@ -183,6 +183,7 @@
                     <div class="form-group">
                       <label>Ekspedisi</label>
                       <select class="form-control" name="ekspedisi" id="">
+                      <option value="">Pilih Ekspedisis</option>
                       @foreach ($ekspedisi as $ekspe)
                         <option value="{{ $ekspe->name }}" {{ ($ekspe->name==$address->eksped) ? 'selected' : '' }}>{{ $ekspe->name }}</option>
                       @endforeach
@@ -195,6 +196,7 @@
                     <div class="form-group">
                       <label>Paket</label>
                       <select class="form-control" name="paket" id="">
+                      <option value="">Pilih Paket</option>
                         <option value="SS" {{ ($address->eksped=='SS') ? 'selected' : '' }}>SS</option>
                         <option value="YES" {{ ($address->eksped=='YES') ? 'selected' : '' }}>YES</option>
                         <option value="REG" {{ ($address->eksped=='REG') ? 'selected' : '' }}>REG</option>
