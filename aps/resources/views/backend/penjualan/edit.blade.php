@@ -266,6 +266,8 @@
                       <label>Status Bayar</label>
                       <select class="form-control" name="pembayaran" id="">
                       {{-- @foreach ($orders as $order) --}}
+                        <option value="">-Pilih Status-</option>
+                        <option value="batalbayar">Batal dibayar</option>
                         <option value="belumbayar" {{ ($pembayaran == 'belumbayar') ? 'selected' : ''}}>Belum Bayar</option>
                         <option value="sudahbayar" {{ ($pembayaran == 'sudahbayar') ? 'selected' : ''}}>Sudah Dibayar</option>
                       {{-- @endforeach --}}

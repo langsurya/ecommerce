@@ -183,7 +183,7 @@
                     <div class="form-group">
                       <label>Ekspedisi</label>
                       <select class="form-control" name="ekspedisi" id="">
-                      <option value="">Pilih Ekspedisis</option>
+                      <option value="">-Pilih Ekspedisis-</option>
                       @foreach ($ekspedisi as $ekspe)
                         <option value="{{ $ekspe->name }}" {{ ($ekspe->name==$address->eksped) ? 'selected' : '' }}>{{ $ekspe->name }}</option>
                       @endforeach
@@ -196,7 +196,7 @@
                     <div class="form-group">
                       <label>Paket</label>
                       <select class="form-control" name="paket" id="">
-                      <option value="">Pilih Paket</option>
+                      <option value="">-Pilih Paket-</option>
                         <option value="SS" {{ ($address->eksped=='SS') ? 'selected' : '' }}>SS</option>
                         <option value="YES" {{ ($address->eksped=='YES') ? 'selected' : '' }}>YES</option>
                         <option value="REG" {{ ($address->eksped=='REG') ? 'selected' : '' }}>REG</option>
@@ -247,6 +247,8 @@
                     <div class="form-group">
                       <label>Status Bayar</label>
                       <select class="form-control" name="pembayaran" id="">
+                        <option value="">-Pilih Status-</option>
+                        <option value="batalbayar" {{ ($pembayaran == 'batalbayar') ? 'selected' : ''}}>Batal Bayar</option>
                         <option value="belumbayar" {{ ($pembayaran == 'belumbayar') ? 'selected' : ''}}>Belum Bayar</option>
                         <option value="sudahbayar" {{ ($pembayaran == 'sudahbayar') ? 'selected' : ''}}>Sudah Dibayar</option>
                       </select>
@@ -291,6 +293,7 @@
                     <div class="form-group">
                       <label>Status Packing</label>
                       <select class="form-control" name="packing" id="">
+                        <option value="">-Pilih Status Packing-</option>
                         <option value="belum" {{ ($packing == 'belum') ? 'selected' : '' }}>Belum Dikemas</option>
                         <option value="dikemas" {{ ($packing == 'dikemas') ? 'selected' : ''}}>Sudah dikemas</option>
                       </select>
@@ -316,7 +319,8 @@
                     <div class="form-group">
                       <label>Status Pengiriman</label>
                       <select class="form-control" name="pengiriman" id="">
-                        <option value="belum" {{ ($pengiriman == 'belum' OR $pengiriman == null) ? 'selected' : ''}}>Belum Dikirim</option>
+                        <option value="">-Pilih Pengiriman-</option>
+                        <option value="belum" {{ ($pengiriman == 'belum') ? 'selected' : ''}}>Belum Dikirim</option>
                         <option value="dikirim" {{ ($pengiriman == 'dikirim') ? 'selected' : ''}}>Sudah Dikirim</option>
                       </select>
                     </div>

@@ -50,8 +50,10 @@ class PesananController extends Controller
                     'orders.id as po', 'orders.status', 'orders.total', 'orders.pembayaran', 
                     'orders.packing', 'orders.pengiriman', 'orders.created_at', 'orders.updated_at',
                     'users.name')
-                ->where('pembayaran','!=','sudahbayar')
+                // ->where('pembayaran','=','batalbayar')
+                ->where('pembayaran','=','belumbayar')
                 ->orWhere('pembayaran','=',null)
+                ->orWhere('pembayaran','=', '')
                 ->orderBy('orders.id','DESC')
                 ->get();
         $this->data['finances'] = DB::table('orders')
@@ -74,8 +76,9 @@ class PesananController extends Controller
                     'orders.packing', 'orders.pengiriman', 'orders.created_at', 'orders.updated_at',
                     'users.name')
                 ->where('pembayaran','=','sudahbayar')
-                ->where('packing','=', null)
-                ->orWhere('packing','!=','dikemas')
+                ->Where('packing','=', null)
+                ->orWhere('packing','=','')
+                ->orWhere('packing','=','belum')
                 ->orderBy('orders.id','DESC')
                 ->get();
         $this->data['dikirims'] = DB::table('orders')
@@ -103,6 +106,19 @@ class PesananController extends Controller
                 ->where('pembayaran','=','sudahbayar')
                 ->Where('packing','=','dikemas')
                 ->Where('pengiriman', '=', 'dikirim')
+                ->orderBy('orders.id','DESC')
+                ->get();
+        $this->data['batals'] = DB::table('orders')
+                ->leftjoin('address', 'address.orders_id', '=', 'orders.id')
+                ->leftjoin('users', 'users.id', '=', 'orders.user_id')
+                ->select(
+                    'address.fullname', 'address.payment_type', 'address.ekspedisi', 'address.paket', 
+                    'orders.id as po', 'orders.status', 'orders.total', 'orders.pembayaran', 
+                    'orders.packing', 'orders.pengiriman', 'orders.no_resi', 'orders.created_at', 'orders.updated_at',
+                    'users.name')
+                ->where('pembayaran','=','batalbayar')
+                ->orWhere('packing','=','batalkemas')
+                ->orWhere('pengiriman', '=', 'batalkirim')
                 ->orderBy('orders.id','DESC')
                 ->get();
             // echo $this->data['belum'];

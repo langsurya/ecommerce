@@ -289,6 +289,7 @@
                     <div class="form-group">
                       <label>Packing</label>
                       <select class="form-control" name="packing" id="">
+                        <option value="">-Pilih Dikemas-</option>
                         <option value="belum" {{ ($packing=='belum') ? 'selected' : '' }}>Belum Dikemas</option>
                         <option value="dikemas" {{ ($packing=='dikemas') ? 'selected' : '' }}>Sudah Dikemas</option>
                       </select>
