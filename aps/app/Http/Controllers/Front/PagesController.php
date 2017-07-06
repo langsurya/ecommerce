@@ -22,6 +22,7 @@ class PagesController extends Controller {
                 ])
                   ->take(12)->orderBy('created_at', 'asc')
                   ->get();
+    $this->data['abouts'] = DB::table('about')->first();
 	}
 
 	/**
@@ -84,6 +85,7 @@ class PagesController extends Controller {
 
 	public function about() {
 		$this->data['cartItems'] = Cart::content();
+		$this->data['about'] = DB::table('about')->first();
 		return view('aqsha.about', $this->data);
 	}
 

@@ -99,6 +99,7 @@
           <li class="{{ Request::is('admin/katpel') ? 'active' : null }}"><a href="{{ url('/admin/katpel') }}"><i class="fa fa-group"></i> Kategori Pelanggan</a></li>
           <li class="{{ Request::is('admin/ekspedisi') ? 'active' : null }}"><a href="{{ url('/admin/ekspedisi') }}"><i class="fa fa-truck"></i> Ekspedisi</a></li>
           <li class="{{ Request::is('admin/payment') ? 'active' : null }}"><a href="{{ url('/admin/payment') }}"><i class="fa fa-cc-mastercard"></i> Payment</a></li>
+          <li class="{{ Request::is('admin/about') ? 'active' : null }}"><a href="{{ url('/admin/about') }}"><i class="fa fa-pencil-square-o"></i> About Us</a></li>
         </ul>
       </li>
       {{-- menu Otorisasi --}}

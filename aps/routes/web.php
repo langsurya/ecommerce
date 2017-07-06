@@ -127,6 +127,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
       Route::resource('ekspedisi', 'EkspedisiController');
       // katpel
       Route::resource('katpel', 'KatpelController');
+      Route::resource('about', 'AboutController');
     });
 
     Route::group(['namespace' => 'Otorisasi'], function() {
