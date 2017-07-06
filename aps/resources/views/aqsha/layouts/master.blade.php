@@ -87,7 +87,7 @@
                                                 <i class="fa fa-home"></i>
                                             </div>
                                             <div class="contact-text">
-                                                <span>PO Box 16122 Collins Street West Victoria 8007 Australia</span>
+                                                <span>{{ $abouts->alamat }}</span>
                                             </div>
                                         </li>
                                         <li>
@@ -95,7 +95,7 @@
                                                 <i class="fa fa-envelope-o"></i>
                                             </div>
                                             <div class="contact-text">
-                                                <a href="#"><span>demo@towerthemes.com</span></a>
+                                                <a href="#"><span>{{ $abouts->email }}</span></a>
                                             </div>
                                         </li>
                                         <li>
@@ -103,7 +103,7 @@
                                                 <i class="fa fa-phone"></i>
                                             </div>
                                             <div class="contact-text">
-                                                <span>(+1)866-550-3669</span>
+                                                <span>(+62) {{ $abouts->phone }}</span>
                                             </div>
                                         </li>
                                     </ul>
@@ -117,8 +117,8 @@
                             <div class="footer-widget">
                                 <div class="list-unstyled">
                                     <ul>
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="contact-us.html">Contact Us</a></li>
+                                        <li><a href="{{ url('about') }}">About Us</a></li>
+                                        <li><a href="{{ url('about') }}">Contact Us</a></li>
                                         <li><a href="contact-us">Site Map</a></li>
                                     </ul>
                                 </div>
@@ -131,7 +131,7 @@
                             <div class="footer-widget">
                                 <div class="list-unstyled">
                                     <ul>
-                                        <li><a href="checkout.html">My Account</a></li>
+                                        <li><a href="{{ url('profile') }}">My Account</a></li>
                                         <li><a href="#">Wish List</a></li>
                                     </ul>
                                 </div>

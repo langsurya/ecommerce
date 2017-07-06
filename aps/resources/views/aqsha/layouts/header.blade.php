@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-4">
                     <div class="header-top-left">
-                        <span><a href="#">Call us toll free:</a>(+62)xxx-xxx-xxxx</span>
+                        <span><a href="#">Call us toll free:</a>(+62) {{ $abouts->phone }}</span>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-8">
@@ -49,7 +49,7 @@
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                     <div class="header-bottom-middle">
                         <div class="top-search">
-                            <span class="tex_top_email"><i class="fa fa-envelope"></i>Email: <span class="">email@email.com</span></span>
+                            <span class="tex_top_email"><i class="fa fa-envelope"></i>Email: <span class="">{{ $abouts->email }}</span></span>
                         </div>
                         <div class="search-box">
                             <form action="#">
