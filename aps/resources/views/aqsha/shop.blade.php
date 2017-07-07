@@ -5,7 +5,7 @@
     <div class="breadcrumb-area">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+          <li><a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a></li>
           <li class="active">Shop</li>
         </ol>     
       </div>
@@ -24,258 +24,62 @@
               </div>
               <div class="single-product-items-active border-1">
                 <div class="single-product-items">
-                  <div class="single-product single-product-sidebar white-bg">
-                    <div class="product-img product-img-left">
-                      <a href="product-details-mangkuk-1.html"><img src="{{ url('/public/aqsha/') }}/img/product/mangkuk keramik.jpg" alt="" /></a>
-                    </div>
-                    <div class="product-content product-content-right">
-                      <div class="pro-title">
-                        <h4><a href="product-details-mangkuk-1.html">Mangkuk Kermaik 20cm</a></h4>
+                  @foreach ($products as $product)
+                    <div class="single-product single-product-sidebar white-bg">
+                      <div class="product-img product-img-left">
+                        <a href="{{ url('product_detail/') }}/{{ $product->id }}"><img src="{{ url('/') }}/{{ $product->image()->first()->path_thumb }}" alt="" /></a>
                       </div>
-                      <div class="pro-rating ">
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star-o"></i></a>
-                      </div>
-                      <div class="price-box">
-                        <span class="price product-price">Rp 350.000,00</span>
-                      </div>
-                      <div class="product-icon">
-                        <div class="product-icon-left f-left">
-                          <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                      <div class="product-content product-content-right">
+                        <div class="pro-title">
+                          <h4><a href="{{ url('product_detail/') }}/{{ $product->id }}">{{ $product->product_name }}</a></h4>
                         </div>
-                      </div>
-                    </div>          
-                  </div>  
-                  <div class="single-product single-product-sidebar white-bg">
-                    <div class="product-img product-img-left">
-                      <a href="product-details-mangkuk-2.html"><img src="{{ url('/public/aqsha') }}/img/product/Piring Keramik uk.jpg" alt="" /></a>
-                    </div>
-                    <div class="product-content product-content-right">
-                      <div class="pro-title">
-                        <h4><a href="product-details-mangkuk-2.html">Mangkuk Keramik uk 27cm</a></h4>
-                      </div>
-                      <div class="pro-rating ">
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star-o"></i></a>
-                      </div>
-                      <div class="price-box">
-                        <span class="price product-price">Rp 400.000,00</span>
-                      </div>
-                      <div class="product-icon">
-                        <div class="product-icon-left f-left">
-                          <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                        <div class="pro-rating ">
+                          <a href="#"><i class="fa fa-star"></i></a>
+                          <a href="#"><i class="fa fa-star"></i></a>
+                          <a href="#"><i class="fa fa-star"></i></a>
+                          <a href="#"><i class="fa fa-star"></i></a>
+                          <a href="#"><i class="fa fa-star-o"></i></a>
                         </div>
-                      </div>
-                    </div>          
-                  </div>
-                  <div class="single-product single-product-sidebar white-bg">
-                    <div class="product-img product-img-left">
-                      <a href="product-details-hiasan-1.html"><img src="{{ url('/public/aqsha/') }}/img/product/lukisan karang.jpg" alt="" /></a>
-                    </div>
-                    <div class="product-content product-content-right">
-                      <div class="pro-title">
-                        <h4><a href="product-details-lukisan-karang-1.html">Lukisan Karang</a></h4>
-                      </div>
-                      <div class="pro-rating ">
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star-o"></i></a>
-                      </div>
-                      <div class="price-box">
-                        <span class="price product-price">Rp 1.100.000,00</span>
-                      </div>
-                      <div class="product-icon">
-                        <div class="product-icon-left f-left">
-                          <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                        <div class="price-box">
+                          <span class="price product-price">Rp {{ number_format($product->product_price, 2, ",", ".") }}</span>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="single-product single-product-sidebar white-bg">
-                    <div class="product-img product-img-left">
-                      <a href="product-details-mangkuk-1.html"><img src="{{ url('/public/aqsha/') }}/img/product/mangkuk keramik.jpg" alt="" /></a>
-                    </div>
-                    <div class="product-content product-content-right">
-                      <div class="pro-title">
-                        <h4><a href="product-details-mangkuk-1.html">Mangkuk Keramik 20cm</a></h4>
-                      </div>
-                      <div class="pro-rating ">
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                      </div>
-                      <div class="price-box">
-                        <span class="price product-price">Rp 350.000,00</span>
-                      </div>
-                      <div class="product-icon">
-                        <div class="product-icon-left f-left">
-                          <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                        <div class="product-icon">
+                          <div class="product-icon-left f-left">
+                            <a href="{{ url('/cart/addItem')}}/{{ $product->id }}"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                          </div>
                         </div>
-                      </div>
+                      </div>          
                     </div>
-                  </div>
-                  <div class="single-product single-product-sidebar white-bg">
-                    <div class="product-img product-img-left">
-                      <a href="product-details-piring-gypsum.html"><img src="{{ url('/public/aqsha/') }}/img/product/Piring gypsum.jpg" alt="" /></a>
-                    </div>
-                    <div class="product-content product-content-right">
-                      <div class="pro-title">
-                        <h4><a href="product-details-piring-gypsum.html">Piring Gypsum 30cm</a></h4>
-                      </div>
-                      <div class="pro-rating ">
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                      </div>
-                      <div class="price-box">
-                        <span class="price product-price">Rp 600.000,00</span>
-                      </div>
-                      <div class="product-icon">
-                        <div class="product-icon-left f-left">
-                          <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>                    
+                  @endforeach                 
                 </div>
                 <div class="single-product-items">
-                  <div class="single-product single-product-sidebar white-bg">
-                    <div class="product-img product-img-left">
-                      <a href="product-details-pot.html"><img src="img/product/keramik pot.jpg" alt="" /></a>
-                    </div>
-                    <div class="product-content product-content-right">
-                      <div class="pro-title">
-                        <h4><a href="product-details-mug.html">Keramik Pot</a></h4>
+                  @foreach ($products as $product)
+                    <div class="single-product single-product-sidebar white-bg">
+                      <div class="product-img product-img-left">
+                        <a href="{{ url('product_detail/') }}/{{ $product->id }}"><img src="{{ url('/') }}/{{ $product->image()->first()->path_thumb }}" alt="" /></a>
                       </div>
-                      <div class="pro-rating ">
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                      </div>
-                      <div class="price-box">
-                        <span class="price product-price">Rp 800.000,00</span>
-                      </div>
-                      <div class="product-icon">
-                        <div class="product-icon-left f-left">
-                          <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                      <div class="product-content product-content-right">
+                        <div class="pro-title">
+                          <h4><a href="{{ url('product_detail/') }}/{{ $product->id }}">{{ $product->product_name }}</a></h4>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="single-product single-product-sidebar white-bg">
-                    <div class="product-img product-img-left">
-                      <a href="product-details-tas-bordir.html"><img src="img/product/Tas Bordir.jpg" alt="" /></a>
-                    </div>
-                    <div class="product-content product-content-right">
-                      <div class="pro-title">
-                        <h4><a href="product-details-tas-bordir.html">Tas Bordir</a></h4>
-                      </div>
-                      <div class="pro-rating ">
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                      </div>
-                      <div class="price-box">
-                        <span class="price product-price">Rp 900.000,00</span>
-                      </div>
-                      <div class="product-icon">
-                        <div class="product-icon-left f-left">
-                          <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                        <div class="pro-rating ">
+                          <a href="#"><i class="fa fa-star"></i></a>
+                          <a href="#"><i class="fa fa-star"></i></a>
+                          <a href="#"><i class="fa fa-star"></i></a>
+                          <a href="#"><i class="fa fa-star"></i></a>
+                          <a href="#"><i class="fa fa-star-o"></i></a>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="single-product single-product-sidebar white-bg">
-                    <div class="product-img product-img-left">
-                      <a href="product-details-gelang.html"><img src="img/product/produk4.jpg" alt="" /></a>
-                    </div>
-                    <div class="product-content product-content-right">
-                      <div class="pro-title">
-                        <h4><a href="product-details-gelang.html">Gelang Plasetine</a></h4>
-                      </div>
-                      <div class="pro-rating ">
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                      </div>
-                      <div class="price-box">
-                        <span class="price product-price">Rp 75.000,00</span>
-                      </div>
-                      <div class="product-icon">
-                        <div class="product-icon-left f-left">
-                          <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                        <div class="price-box">
+                          <span class="price product-price">Rp {{ number_format($product->product_price, 2, ",", ".") }}</span>
                         </div>
-                      </div>
-                    </div>
-                  </div>    
-                  <div class="single-product single-product-sidebar white-bg">
-                    <div class="product-img product-img-left">
-                      <a href="product-details-shall.html"><img src="img/product/Shall Palestine.jpg" alt="" /></a>
-                    </div>
-                    <div class="product-content product-content-right">
-                      <div class="pro-title">
-                        <h4><a href="product-details-shall.html">Shall Palestine</a></h4>
-                      </div>
-                      <div class="pro-rating ">
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                      </div>
-                      <div class="price-box">
-                        <span class="price product-price">Rp 150.00,00</span>
-                      </div>
-                      <div class="product-icon">
-                        <div class="product-icon-left f-left">
-                          <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                        <div class="product-icon">
+                          <div class="product-icon-left f-left">
+                            <a href="{{ url('/cart/addItem')}}/{{ $product->id }}"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                          </div>
                         </div>
-                      </div>
+                      </div>          
                     </div>
-                  </div>
-                  <div class="single-product single-product-sidebar white-bg">
-                    <div class="product-img product-img-left">
-                      <a href="product-details-panel-kayu-zaitun.html"><img src="img/product/panel kayu.jpg" alt="" /></a>
-                    </div>
-                    <div class="product-content product-content-right">
-                      <div class="pro-title">
-                        <h4><a href="product-details-panel-kayu-zaitun.html">Panel Kayu Zaitun 20cm</a></h4>
-                      </div>
-                      <div class="pro-rating ">
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                        <a href="#"><i class="fa fa-star"></i></a>
-                      </div>
-                      <div class="price-box">
-                        <span class="price product-price">Rp 475.000,00</span>
-                      </div>
-                      <div class="product-icon">
-                        <div class="product-icon-left f-left">
-                          <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>                    
+                  @endforeach
                 </div>            
               </div>            
             </div>
@@ -352,8 +156,8 @@
           <!-- search head -->
           <div class="col-md-9 col-sm-8">
             <h2 class="page-heading mt-40">
-              <span class="cat-name">Hasil Pencarian...</span>
-              <span class="heading-counter">There are 13 products.</span>
+              {{-- <span class="cat-name">Hasil Pencarian...</span> --}}
+              <span class="heading-counter">There are {{ $products->total() }} products.</span>
             </h2>
             <div class="shop-page-bar">
               <div> 
@@ -398,392 +202,50 @@
                 <div class="tab-content">
                   <div role="tabpanel" class="tab-pane active" id="home">
                     <div class="row">
-                      <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-product  white-bg">
-                          <div class="product-img product-20">
-                            <a href="product-details-hiasan-1.html"><img src="img/product/lukisan karang.jpg" alt="" /></a>
-                          </div>
-                          <div class="product-content product-i">
-                            <div class="pro-title">
-                              <h4><a href="product-details-lukisan-karang-1.html">Lukisan Karang</a></h4>
+                      @foreach ($shops as $shop)
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                          <div class="single-product  white-bg">
+                            <div class="product-img product-20">
+                            <a href="{{ url('product_detail/') }}/{{ $shop->id }}"><img src="{{ url('/') }}/{{ $shop->image()->first()->path_thumb }}" alt="" /></a>
                             </div>
-                            <div class="pro-rating ">
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star-o"></i></a>
-                            </div>
-                            <div class="price-box">
-                              <span class="price product-price">Rp 1.100.000,00</span>
-                            </div>
-                            <div class="product-icon">
-                              <div class="product-icon-left f-left">
-                                <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                            <div class="product-content product-i">
+                              <div class="pro-title">
+                                <h4><a href="{{ url('product_detail/') }}/{{ $shop->id }}">{{ $shop->product_name }}</a></h4>
                               </div>
-                              <div class="product-icon-right floatright">
-                                <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
+                              <div class="pro-rating ">
+                                <a href="#"><i class="fa fa-star"></i></a>
+                                <a href="#"><i class="fa fa-star"></i></a>
+                                <a href="#"><i class="fa fa-star"></i></a>
+                                <a href="#"><i class="fa fa-star"></i></a>
+                                <a href="#"><i class="fa fa-star-o"></i></a>
                               </div>
-                            </div>
-                          </div>
-                          <span class="new">new</span>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-product  white-bg">
-                          <div class="product-img product-20">
-                            <a href="product-details-piring-gypsum.html"><img src="img/product/Piring gypsum.jpg" alt="" /></a>
-                          </div>
-                          <div class="product-content product-i">
-                            <div class="pro-title">
-                              <h4><a href="product-details-piring-gypsum.html">Piring Gypsum 30 cm</a></h4>
-                            </div>
-                            <div class="pro-rating ">
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star-o"></i></a>
-                            </div>
-                            <div class="price-box">
-                              <span class="price product-price">Rp 600.000,00</span>
-                            </div>
-                            <div class="product-icon">
-                              <div class="product-icon-left f-left">
-                                <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                              <div class="price-box">
+                                <span class="price product-price">Rp {{ number_format($shop->product_price, 2, ",", ".") }}</span>
                               </div>
-                              <div class="product-icon-right floatright">
-                                <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
+                              <div class="product-icon">
+                                <div class="product-icon-left f-left">
+                                  <a href="{{ url('/cart/addItem')}}/{{ $shop->id }}"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                                </div>
+                                <div class="product-icon-right floatright">
+                                  <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
+                                  <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
+                                </div>
                               </div>
                             </div>
+                            {{-- <span class="new">new</span> --}}
                           </div>
                         </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-product  white-bg">
-                          <div class="product-img product-20">
-                            <a href="product-details-panel-kayu-zaitun.html"><img src="img/product/panel kayu.jpg" alt="" /></a>
-                          </div>
-                          <div class="product-content product-i">
-                            <div class="pro-title">
-                              <h4><a href="product-details-panel-kayu-zaitun.html">Panel Kayu Zaitun 20cm</a></h4>
-                            </div>
-                            <div class="pro-rating ">
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                            </div>
-                            <div class="price-box">
-                              <span class="price product-price">Rp 475.000,00</span>
-                            </div>
-                            <div class="product-icon">
-                              <div class="product-icon-left f-left">
-                                <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                              </div>
-                              <div class="product-icon-right floatright">
-                                <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                          <span class="new">new</span>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-product  white-bg">
-                          <div class="product-img product-20">
-                            <a href="product-details-keramik-square.html"><img src="img/product/keramik square.jpg" alt="" /></a>
-                          </div>
-                          <div class="product-content product-i">
-                            <div class="pro-title">
-                              <h4><a href="product-details-keramik-square.html">Kermaik Square uk 20x20cm</a></h4>
-                            </div>
-                            <div class="pro-rating ">
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                            </div>
-                            <div class="price-box">
-                              <span class="price product-price">Rp 455.000.,00</span>
-                            </div>
-                            <div class="product-icon">
-                              <div class="product-icon-left f-left">
-                                <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                              </div>
-                              <div class="product-icon-right floatright">
-                                <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-product  white-bg">
-                          <div class="product-img product-20">
-                            <a href="product-details-replika-masjid.html"><img src="img/product/Masjid Silver.jpg" alt="" /></a>
-                          </div>
-                          <div class="product-content product-i">
-                            <div class="pro-title">
-                              <h4><a href="product-details-replika-masjid.html">Miniatur Masjid Aqsa Silver</a></h4>
-                            </div>
-                            <div class="pro-rating ">
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star-o"></i></a>
-                            </div>
-                            <div class="price-box">
-                              <span class="price product-price">Rp 2.554.000,00</span>
-                            </div>
-                            <div class="product-icon">
-                              <div class="product-icon-left f-left">
-                                <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                              </div>
-                              <div class="product-icon-right floatright">
-                                <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                          <span class="new">new</span>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-product  white-bg">
-                          <div class="product-img product-20">
-                            <a href="product-details-shall.html"><img src="img/product/Shall Palestine.jpg" alt="" /></a>
-                          </div>
-                          <div class="product-content product-i">
-                            <div class="pro-title">
-                              <h4><a href="product-details-shall.html">Shall Palestine</a></h4>
-                            </div>
-                            <div class="pro-rating ">
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                            </div>
-                            <div class="price-box">
-                              <span class="price product-price">Rp 150.000,00</span>
-                            </div>
-                            <div class="product-icon">
-                              <div class="product-icon-left f-left">
-                                <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                              </div>
-                              <div class="product-icon-right floatright">
-                                <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-product  white-bg">
-                          <div class="product-img product-20">
-                            <a href="product-details-pot.html"><img src="img/product/keramik pot.jpg" alt="" /></a>
-                          </div>
-                          <div class="product-content product-i">
-                            <div class="pro-title">
-                              <h4><a href="product-details-mug.html">Keramik Pot</a></h4>
-                            </div>
-                            <div class="pro-rating ">
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                            </div>
-                            <div class="price-box">
-                              <span class="price product-price">Rp 800.000,00</span>
-                            </div>
-                            <div class="product-icon">
-                              <div class="product-icon-left f-left">
-                                <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                              </div>
-                              <div class="product-icon-right floatright">
-                                <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-product  white-bg">
-                          <div class="product-img product-20">
-                            <a href="product-details-mangkuk-1.html"><img src="img/product/mangkuk keramik.jpg" alt="" /></a>
-                          </div>  
-                          <div class="product-content product-i">
-                            <div class="pro-title">
-                              <h4><a href="product-details-mangkuk-1.html">Mangkuk Keramik 20cm</a></h4>
-                            </div>
-                            <div class="pro-rating ">
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                            </div>
-                            <div class="price-box">
-                              <span class="price product-price">Rp 350.000,00</span>
-                            </div>
-                            <div class="product-icon">
-                            <div class="product-icon-left f-left">
-                              <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                            </div>
-                            <div class="product-icon-right floatright">
-                              <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                              <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-product  white-bg">
-                          <div class="product-img product-20">
-                            <a href="product-details-mug.html"><img src="img/product/Mug.jpg" alt="" /></a>
-                          </div>
-                          <div class="product-content product-i">
-                            <div class="pro-title">
-                              <h4><a href="product-details-mug.html">Mug</a></h4>
-                            </div>
-                            <div class="pro-rating ">
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                            </div>
-                            <div class="price-box">
-                              <span class="price product-price">Rp 150.000,00</span>
-                            </div>
-                            <div class="product-icon">
-                              <div class="product-icon-left f-left">
-                                <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                              </div>
-                              <div class="product-icon-right floatright">
-                                <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                          <span class="new">new</span>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-product  white-bg">
-                          <div class="product-img product-20">
-                            <a href="product-details-replika-masjid.html"><img src="img/product/Masjid Silver.jpg" alt="" /></a>
-                          </div>
-                          <div class="product-content">
-                            <div class="pro-title">
-                              <h4><a href="product-details-replika-masjid.html">Miniatur Masjid Aqsa Silver</a></h4>
-                            </div>
-                            <div class="pro-rating ">
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star-o"></i></a>
-                            </div>
-                            <div class="price-box">
-                              <span class="price product-price">Rp 2.554.000,00</span>
-                            </div>
-                            <div class="product-icon">
-                              <div class="product-icon-left f-left">
-                                <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                              </div>
-                              <div class="product-icon-right floatright">
-                                <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                          <span class="new">new</span>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-product  white-bg">
-                          <div class="product-img product-20">
-                            <a href="product-details-gelang.html"><img src="img/product/produk4.jpg" alt="" /></a>
-                          </div>
-                          <div class="product-content product-i">
-                            <div class="pro-title">
-                              <h4><a href="product-details-gelang.html">Gelang Plasetine</a></h4>
-                            </div>
-                            <div class="pro-rating ">
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                            </div>
-                            <div class="price-box">
-                              <span class="price product-price">Rp 75.000</span>
-                            </div>
-                            <div class="product-icon">
-                              <div class="product-icon-left f-left">
-                                <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                              </div>
-                              <div class="product-icon-right floatright">
-                                <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="single-product  white-bg">
-                          <div class="product-img product-20">
-                            <a href="product-details-pot.html"><img src="img/product/keramik pot.jpg" alt="" /></a>
-                          </div>
-                          <div class="product-content product-i">
-                            <div class="pro-title">
-                              <h4><a href="product-details-mug.html">Keramik Pot</a></h4>
-                            </div>
-                            <div class="pro-rating ">
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                            </div>
-                            <div class="price-box">
-                              <span class="price product-price">Rp 800.000,00</span>
-                            </div>
-                            <div class="product-icon">
-                              <div class="product-icon-left f-left">
-                                <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
-                              </div>
-                              <div class="product-icon-right floatright">
-                                <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      @endforeach
                     </div>
                     <div class="content-sortpagibar">
-                      <div class="product-count display-inline">Showing 1 - 12 of 13 items</div>
+                      <div class="product-count display-inline">Showing  1 - 12 of {{ $shops->total() }} items</div>
                       <ul class="shop-pagi display-inline">
-                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                        {{ $shops->links() }}
+                        {{-- <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
                         <li class="active"><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li> --}}
                       </ul>
                       <div class="selector-field f-right">
                         <form action="#">
@@ -794,39 +256,41 @@
                   </div>
                   <div role="tabpanel" class="tab-pane" id="profile">
                     <div class="row">
-                      <div class="col-lg-12">
-                        <div class="single-product  shop-single-product mb-30 white-bg">
-                          <div class="product-img pt-20">
-                            <a href="product-details-lukisan-karang-1.html"><img src="img/product/lukisan karang.jpg" alt="" /></a>
-                          </div>
-                          <div class="product-content">
-                            <div class="pro-title">
-                              <h4><a href="product-details-lukisan-karang-1.html">Lukisan Karang</a></h4>
+                      @foreach ($products as $product)
+                        <div class="col-lg-12">
+                          <div class="single-product  shop-single-product mb-30 white-bg">
+                            <div class="product-img pt-20">
+                              <a href="{{ url('product_detail/') }}/{{ $product->id }}"><img src="{{ url('/') }}/{{ $product->image()->first()->path_thumb }}" alt="" /></a>
                             </div>
-                            <div class="pro-rating mb-20">
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star"></i></a>
-                              <a href="#"><i class="fa fa-star-o"></i></a>
-                            </div>
-                            <p>Revolutionary multi-touch interface. iPod touch features the same multi-touch screen technology as iPhone. Pinch to zoom in on a photo. Scroll through your songs and videos with a flick. Flip through your library by album artwork with Cover Flow. Gorgeous 3.5-inch widescreen display. Watc..</p>
-                            <div class="price-box">
-                              <span class="price product-price">Rp 1.100.000,00</span>
-                            </div>
-                            <div class="product-icon">
-                              <div class="product-icon-left f-left">
-                                <a href="#"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                            <div class="product-content">
+                              <div class="pro-title">
+                              <h4><a href="{{ url('product_detail/') }}/{{ $product->id }}">{{ $product->product_name }}</a></h4>
                               </div>
-                              <div class="product-icon-right floatright">
-                                <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-                                <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
+                              <div class="pro-rating mb-20">
+                                <a href="#"><i class="fa fa-star"></i></a>
+                                <a href="#"><i class="fa fa-star"></i></a>
+                                <a href="#"><i class="fa fa-star"></i></a>
+                                <a href="#"><i class="fa fa-star"></i></a>
+                                <a href="#"><i class="fa fa-star-o"></i></a>
+                              </div>
+                                {!! $product->product_description !!}
+                              <div class="price-box">
+                                <span class="price product-price">Rp {{ number_format($product->product_price, 2, ",", ".") }}</span>
+                              </div>
+                              <div class="product-icon">
+                                <div class="product-icon-left f-left">
+                                  <a href="{{ url('/cart/addItem')}}/{{ $product->id }}"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                                </div>
+                                <div class="product-icon-right floatright">
+                                  <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
+                                  <a href="#" data-toggle="tooltip" title="Wishlist"><i class="fa fa-heart"></i></a>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </div>  
-                      </div>
-                      <div class="col-lg-12">
+                          </div>  
+                        </div>
+                      @endforeach
+                      {{-- <div class="col-lg-12">
                         <div class="single-product  shop-single-product mb-30 white-bg">
                           <div class="product-img pt-20">
                             <a href="product-details-piring-gypsum.html"><img src="img/product/Piring gypsum.jpg" alt="" /></a>
@@ -921,7 +385,7 @@
                             </div>
                           </div>
                         </div>  
-                      </div>
+                      </div> --}}
                     </div>
                     <div class="content-sortpagibar">
                       <div class="product-count display-inline">Showing 1 - 12 of 13 items</div>
