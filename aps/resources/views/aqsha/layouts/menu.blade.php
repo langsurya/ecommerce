@@ -42,8 +42,8 @@
                     <nav>
                         <ul>
                             <li class="active"><a href="{{ url('/') }}">home</a></li>
-                            <li><a href="{{ url('/shop') }}">bestseller</a></li>
-                            <li><a href="#">new product</a></li>
+                            {{-- <li><a href="{{ url('/shop') }}">bestseller</a></li> --}}
+                            <li><a href="{{ url('/shop') }}">product</a></li>
                             <li><a href="{{ url('/about') }}">About Us</a></li>
                         </ul>
                     </nav>
@@ -95,8 +95,8 @@
             <nav>
               <ul>
                 <li class="active"><a href="{{ url('/') }}">home</a></li>
-                <li><a href="{{ url('/shop') }}">bestseller</a></li>
-                <li><a href="#">new product</a></li>
+                {{-- <li><a href="{{ url('/shop') }}">bestseller</a></li> --}}
+                <li><a href="{{ url('/shop') }}">product</a></li>
                 <li><a href="{{ url('/about') }}">About Us</a></li>
               </ul>
             </nav>
