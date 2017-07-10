@@ -23,6 +23,7 @@ class CheckoutController extends Controller
       $userid = Auth::user()->id;
       $this->data['payments'] = DB::table('payments')->get();
       $this->data['user'] = User::find($userid);
+      $this->data['abouts'] = DB::table('about')->first();
       $this->data['cartItems'] = Cart::content();
 			$this->data['image'] = Product::with([
                   // 'image' 

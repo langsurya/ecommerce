@@ -8,22 +8,20 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Products\Product;
 use App\Models\Products\Gambar;
+use DB;
 
 class CartController extends Controller
 {
-   public function index() {
-   	$cartItems = Cart::content();
-		// $image = \App\Models\Products\Gambar::orderBy('id_product', 'asc');
-
-		$image =
-                Product::with([
-                    // 'image' 
-                ])
-                    ->take(12)->orderBy('created_at', 'asc')
-                    ->get();
+    public function index() {
+   	$this->data['cartItems'] = Cart::content();
+    $this->data['abouts'] = DB::table('about')->first();
+		$this->data['image'] = Product::with([
+               // 'image' 
+              ])
+              ->take(12)->orderBy('created_at', 'asc')
+              ->get();
         
-	   	// dd($image);
-   	return view('aqsha.cart', compact('cartItems', 'image'));
+   	return view('aqsha.cart', $this->data);
   }
 
   public function addItem($id) {

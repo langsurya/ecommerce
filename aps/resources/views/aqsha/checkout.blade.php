@@ -32,40 +32,31 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="checkout-form-list">
-										<label>Fullname <span class="required">*</span></label>{{ $errors->first('fullname') }}
+										<label>Nama Lengkap <span class="required">*</span></label>{{ $errors->first('fullname') }}
 										<input name="fullname" type="text" placeholder="" value="{{ $user->name }}" />
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="checkout-form-list">
-										<label>Address <span class="required">*</span></label> {{ $errors->first('address') }}
+										<label>Alamat <span class="required">*</span></label> {{ $errors->first('address') }}
 										<input name="address" type="text" placeholder="Street address" value="{{ old('address') }}" />
 									</div>
 								</div>
 								<div class="col-md-12">
-									<div class="country-select">
-										<label>Country <span class="required">*</span></label>
-										<select name="country">
-										  <option >bangladesh</option>
-										  <option >Algeria</option>
-										  <option >Afghanistan</option>
-										  <option >Ghana</option>
-										  <option >Albania</option>
-										  <option >Bahrain</option>
-										  <option >Colombia</option>
-										  <option >Dominican Republic</option>
-										</select> 										
+									<div class="checkout-form-list">
+										<label>Negara <span class="required">*</span></label>
+										<input type="text" name="country" value="{{ old('country') }}">										
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="checkout-form-list">
-										<label>Town / City <span class="required">*</span></label>{{ $errors->first('city') }}
+										<label>Kota <span class="required">*</span></label>{{ $errors->first('city') }}
 										<input name="city" type="text" placeholder="Town / City" value="{{ old('city') }}" />
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="checkout-form-list">
-										<label>Postcode / Zip <span class="required">*</span></label>{{ $errors->first('postcode') }}										
+										<label>Kode Pos / Zip <span class="required">*</span></label>{{ $errors->first('postcode') }}										
 										<input name="postcode" type="text" placeholder="Postcode / Zip" value="{{ old('postcode') }}" />
 									</div>
 								</div>
@@ -83,8 +74,8 @@
 								</div>
 								<div class="order-notes col-md-12">
 									<div class="checkout-form-list">
-										<label>Order Notes</label>{{ $errors->first('notes') }}
-										<textarea id="checkout-mess" name="notes" cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery." >{{ old('notes') }}</textarea>
+										<label>Catatan</label>{{ $errors->first('notes') }}
+										<textarea id="checkout-mess" name="notes" cols="30" rows="10" placeholder="Masukan Catatan" >{{ old('notes') }}</textarea>
 									</div>									
 								</div>
 								<div class="col-md-12">
@@ -96,18 +87,7 @@
 											@endforeach
 										</select> 										
 									</div>
-								</div>
-								{{-- <div class="col-md-12">
-									<div class="checkout-form-list create-acc">	
-										<input id="cbox" type="checkbox" />
-										<label>Create an account?</label>
-									</div>
-									<div id="cbox_info" class="checkout-form-list create-account">
-										<p>Create an account by entering the information below. If you are a returning customer please login at the top of the page.</p>
-										<label>Account password  <span class="required">*</span></label>
-										<input type="password" placeholder="password" />	
-									</div>
-								</div> --}}								
+								</div>								
 							</div>																			
 						</div>
 					</div>
@@ -133,14 +113,6 @@
 											</td>
 										</tr>
 									@endforeach
-										{{-- <tr class="cart_item">
-											<td class="product-name">
-												Vestibulum dictum magna	<strong class="product-quantity"> X 1</strong>
-											</td>
-											<td class="product-total">
-												<span class="amount">$50.00</span>
-											</td>
-										</tr> --}}
 									</tbody>
 									<tfoot>
 										<tr class="cart-subtotal">
@@ -162,41 +134,13 @@
 											<div class="panel-heading" role="tab" id="headingOne">
 												<h4 class="panel-title">
 													<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-													Direct Bank Transfer
+													Transfer Bank
 													</a>
 												</h4>
 											</div>
 											<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 												<div class="panel-body">
 													<p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won't be shipped until the funds have cleared in our account.</p>
-												</div>
-											</div>
-										</div>
-										<div class="panel panel-default">
-											<div class="panel-heading" role="tab" id="headingTwo">
-												<h4 class="panel-title">
-													<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-													Cheque Payment
-												</a>
-												</h4>
-											</div>
-										<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-											<div class="panel-body">
-												<p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
-											</div>
-										</div>
-										</div>
-										<div class="panel panel-default">
-											<div class="panel-heading" role="tab" id="headingThree">
-												<h4 class="panel-title">
-													<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-													PayPal
-												</a>
-												</h4>
-											</div>
-											<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-												<div class="panel-body">
-													<p>Pay via PayPal; you can pay with your credit card if you don't have a PayPal account.</p>
 												</div>
 											</div>
 										</div>

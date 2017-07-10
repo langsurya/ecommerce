@@ -25,8 +25,9 @@
 					<div class="col-lg-12 col-md-12 col-sm-12">
 						<div class="product-tab-menu white-bg border-2">
 							<ul>
-								<li class="active"><a href="#home2" data-toggle="tab">Personal Data</a></li>
-								<li><a href="#profile2" data-toggle="tab">Address Settings</a></li>
+								<li class="active"><a href="#home2" data-toggle="tab">Profile</a></li>
+								<li><a href="#orders" data-toggle="tab">Orders</a></li>
+								<li><a href="#konfirmasi" data-toggle="tab">Konfirmasi Pembayaran</a></li>
 							</ul>						
 						</div>
 					</div>
@@ -41,18 +42,18 @@
 									<div class="login-area pt-30">
 										<div class="single-product pt-30 pb-20 white-bg">
 											<div class="product-img pb-40" align="center">
-												<img src="{{ url('/public/aqsha/') }}/img/client/1.jpg" alt="" />
+												{{-- <img src="{{ url('/public/aqsha/') }}/img/client/1.jpg" alt="" /> --}}
 											</div>
-											<div class="product-content">
+											{{-- <div class="product-content">
 												<div class="col-sm-8 col-md-offset-2 col-sm-offset-2">
 													 <p class="col-sm-12">
 														<input type="submit" value="Input Gambar" name="signup" class="theme-button marL0">
 													 </p>
 												</div>
 											</div>										
-												<div class="col-sm-8 col-md-offset-2 col-sm-offset-2">
-													<h5>File jpg,jpeg,png. Maks 1 Mb</h5>
-												</div>									
+											<div class="col-sm-8 col-md-offset-2 col-sm-offset-2">
+												<h5>File jpg,jpeg,png. Maks 1 Mb</h5>
+											</div> --}}								
 										</div>
 									</div>
 								</div>
@@ -65,11 +66,15 @@
 											   <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
 												  <div class="billing-fields row">
 														<p class="form-row col-sm-12">
-															<label for="name">First Name<abbr title="required" class="required">*</abbr></label>
+															<label for="name">First Name</label>
 															<input type="text" name="name" id="name" value="{{ $user->name }}" class="form-controller">
 														</p>
+														<p class="form-row col-sm-12">
+															<label for="username">Username</label>
+															<input type="text" name="username" id="username" value="{{ $user->username }}" class="form-controller" disabled>
+														</p>
 														<p class="form-row col-sm-6">
-															<label for="email">Email Address<abbr title="required" class="required">*</abbr></label>
+															<label for="email">Email Address</label>
 															<input type="text" name="email" id="email" value="{{ $user->email }}" class="form-controller">
 														</p>
 														<p class="form-row col-sm-6">
@@ -94,7 +99,7 @@
 							</form>
 						</div>
 					</div>
-					<div class="tab-pane" id="profile2">
+					<div class="tab-pane" id="orders">
 						<div class="row">
 							<!-- login-area start -->
 								<div class="login-area pt-30">
@@ -147,6 +152,54 @@
 													<input type="submit" value="Simpan" name="signup" class="theme-button marL0">
 													</p>
 											  </div>
+										   </div>
+										   <!-- /.col-md-6 -->
+										   <div class="col-md-6 marTB30">
+										   </div>
+										   <!-- /.col-md-6 -->
+										</div>
+										<!-- /.row -->
+									 </div>
+								</div>
+								<!-- login-area end -->
+						</div>
+					</div>
+					<div class="tab-pane" id="konfirmasi">
+						<div class="row">
+							<!-- login-area start -->
+								<div class="login-area pt-30">
+									<div class="continer">
+										<div class="row">
+										   <div class="clear"></div>
+										   <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+												<div class="billing-fields row">
+											  	<form action="{{ url('/konfirmasi/') }}" method="post">
+														<input type="hidden" name="_token" value="{{ csrf_token() }}">
+														<p class="form-row col-sm-12">
+															<label for="id_order">ID Order</label>
+															<input type="text" name="id_order" id="id_order" placeholder="ID Order" class="form-controller">
+														</p>
+														<p class="form-row col-sm-12">
+															<label for="pengirim">Nama Pengirim (a/n)</label>
+															<input type="text" name="pengirim" id="pengirim" class="form-controller">
+														</p>
+														<p class="form-row col-sm-6">
+															<label for="bank">Bank<abbr title="required" class="required">*</abbr></label>
+															<select class="billing_state" id="bank" name="bank">
+																@foreach ($banks as $bank)
+															   <option value="{{ $bank->no_rekening }}">{{ $bank->nama_bank . " ( ".$bank->pemilik ." - ".$bank->no_rekening." )" }}</option>
+																@endforeach
+															</select>
+														</p>
+														<p class="form-row col-sm-6">
+															<label for="transfer">Jumlah Transfer</label>
+															<input type="text" name="jumlah_transfer" id="transfer" placeholder="Rp" class="form-controller">
+														</p>
+														<p class="col-sm-12">
+															<input type="submit" value="Kirim Konfirmasi" name="submit" class="theme-button">
+														</p>
+												 	</form>
+												</div>
 										   </div>
 										   <!-- /.col-md-6 -->
 										   <div class="col-md-6 marTB30">

@@ -14,9 +14,7 @@ use DB;
 
 class PagesController extends Controller {
 
-	public function __construct() {
-	
-		// $this->data['cartItems'] = Cart::content();
+	public function __construct() {	
 		$this->data['image'] = Product::with([
                   // 'image' 
                 ])
@@ -66,6 +64,7 @@ class PagesController extends Controller {
 			return redirect('login');
 		}
 		$userid = Auth::user()->id;
+		$this->data['banks'] = DB::table('payments')->get();
     $this->data['user'] = User::find($userid);
     $this->data['cartItems'] = Cart::content();
 		return view('aqsha.profile', $this->data);
@@ -81,6 +80,23 @@ class PagesController extends Controller {
             	'email' => $request->email,
             	'phone' => $request->phone,
             	]);
+		return back();
+	}
+
+	public function konfirmasiPembayaran(Request $request) {
+
+		if (Auth::check()) {
+			$userid = Auth::user()->id;
+			DB::table('pembayaran')->insert(
+	    	[
+	    		'id_order' => $request->id_order,
+	    		'id_user' => $userid, 
+	    		'pengirim' => $request->pengirim,
+	    		'bank' => $request->bank,
+	    		'jumlah_transfer' => $request->jumlah_transfer
+	    	]
+			);
+		}
 		return back();
 	}
 
