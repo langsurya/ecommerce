@@ -187,7 +187,7 @@
 															<label for="bank">Bank<abbr title="required" class="required">*</abbr></label>
 															<select class="billing_state" id="bank" name="bank">
 																@foreach ($banks as $bank)
-															   <option value="{{ $bank->no_rekening }}">{{ $bank->nama_bank . " ( ".$bank->pemilik ." - ".$bank->no_rekening." )" }}</option>
+															   <option value="{{ $bank->nama_bank }}">{{ $bank->nama_bank . " ( ".$bank->pemilik ." - ".$bank->no_rekening." )" }}</option>
 																@endforeach
 															</select>
 														</p>

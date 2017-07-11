@@ -43,6 +43,7 @@ class FinanceController extends Controller
                     ->where('orders.status', '=', 'ditolak')
                     ->orderBy('orders.id', 'desc')
                     ->get();
+        $this->data['pembayaran'] = DB::table('pembayaran')->get();
         return view('backend.finance.index', $this->data)->with('s')->with('p')->with('i')->with('k');
     }
 
