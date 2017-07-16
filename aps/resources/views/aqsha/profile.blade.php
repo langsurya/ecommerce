@@ -106,52 +106,32 @@
 									<div class="continer">
 										<div class="row">
 										   <div class="clear"></div>
-										   <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
-											  <div class="billing-fields row">
-													<p class="form-row col-sm-12">
-														<label for="billing_country">Country<abbr title="required" class="required">*</abbr></label>
-														<select class="billing_country" id="billing_country" name="billing_country">
-														   <option value="">Select a country</option>
-														   <option value="AX">Aland Islands</option>
-														   <option value="AF">Afghanistan</option>
-														   <option value="AL">Albania</option>
-														   <option value="DZ">Algeria</option>
-														   <option value="AS">American Samoa</option>
-														   <option value="AD">Andorra</option>
-														   <option value="AO">Angola</option>
-														   <option value="AI">Anguilla</option>
-														   <option value="AQ">Antarctica</option>
-														   <option value="AG">Antigua and Barbuda</option>
-														</select>
-													</p>
-													<p class="form-row col-sm-12">
-													<label for="billing_address_1">Address<abbr title="required" class="required">*</abbr></label>
-													<input type="text" name="billing_address_1" id="billing_address_1" placeholder="Street address" class="form-controller">
-													<input type="text" name="billing_address_2" id="billing_address_2" placeholder="Apartment, suite, unit etc. (optional)" class="form-controller">
-													</p>
-													<p class="form-row col-sm-12">
-													<label for="billing_city">Town/City<abbr title="required" class="required">*</abbr></label>
-													<input type="text" name="billing_city" id="billing_city" class="form-controller">
-													</p>
-													<p class="form-row col-sm-6">
-													<label for="billing_state">State<abbr title="required" class="required">*</abbr></label>
-													<select class="billing_state" id="billing_state" name="billing_state">
-													   <option value="">Select a State</option>
-													   <option value="AP">Andhra Pradesh</option>
-													   <option value="AR">Arunachal Pradesh</option>
-													   <option value="DL">Delhi</option>
-													   <option value="LD">Lakshadeep</option>
-													   <option value="PY">Pondicherry (Puducherry)</option>
-													</select>
-													</p>
-													<p class="form-row col-sm-6">
-													<label for="billing_postcode">Postcode/zip<abbr title="required" class="required">*</abbr></label>
-													<input type="text" name="billing_postcode" id="billing_postcode" placeholder="Postcode/zip" class="form-controller">
-													</p>
-													<p class="col-sm-12">
-													<input type="submit" value="Simpan" name="signup" class="theme-button marL0">
-													</p>
-											  </div>
+										   <div class="col-md-12 col-sm-12">
+											  <div class="table-content table-responsive">
+													<table>
+														<thead>
+															<tr>
+																<th class="product-thumbnail">ID Orders</th>
+																<th class="product-name">Product</th>
+																<th class="product-price">Price</th>
+																<th class="product-quantity">Quantity</th>
+																<th class="product-subtotal">Pembayaran</th>
+															</tr>
+														</thead>
+														<tbody>
+															@foreach ($orders as $order)
+															<tr>
+																<td class="product-thumbnail">#{{ $order->po }}
+																</td>
+																<td class="product-name">{{ $order->product_name }}</td>
+																<td class="product-price"><span class="amount">Rp {{ $order->total }}</span></td>
+																<td class="product-quantity">{{ $order->qty }}</td>
+																<td class="product-subtotal">{{ ($order->pembayaran=='sudahbayar') ? 'Sudah Bayar' : 'Belum Bayar' }}</td>
+															</tr>
+															@endforeach
+														</tbody>
+													</table>
+												</div>
 										   </div>
 										   <!-- /.col-md-6 -->
 										   <div class="col-md-6 marTB30">

@@ -64,6 +64,13 @@ class PagesController extends Controller {
 			return redirect('login');
 		}
 		$userid = Auth::user()->id;
+		$this->data['orders'] = DB::table('orders_product')
+                    ->leftjoin('product', 'product.id', '=', 'orders_product.product_id')
+                    ->leftjoin('orders', 'orders.id', '=', 'orders_product.orders_id')
+                    ->select('product.product_name', 'product.product_price as harga', 'orders_product.qty','orders.id as po','orders.pembayaran', 'orders.total', 'orders.status' ,'orders.id', 'orders.created_at')
+                    ->orderBy('orders.id','DESC')
+                ->where('orders.user_id', $userid)
+                ->get();
 		$this->data['banks'] = DB::table('payments')->get();
     $this->data['user'] = User::find($userid);
     $this->data['cartItems'] = Cart::content();
