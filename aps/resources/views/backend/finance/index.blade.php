@@ -85,7 +85,7 @@
                                 <th>Nama Pengirim</th>
                                 <th>Nama Bank</th>
                                 <th>Jumlah Transfer</th>
-                                {{-- <th>Aksi</th> --}}
+                                <th>Aksi</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -97,7 +97,7 @@
                                 <td>{{ $pay->pengirim }}</td>
                                 <td>{{ $pay->bank }}</td>
                                 <td>Rp {{ number_format($pay->jumlah_transfer, 0,',','.') }}</td>
-                                {{-- <td>
+                                <td>
                                   <select name="status" id="" class="form-control">
                                   <option>-status-</option>
                                     <option value="disetujui" >Disetujui</option>
@@ -105,7 +105,7 @@
                                     <option value="pending" >Pending</option>
                                   </select>
                                   <button type="submit" class="btn btn-primary pull-right"><span class="fa fa-save"></span> Update</button>
-                                </td> --}}
+                                </td>
                                 {!! Form::close() !!}
                               </tr>
                             @endforeach

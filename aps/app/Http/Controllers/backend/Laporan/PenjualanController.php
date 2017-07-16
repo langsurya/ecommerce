@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend\Laporan;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
@@ -15,7 +16,17 @@ class PenjualanController extends Controller
      */
     public function index()
     {
-      return view('backend.laporan.penjualan.index');
+        $this->data['orders'] = DB::table('orders')
+                ->leftjoin('address', 'address.orders_id', '=', 'orders.id')
+                // ->leftjoin('users', 'users.id', '=', 'orders.user_id')
+                ->select(
+                    'address.fullname', 'address.payment_type as pay', 'address.ekspedisi', 'address.paket',
+                    'address.ongkir', 
+                    'orders.id as po', 'orders.status', 'orders.total', 'orders.pembayaran', 
+                    'orders.packing', 'orders.pengiriman','orders.no_resi', 'orders.created_at', 'orders.updated_at')
+                ->orderBy('orders.id','DESC')
+                ->get();
+      return view('backend.laporan.penjualan.index', $this->data)->with('i');
     }
 
     /**

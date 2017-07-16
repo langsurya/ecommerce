@@ -83,8 +83,8 @@
         </a>
         <ul class="treeview-menu">
           <li class="{{ Request::is('admin/penjualan') ? 'active' : null }}"><a href="{{ url('/admin/penjualan') }}"><i class="fa  fa-file"></i> Penjualan</a></li>
-          <li class="{{ Request::is('admin/perbarang') ? 'active' : null }}"><a href="{{ url('/admin/perbarang') }}"><i class="fa  fa-file"></i> Penjualan Per barang</a></li>
-          <li class="{{ Request::is('admin/perpelanggan') ? 'active' : null }}"><a href="{{ url('/admin/perpelanggan') }}"><i class="fa  fa-file"></i> Penjualan Per Pelanggan</a></li>
+          {{-- <li class="{{ Request::is('admin/perbarang') ? 'active' : null }}"><a href="{{ url('/admin/perbarang') }}"><i class="fa  fa-file"></i> Penjualan Per barang</a></li>
+          <li class="{{ Request::is('admin/perpelanggan') ? 'active' : null }}"><a href="{{ url('/admin/perpelanggan') }}"><i class="fa  fa-file"></i> Penjualan Per Pelanggan</a></li> --}}
         </ul>
       </li>
       {{-- menu setting --}}
